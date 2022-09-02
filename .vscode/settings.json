@@ -1,4 +1,8 @@
 {
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.preferences.importModuleSpecifier": "shortest",
   "typescript.tsdk": "./node_modules/typescript/lib",
   "files.exclude": {
     "**/logs": true,

@@ -1,0 +1,11 @@
+{
+  "Styled Components Props": {
+    "prefix": [
+      "pro"
+    ],
+    "body": [
+      "${props => props${0}}"
+    ],
+    "description": "Styled Components Props"
+  }
+}

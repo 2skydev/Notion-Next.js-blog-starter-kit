@@ -1,11 +1,12 @@
 {
+  "arrowParens": "avoid",
+  "endOfLine": "auto",
   "singleQuote": true,
-  "jsxSingleQuote": true,
-  "semi": false,
-  "useTabs": false,
+  "trailingComma": "all",
   "tabWidth": 2,
-  "bracketSpacing": true,
-  "bracketSameLine": false,
-  "arrowParens": "always",
-  "trailingComma": "none"
+  "useTabs": false,
+  "printWidth": 100,
+  "semi": true,
+  "importOrder": ["electron", "react", "^[^.~]+", "^~.+$", "^\\..+$"],
+  "importOrderSeparation": true
 }
