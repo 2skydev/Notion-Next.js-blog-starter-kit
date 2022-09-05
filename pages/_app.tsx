@@ -2,7 +2,7 @@
 import 'styles/global.css';
 
 // core styles shared by all of react-notion-x (required)
-import 'react-notion-x/src/styles.css';
+import 'react-notion-x/styles.css';
 
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css';

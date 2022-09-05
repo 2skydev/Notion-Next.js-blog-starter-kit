@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
       <Html lang="ko">
         <Head>
           <link rel="shortcut icon" href="/favicon.ico" />
-          <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+          <link rel="icon" type="image/png" sizes="128x128" href="favicon.png" />
 
           <link rel="manifest" href="/manifest.json" />
         </Head>

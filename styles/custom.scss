@@ -1,3 +1,7 @@
+.dark-mode {
+  --bg-color: #1a1b1e;
+}
+
 body {
   .notion-header {
     position: fixed;
@@ -37,6 +41,12 @@ body {
 
     .notion-page-icon-hero {
       left: calc(min(96px, 8vw));
+    }
+  }
+
+  .indexPage {
+    .notion-header {
+      display: none;
     }
   }
 

@@ -1,0 +1,10 @@
+{
+  "name": "notion-utils",
+  "version": "1.0.0",
+  "dependencies": {
+    "is-url-superb": "^6.1.0",
+    "mem": "^9.0.2",
+    "normalize-url": "^7.0.3",
+    "p-queue": "^7.2.0"
+  }
+}
