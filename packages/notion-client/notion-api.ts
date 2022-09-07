@@ -332,6 +332,14 @@ export class NotionAPI {
       userTimeZone,
     };
 
+    // CUSTOM: 필터 작동하도록 처리
+    if (collectionView.format.property_filters.length) {
+      loader.filter = {
+        operator: 'and',
+        filters: collectionView.format.property_filters.map(filter => filter.filter),
+      };
+    }
+
     if (groupBy) {
       const groups =
         collectionView?.format?.board_columns || collectionView?.format?.collection_groups || [];
