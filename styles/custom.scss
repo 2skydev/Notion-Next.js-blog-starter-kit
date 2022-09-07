@@ -3,6 +3,10 @@
 }
 
 body {
+  &.dark-mode {
+    background-color: var(--bg-color);
+  }
+
   .notion-header {
     position: fixed;
   }
