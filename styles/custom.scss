@@ -1,8 +1,56 @@
 .dark-mode {
   --bg-color: #1a1b1e;
+
+  .notion-search {
+    color: var(--fg-color);
+    caret-color: var(--fg-color);
+    background-color: var(--bg-color-1);
+
+    input {
+      color: var(--fg-color);
+      caret-color: var(--fg-color);
+      background-color: transparent;
+
+      &::placeholder {
+        color: var(--fg-color-5);
+      }
+    }
+
+    .noResults {
+      color: var(--fg-color-5);
+    }
+
+    .noResultsDetail {
+      color: var(--fg-color-5);
+      opacity: 0.6;
+    }
+  }
 }
 
 body {
+  .fixedDarkMode {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 999;
+
+    .button {
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      color: var(--fg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background 120ms;
+
+      &:hover {
+        background-color: var(--bg-color-0);
+      }
+    }
+  }
+
   &.dark-mode {
     background-color: var(--bg-color);
   }

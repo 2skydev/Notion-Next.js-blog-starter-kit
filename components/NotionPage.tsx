@@ -27,8 +27,8 @@ import { Loading } from './Loading';
 import { Page404 } from './Page404';
 import { PageHead } from './PageHead';
 import { PageAside } from './PageAside';
-import { Footer } from './Footer';
-import { NotionPageHeader } from './NotionPageHeader';
+// import { Footer } from './Footer';
+import { NotionPageHeader, ToggleThemeButton } from './NotionPageHeader';
 
 import styles from './styles.module.css';
 
@@ -180,7 +180,7 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
     [block, recordMap, isBlogPost],
   );
 
-  const footer = React.useMemo(() => <Footer />, []);
+  // const footer = React.useMemo(() => <Footer />, []);
 
   if (router.isFallback) {
     return <Loading />;
@@ -226,6 +226,12 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
       {isLiteMode && <BodyClassName className="notion-lite" />}
       {isDarkMode && <BodyClassName className="dark-mode" />}
 
+      {pageId === site.rootNotionPageId && (
+        <div className="fixedDarkMode">
+          <ToggleThemeButton />
+        </div>
+      )}
+
       <NotionRenderer
         className={cs(pageId === site.rootNotionPageId ? 'indexPage' : 'childPage')}
         bodyClassName={cs(styles.notion, pageId === site.rootNotionPageId && 'index-page')}
@@ -246,7 +252,7 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
-        footer={footer}
+        footer={null}
       />
     </>
   );
