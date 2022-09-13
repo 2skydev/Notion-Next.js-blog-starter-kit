@@ -222,10 +222,8 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
         image={socialImage}
         url={canonicalPageUrl}
       />
-
       {isLiteMode && <BodyClassName className="notion-lite" />}
       {isDarkMode && <BodyClassName className="dark-mode" />}
-
       {pageId === site.rootNotionPageId && (
         <div className="fixedDarkMode">
           <ToggleThemeButton />

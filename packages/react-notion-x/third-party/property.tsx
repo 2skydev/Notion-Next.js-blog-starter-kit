@@ -114,10 +114,18 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
   const renderPersonValue = React.useMemo(
     () =>
       function PersonProperty() {
-        // console.log('person', schema, data)
         return <Text value={data} block={block} />;
       },
     [block, data],
+  );
+
+  // CUSTOM: 작성자 렌더링
+  const renderCreatedByValue = React.useMemo(
+    () =>
+      function CreatedByProperty() {
+        return <Text value={[['u', [['u', block.created_by_id]]]]} block={block} />;
+      },
+    [block],
   );
 
   const renderFileValue = React.useMemo(
@@ -376,8 +384,8 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
         break;
 
       case 'created_by':
-        // TODO
-        // console.log('created_by', schema, data)
+        // CUSTOM: created_by 처리
+        content = components.propertyPersonValue(props, renderCreatedByValue);
         break;
 
       case 'last_edited_by':
@@ -391,7 +399,6 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
 
       case 'date':
         content = components.propertyDateValue(props, renderDateValue);
-        console.log(props, renderDateValue, content);
         break;
 
       default:

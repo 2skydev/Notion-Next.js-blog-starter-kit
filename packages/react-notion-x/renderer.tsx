@@ -1,58 +1,53 @@
-import * as React from 'react'
-import mediumZoom from '@fisch0920/medium-zoom'
-import { ExtendedRecordMap } from 'notion-types'
+import * as React from 'react';
+import mediumZoom from '@fisch0920/medium-zoom';
+import { ExtendedRecordMap } from 'notion-types';
 
-import {
-  MapPageUrlFn,
-  MapImageUrlFn,
-  SearchNotionFn,
-  NotionComponents
-} from './types'
-import { Block } from './block'
-import { useNotionContext, NotionContextProvider } from './context'
+import { MapPageUrlFn, MapImageUrlFn, SearchNotionFn, NotionComponents } from './types';
+import { Block } from './block';
+import { useNotionContext, NotionContextProvider } from './context';
 
 export const NotionRenderer: React.FC<{
-  recordMap: ExtendedRecordMap
-  components?: Partial<NotionComponents>
+  recordMap: ExtendedRecordMap;
+  components?: Partial<NotionComponents>;
 
-  mapPageUrl?: MapPageUrlFn
-  mapImageUrl?: MapImageUrlFn
-  searchNotion?: SearchNotionFn
+  mapPageUrl?: MapPageUrlFn;
+  mapImageUrl?: MapImageUrlFn;
+  searchNotion?: SearchNotionFn;
 
-  rootPageId?: string
-  rootDomain?: string
+  rootPageId?: string;
+  rootDomain?: string;
 
   // set fullPage to false to render page content only
   // this will remove the header, cover image, and footer
-  fullPage?: boolean
+  fullPage?: boolean;
 
-  darkMode?: boolean
-  previewImages?: boolean
-  forceCustomImages?: boolean
-  showCollectionViewDropdown?: boolean
-  linkTableTitleProperties?: boolean
+  darkMode?: boolean;
+  previewImages?: boolean;
+  forceCustomImages?: boolean;
+  showCollectionViewDropdown?: boolean;
+  linkTableTitleProperties?: boolean;
 
-  showTableOfContents?: boolean
-  minTableOfContentsItems?: number
+  showTableOfContents?: boolean;
+  minTableOfContentsItems?: number;
 
-  defaultPageIcon?: string
-  defaultPageCover?: string
-  defaultPageCoverPosition?: number
+  defaultPageIcon?: string;
+  defaultPageCover?: string;
+  defaultPageCoverPosition?: number;
 
-  className?: string
-  bodyClassName?: string
+  className?: string;
+  bodyClassName?: string;
 
-  header?: React.ReactNode
-  footer?: React.ReactNode
-  pageHeader?: React.ReactNode
-  pageFooter?: React.ReactNode
-  pageTitle?: React.ReactNode
-  pageAside?: React.ReactNode
-  pageCover?: React.ReactNode
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
+  pageHeader?: React.ReactNode;
+  pageFooter?: React.ReactNode;
+  pageTitle?: React.ReactNode;
+  pageAside?: React.ReactNode;
+  pageCover?: React.ReactNode;
 
-  blockId?: string
-  hideBlockId?: boolean
-  disableHeader?: boolean
+  blockId?: string;
+  hideBlockId?: boolean;
+  disableHeader?: boolean;
 }> = ({
   components,
   recordMap,
@@ -80,10 +75,10 @@ export const NotionRenderer: React.FC<{
       mediumZoom({
         background: 'rgba(0, 0, 0, 0.8)',
         minZoomScale: 2.0,
-        margin: getMediumZoomMargin()
+        margin: getMediumZoomMargin(),
       }),
-    []
-  )
+    [],
+  );
 
   return (
     <NotionContextProvider
@@ -109,35 +104,35 @@ export const NotionRenderer: React.FC<{
     >
       <NotionBlockRenderer {...rest} />
     </NotionContextProvider>
-  )
-}
+  );
+};
 
 export const NotionBlockRenderer: React.FC<{
-  className?: string
-  bodyClassName?: string
-  header?: React.ReactNode
-  footer?: React.ReactNode
-  disableHeader?: boolean
+  className?: string;
+  bodyClassName?: string;
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
+  disableHeader?: boolean;
 
-  blockId?: string
-  hideBlockId?: boolean
-  level?: number
+  blockId?: string;
+  hideBlockId?: boolean;
+  level?: number;
 }> = ({ level = 0, blockId, ...props }) => {
-  const { recordMap } = useNotionContext()
-  const id = blockId || Object.keys(recordMap.block)[0]
-  const block = recordMap.block[id]?.value
+  const { recordMap } = useNotionContext();
+  const id = blockId || Object.keys(recordMap.block)[0];
+  const block = recordMap.block[id]?.value;
 
   if (!block) {
     if (process.env.NODE_ENV !== 'production') {
-      console.warn('missing block', blockId)
+      console.warn('missing block', blockId);
     }
 
-    return null
+    return null;
   }
 
   return (
     <Block key={id} level={level} block={block} {...props}>
-      {block?.content?.map((contentBlockId) => (
+      {block?.content?.map(contentBlockId => (
         <NotionBlockRenderer
           key={contentBlockId}
           blockId={contentBlockId}
@@ -146,23 +141,23 @@ export const NotionBlockRenderer: React.FC<{
         />
       ))}
     </Block>
-  )
-}
+  );
+};
 
 function getMediumZoomMargin() {
-  const width = window.innerWidth
+  const width = window.innerWidth;
 
   if (width < 500) {
-    return 8
+    return 8;
   } else if (width < 800) {
-    return 20
+    return 20;
   } else if (width < 1280) {
-    return 30
+    return 30;
   } else if (width < 1600) {
-    return 40
+    return 40;
   } else if (width < 1920) {
-    return 48
+    return 48;
   } else {
-    return 72
+    return 72;
   }
 }

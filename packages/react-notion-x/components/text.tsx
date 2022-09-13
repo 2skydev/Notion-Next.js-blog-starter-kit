@@ -71,14 +71,18 @@ export const Text: React.FC<{
                     return null;
                   }
 
+                  // CUSTOM: 유저 이름도 추가
                   const name = [user.given_name, user.family_name].filter(Boolean).join(' ');
 
                   return (
-                    <GracefulImage
-                      className="notion-user"
-                      src={mapImageUrl(user.profile_photo, block)}
-                      alt={name}
-                    />
+                    <div className="notion-user-container">
+                      <GracefulImage
+                        className="notion-user"
+                        src={mapImageUrl(user.profile_photo, block)}
+                        alt={name}
+                      />
+                      <span className="notion-user-name">{name}</span>
+                    </div>
                   );
                 }
 
@@ -185,14 +189,19 @@ export const Text: React.FC<{
                 return null;
               }
 
-              const name = [user.given_name, user.family_name].filter(Boolean).join(' ');
+              // CUSTOM: 유저 이름도 추가
+              const name =
+                user.name || [user.given_name, user.family_name].filter(Boolean).join(' ');
 
               return (
-                <GracefulImage
-                  className="notion-user"
-                  src={mapImageUrl(user.profile_photo, block)}
-                  alt={name}
-                />
+                <div className="notion-user-container">
+                  <GracefulImage
+                    className="notion-user"
+                    src={mapImageUrl(user.profile_photo, block)}
+                    alt={name}
+                  />
+                  <span className="notion-user-name">{name}</span>
+                </div>
               );
             }
 

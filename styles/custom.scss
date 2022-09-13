@@ -69,6 +69,11 @@ body {
     max-height: calc(30vh + var(--notion-header-height)) !important;
   }
 
+  .notion-title {
+    text-align: left;
+    font-size: 2em;
+  }
+
   .notion-page-icon-hero {
     margin-left: 0 !important;
     left: calc(min(16px, 8vw));
@@ -93,6 +98,15 @@ body {
 
     .notion-page-icon-hero {
       left: calc(min(96px, 8vw));
+    }
+  }
+
+  .notion-user-container {
+    display: flex;
+    align-items: center;
+
+    .notion-user {
+      margin-right: 0.5rem;
     }
   }
 

@@ -59,11 +59,22 @@ export class NotionAPI {
       chunkNumber,
       gotOptions,
     });
+
     const recordMap = page?.recordMap as notion.ExtendedRecordMap;
 
     if (!recordMap?.block) {
       throw new Error(`Notion page not found "${uuidToId(pageId)}"`);
     }
+
+    // CUSTOM: 작성자 유저 정보 가져오도록 처리
+    const pageBlock = page.recordMap.block[pageId].value;
+    const authorId = pageBlock.created_by_id;
+    const users = await this.getUsers([authorId]);
+    const author = users.results[0];
+
+    recordMap.notion_user = {
+      [authorId]: author,
+    };
 
     // ensure that all top-level maps exist
     recordMap.collection = recordMap.collection ?? {};
@@ -451,7 +462,13 @@ export class NotionAPI {
   }
 
   public async getUsers(userIds: string[], gotOptions?: OptionsOfJSONResponseBody) {
-    return this.fetch<notion.RecordValues<notion.User>>({
+    // CUSTOM: 타입 수정
+    return this.fetch<
+      notion.RecordValues<{
+        role: notion.Role;
+        value: notion.User;
+      }>
+    >({
       endpoint: 'getRecordValues',
       body: {
         requests: userIds.map(id => ({ id, table: 'notion_user' })),
