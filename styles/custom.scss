@@ -101,12 +101,47 @@ body {
     }
   }
 
+  // profile
   .notion-user-container {
     display: flex;
     align-items: center;
 
     .notion-user {
-      margin-right: 0.5rem;
+      margin-right: 0.3rem;
+    }
+  }
+
+  // notion property styles
+  .notion-collection-row-body {
+    flex-direction: row;
+
+    > .notion-collection-row-property {
+      + .notion-collection-row-property {
+        &::before {
+          content: '';
+          width: 1px;
+          height: 10px;
+          background-color: var(--fg-color-2);
+          margin: 0 0.5rem;
+        }
+      }
+    }
+
+    .notion-collection-row-value {
+      min-height: auto;
+    }
+
+    .notion-property-select-item,
+    .notion-property-multi_select-item {
+      background-color: transparent !important;
+      padding: 0;
+    }
+
+    .notion-property-multi_select-item {
+      opacity: 0.7;
+      &::before {
+        content: '#';
+      }
     }
   }
 
