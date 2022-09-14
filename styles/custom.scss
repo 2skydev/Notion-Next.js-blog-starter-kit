@@ -158,19 +158,30 @@ body {
   // 목차 스타일
   .notion-aside-table-of-contents {
     .notion-table-of-contents-item {
-      color: rgba(60, 60, 60, 0.7);
-      transition: 300ms color;
       position: relative;
-      border-left: 1px solid var(--fg-color-1);
+      overflow: visible;
       padding-left: 1rem;
       margin: 0;
       opacity: 1;
-      overflow: visible;
+
+      &::before {
+        content: '';
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-left: 1px solid var(--fg-color);
+        z-index: 1;
+        opacity: 0.2;
+      }
 
       .notion-table-of-contents-item-body {
         max-width: 16rem;
         overflow: hidden;
         text-overflow: ellipsis;
+        transition: 250ms opacity;
+        color: var(--fg-color) !important;
+        opacity: 0.7;
       }
 
       &:hover {
@@ -179,15 +190,18 @@ body {
 
       .activeLine {
         position: absolute;
-        background-color: red;
+        background-color: #505de6;
         width: 1px;
         height: 100%;
-        left: -1px;
+        left: 0;
+        z-index: 2;
       }
     }
 
     .notion-table-of-contents-active-item {
-      color: #213547 !important;
+      .notion-table-of-contents-item-body {
+        opacity: 1;
+      }
     }
   }
 
