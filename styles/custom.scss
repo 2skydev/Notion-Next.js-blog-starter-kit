@@ -112,10 +112,19 @@ body {
   }
 
   // notion property styles
-  .notion-collection-row-body {
-    flex-direction: row;
+  .notion-collection-page-properties {
+    .notion-collection-row {
+      margin-bottom: 5rem;
+      border-bottom: none;
+      padding-bottom: 0;
+      padding: 0;
+    }
 
-    > .notion-collection-row-property {
+    .notion-collection-row-body {
+      flex-direction: row;
+    }
+
+    .notion-collection-row-property {
       + .notion-collection-row-property {
         &::before {
           content: '';
@@ -139,6 +148,7 @@ body {
 
     .notion-property-multi_select-item {
       opacity: 0.7;
+
       &::before {
         content: '#';
       }
