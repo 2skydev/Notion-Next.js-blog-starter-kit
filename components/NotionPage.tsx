@@ -173,7 +173,7 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
   const isBlogPost = block?.type === 'page' && block?.parent_table === 'collection';
 
   const showTableOfContents = !!isBlogPost;
-  const minTableOfContentsItems = 3;
+  const minTableOfContentsItems = 1;
 
   const pageAside = React.useMemo(
     () => <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />,

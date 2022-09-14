@@ -155,6 +155,42 @@ body {
     }
   }
 
+  // 목차 스타일
+  .notion-aside-table-of-contents {
+    .notion-table-of-contents-item {
+      color: rgba(60, 60, 60, 0.7);
+      transition: 300ms color;
+      position: relative;
+      border-left: 1px solid var(--fg-color-1);
+      padding-left: 1rem;
+      margin: 0;
+      opacity: 1;
+      overflow: visible;
+
+      .notion-table-of-contents-item-body {
+        max-width: 16rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      .activeLine {
+        position: absolute;
+        background-color: red;
+        width: 1px;
+        height: 100%;
+        left: -1px;
+      }
+    }
+
+    .notion-table-of-contents-active-item {
+      color: #213547 !important;
+    }
+  }
+
   .indexPage {
     .notion-header {
       display: none;
