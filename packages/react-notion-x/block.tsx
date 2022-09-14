@@ -519,12 +519,17 @@ export const Block: React.FC<BlockProps> = props => {
       if (components.Callout) {
         return <components.Callout block={block} className={blockId} />;
       } else {
+        const status = {
+          '⚠️': 'warning',
+        };
+
         return (
           <div
             className={cs(
               'notion-callout',
               block.format?.block_color && `notion-${block.format?.block_color}_co`,
               blockId,
+              status[block.format.page_icon],
             )}
           >
             <PageIcon block={block} />

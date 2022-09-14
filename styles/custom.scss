@@ -205,6 +205,16 @@ body {
     }
   }
 
+  // callout
+  .notion-callout {
+    border-radius: 8px;
+
+    &.warning {
+      background-color: var(--notion-yellow_background);
+      border-color: var(--notion-yellow);
+    }
+  }
+
   .indexPage {
     .notion-header {
       display: none;
