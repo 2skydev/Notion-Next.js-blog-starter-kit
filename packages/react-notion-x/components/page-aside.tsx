@@ -105,7 +105,7 @@ export const PageAside: React.FC<{
                     className="notion-table-of-contents-item-body"
                     style={{
                       display: 'inline-block',
-                      marginLeft: tocItem.indentLevel * 16,
+                      paddingLeft: tocItem.indentLevel * 16,
                     }}
                   >
                     {tocItem.text}
