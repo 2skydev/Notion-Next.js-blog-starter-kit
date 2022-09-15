@@ -345,7 +345,7 @@ export class NotionAPI {
     };
 
     // CUSTOM: 필터 작동하도록 처리
-    if (collectionView.format.property_filters.length) {
+    if (collectionView?.format?.property_filters?.length) {
       loader.filter = {
         operator: 'and',
         filters: collectionView.format.property_filters.map(filter => filter.filter),
