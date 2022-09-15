@@ -117,7 +117,11 @@ const CollectionViewBlock: React.FC<{
 
     const width = windowWidth;
     // TODO: customize for mobile?
-    const maxNotionBodyWidth = 708;
+    const maxNotionBodyWidth = isServer
+      ? 100
+      : +getComputedStyle(document.documentElement)
+          .getPropertyValue('--notion-max-width')
+          .replace('px', '');
     let notionBodyWidth = maxNotionBodyWidth;
 
     if (parentPage?.format?.page_full_width) {
