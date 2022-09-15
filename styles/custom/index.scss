@@ -131,6 +131,8 @@ body {
 
   // 목차 스타일
   .notion-aside-table-of-contents {
+    background-color: transparent !important;
+
     .notion-table-of-contents-item {
       position: relative;
       overflow: visible;
