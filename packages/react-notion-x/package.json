@@ -17,13 +17,9 @@
   },
   "devDependencies": {
     "@types/lodash.throttle": "^4.1.6",
-    "@types/node": "^16.11.2",
-    "@types/react": "^17.0.31",
     "clipboard-copy": "^4.0.1",
     "date-fns": "^2.28.0",
     "format-number": "^3.0.0",
-    "lodash.throttle": "^4.1.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "lodash.throttle": "^4.1.1"
   }
 }
