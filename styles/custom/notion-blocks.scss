@@ -134,4 +134,8 @@
   &:hover {
     border-color: var(--primary-color);
   }
+
+  .notion-bookmark-link-icon img {
+    display: block;
+  }
 }
