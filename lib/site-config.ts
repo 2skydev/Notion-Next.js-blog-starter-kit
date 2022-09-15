@@ -1,45 +1,48 @@
-import * as types from './types'
+import * as types from './types';
 
 export interface SiteConfig {
-  rootNotionPageId: string
-  rootNotionSpaceId?: string
+  rootNotionPageId: string;
+  rootNotionSpaceId?: string;
 
-  name: string
-  domain: string
-  author: string
-  description?: string
-  language?: string
+  name: string;
+  domain: string;
+  author: string;
+  description?: string;
+  language?: string;
 
-  twitter?: string
-  github?: string
-  linkedin?: string
-  newsletter?: string
-  youtube?: string
-  zhihu?: string
+  twitter?: string;
+  github?: string;
+  linkedin?: string;
+  newsletter?: string;
+  youtube?: string;
+  zhihu?: string;
 
-  defaultPageIcon?: string | null
-  defaultPageCover?: string | null
-  defaultPageCoverPosition?: number | null
+  defaultPageIcon?: string | null;
+  defaultPageCover?: string | null;
+  defaultPageCoverPosition?: number | null;
 
-  isPreviewImageSupportEnabled?: boolean
-  isTweetEmbedSupportEnabled?: boolean
-  isRedisEnabled?: boolean
-  isSearchEnabled?: boolean
+  isPreviewImageSupportEnabled?: boolean;
+  isTweetEmbedSupportEnabled?: boolean;
+  isRedisEnabled?: boolean;
+  isSearchEnabled?: boolean;
 
-  includeNotionIdInUrls?: boolean
-  pageUrlOverrides?: types.PageUrlOverridesMap
-  pageUrlAdditions?: types.PageUrlOverridesMap
+  includeNotionIdInUrls?: boolean;
+  pageUrlOverrides?: types.PageUrlOverridesMap;
+  pageUrlAdditions?: types.PageUrlOverridesMap;
 
-  navigationStyle?: types.NavigationStyle
-  navigationLinks?: Array<NavigationLink>
+  navigationStyle?: types.NavigationStyle;
+  navigationLinks?: Array<NavigationLink>;
+
+  // custom configs (2skydev)
+  dateformat: string;
 }
 
 export interface NavigationLink {
-  title: string
-  pageId?: string
-  url?: string
+  title: string;
+  pageId?: string;
+  url?: string;
 }
 
 export const siteConfig = (config: SiteConfig): SiteConfig => {
-  return config
-}
+  return config;
+};

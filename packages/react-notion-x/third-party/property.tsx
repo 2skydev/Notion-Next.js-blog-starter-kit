@@ -10,6 +10,7 @@ import { Text } from '../components/text';
 import { PageTitle } from '../components/page-title';
 import { GracefulImage } from '../components/graceful-image';
 import { evalFormula } from './eval-formula';
+import { dateformat } from '~/lib/config';
 
 export interface IPropertyProps {
   propertyId?: string;
@@ -83,7 +84,7 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
 
           if (content instanceof Date) {
             // CUSTOM: 날짜 포맷
-            content = format(content, 'yyyy.MM.dd');
+            content = format(content, dateformat);
           }
         } catch (err) {
           // console.log('error evaluating formula', schema.formula, err)
@@ -265,7 +266,7 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
     () =>
       function CreatedTimeProperty() {
         // CUSTOM: 날짜 포맷
-        return format(new Date(block?.created_time), 'yyyy.MM.dd');
+        return format(new Date(block?.created_time), dateformat);
       },
     [block?.created_time],
   );
@@ -274,7 +275,7 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
     () =>
       function LastEditedTimeProperty() {
         // CUSTOM: 날짜 포맷
-        return format(new Date(block?.last_edited_time), 'yyyy.MM.dd');
+        return format(new Date(block?.last_edited_time), dateformat);
       },
     [block?.last_edited_time],
   );
