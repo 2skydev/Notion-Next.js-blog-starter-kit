@@ -103,7 +103,8 @@ body {
           content: '';
           width: 1px;
           height: 10px;
-          background-color: var(--fg-color-2);
+          background-color: var(--fg-color);
+          opacity: 0.35;
           margin: 0 0.5rem;
         }
       }
