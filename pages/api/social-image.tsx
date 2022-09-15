@@ -1,19 +1,13 @@
-import * as React from 'react'
-import { withOGImage } from 'next-api-og-image'
+import * as React from 'react';
+import { withOGImage } from 'next-api-og-image';
 
-import {
-  getBlockTitle,
-  getBlockIcon,
-  getPageProperty,
-  isUrl,
-  parsePageId
-} from 'notion-utils'
-import { PageBlock } from 'notion-types'
+import { getBlockTitle, getPageProperty, parsePageId } from 'notion-utils';
+import { PageBlock } from 'notion-types';
 
-import { notion } from 'lib/notion-api'
-import { mapImageUrl } from 'lib/map-image-url'
-import { interRegular } from 'lib/fonts'
-import * as config from 'lib/config'
+import { notion } from 'lib/notion-api';
+import { mapImageUrl } from 'lib/map-image-url';
+import { interRegular } from 'lib/fonts';
+import * as config from 'lib/config';
 
 /**
  * Social image generation via headless chrome.
@@ -23,78 +17,71 @@ import * as config from 'lib/config'
  * that would've been passed to puppeteer. This makes it much easier to develop
  * and debug issues locally.
  */
-const debugInspectHtml = false
+const debugInspectHtml = false;
 
 export default withOGImage<'query', 'id'>({
   template: {
     react: async ({ id }) => {
-      const pageId = parsePageId(id)
+      const pageId = parsePageId(id);
 
       if (!pageId) {
-        throw new Error('Invalid notion page id')
+        throw new Error('Invalid notion page id');
       }
 
-      const recordMap = await notion.getPage(pageId)
+      const recordMap = await notion.getPage(pageId);
 
-      const keys = Object.keys(recordMap?.block || {})
-      const block = recordMap?.block?.[keys[0]]?.value
+      const keys = Object.keys(recordMap?.block || {});
+      const block = recordMap?.block?.[keys[0]]?.value;
 
       if (!block) {
-        throw new Error('Invalid recordMap for page')
+        throw new Error('Invalid recordMap for page');
       }
 
-      const isBlogPost =
-        block.type === 'page' && block.parent_table === 'collection'
-      const title = getBlockTitle(block, recordMap) || config.name
+      const isBlogPost = block.type === 'page' && block.parent_table === 'collection';
+      const title = getBlockTitle(block, recordMap) || config.name;
       const image = mapImageUrl(
         getPageProperty<string>('Social Image', block, recordMap) ||
           (block as PageBlock).format?.page_cover ||
           config.defaultPageCover,
-        block
-      )
+        block,
+      );
 
       const imageCoverPosition =
-        (block as PageBlock).format?.page_cover_position ??
-        config.defaultPageCoverPosition
+        (block as PageBlock).format?.page_cover_position ?? config.defaultPageCoverPosition;
       const imageObjectPosition = imageCoverPosition
         ? `center ${(1 - imageCoverPosition) * 100}%`
-        : null
+        : null;
 
-      const blockIcon = getBlockIcon(block, recordMap)
+      // const blockIcon = getBlockIcon(block, recordMap);
+
       const authorImage = mapImageUrl(
-        blockIcon && isUrl(blockIcon) ? blockIcon : config.defaultPageIcon,
-        block
-      )
+        // blockIcon && isUrl(blockIcon) ? blockIcon : config.defaultPageIcon,
+        config.defaultPageIcon,
+        block,
+      );
 
-      const author =
-        getPageProperty<string>('Author', block, recordMap) || config.author
+      console.log(authorImage);
+
+      const author = getPageProperty<string>('Author', block, recordMap) || config.author;
 
       // const socialDescription =
       //   getPageProperty<string>('Description', block, recordMap) ||
       //   config.description
 
-      const lastUpdatedTime = getPageProperty<number>(
-        'Last Updated',
-        block,
-        recordMap
-      )
-      const publishedTime = getPageProperty<number>(
-        'Published',
-        block,
-        recordMap
-      )
+      const lastUpdatedTime = getPageProperty<number>('Last Updated', block, recordMap);
+      const publishedTime = getPageProperty<number>('작성일', block, recordMap);
       const dateUpdated = lastUpdatedTime
         ? new Date(lastUpdatedTime)
         : publishedTime
         ? new Date(publishedTime)
-        : undefined
+        : undefined;
       const date =
         isBlogPost && dateUpdated
           ? `${dateUpdated.toLocaleString('en-US', {
-              month: 'long'
+              month: 'long',
             })} ${dateUpdated.getFullYear()}`
-          : undefined
-      const detail = date || config.domain
+          : undefined;
+      const detail = date || config.domain;
 
       return (
         <html>
@@ -103,25 +90,25 @@ export default withOGImage<'query', 'id'>({
           </head>
 
           <body>
-            <div className='container'>
-              <div className='horiz'>
-                <div className='lhs'>
-                  <div className='main'>
-                    <h1 className='title'>{title}</h1>
+            <div className="container">
+              <div className="horiz">
+                <div className="lhs">
+                  <div className="main">
+                    <h1 className="title">{title}</h1>
                   </div>
 
-                  <div className='metadata'>
+                  <div className="metadata">
                     {authorImage && (
                       <div
-                        className='author-image'
+                        className="author-image"
                         style={{ backgroundImage: `url(${authorImage})` }}
                       />
                     )}
 
                     {(author || detail) && (
-                      <div className='metadata-rhs'>
-                        {author && <div className='author'>{author}</div>}
-                        {detail && <div className='detail'>{detail}</div>}
+                      <div className="metadata-rhs">
+                        {author && <div className="author">{author}</div>}
+                        {detail && <div className="detail">{detail}</div>}
                       </div>
                     )}
                   </div>
@@ -130,9 +117,9 @@ export default withOGImage<'query', 'id'>({
                 {image && (
                   <img
                     src={image}
-                    className='rhs'
+                    className="rhs"
                     style={{
-                      objectPosition: imageObjectPosition || undefined
+                      objectPosition: imageObjectPosition || undefined,
                     }}
                   />
                 )}
@@ -140,16 +127,16 @@ export default withOGImage<'query', 'id'>({
             </div>
           </body>
         </html>
-      )
-    }
+      );
+    },
   },
   cacheControl: 'max-age=0, s-maxage=86400, stale-while-revalidate=3600',
   type: 'jpeg',
   quality: 75,
   dev: {
-    inspectHtml: debugInspectHtml
-  }
-})
+    inspectHtml: debugInspectHtml,
+  },
+});
 
 const style = `
 @font-face {
@@ -248,4 +235,4 @@ body {
 .detail {
   overflow-wrap: break-word;
 }
-`
+`;
