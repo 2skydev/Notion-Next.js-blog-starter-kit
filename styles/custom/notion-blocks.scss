@@ -7,6 +7,21 @@
 }
 
 /**
+ * h1
+ */
+.notion-h1 {
+  &::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 4rem;
+    background-color: var(--fg-color);
+    margin-top: 0.5rem;
+    border-radius: 5px;
+  }
+}
+
+/**
  * text
  */
 .notion-text {
