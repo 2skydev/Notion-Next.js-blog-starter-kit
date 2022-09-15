@@ -1,0 +1,84 @@
+/**
+ * title
+ */
+.notion-title {
+  text-align: left;
+  font-size: 2em;
+}
+
+/**
+ * text
+ */
+.notion-text {
+  padding: 0.2em 2px;
+}
+
+/**
+ * hr
+ */
+.notion-hr {
+  margin: 6px 0;
+}
+
+/**
+ * callout
+ */
+.notion-callout {
+  border-radius: 8px;
+
+  &.warning {
+    background-color: var(--notion-yellow_background);
+    border-color: var(--notion-yellow);
+  }
+}
+
+/**
+ * quote
+ */
+.notion-quote {
+  font-style: normal;
+  font-size: var(--base-font-size);
+  border-color: var(--primary-color);
+  padding: 1rem 1rem 1rem 2rem;
+  position: relative;
+  background-color: var(--fg-color-lighten);
+}
+
+/**
+ * user profile
+ */
+.notion-user-container {
+  display: flex;
+  align-items: center;
+
+  .notion-user {
+    margin-right: 0.3rem;
+  }
+}
+
+/**
+ * checkbox
+ */
+.notion-property-checkbox-unchecked {
+  border-radius: 2px;
+}
+.notion-property-checkbox-checked {
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    top: initial;
+    left: initial;
+  }
+}
+
+/**
+ * file icon
+ */
+.notion-file-icon {
+  fill: var(--fg-color);
+}

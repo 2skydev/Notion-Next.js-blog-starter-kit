@@ -19,7 +19,7 @@ import 'styles/notion.css';
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css';
 
-import 'styles/custom.scss';
+import 'styles/custom/index.scss';
 
 import * as React from 'react';
 
