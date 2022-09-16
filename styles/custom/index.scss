@@ -111,7 +111,7 @@ body {
   // 목차 스타일
 
   .notion-table-of-contents {
-    width: calc((100vw - var(--notion-max-width)) / 2);
+    width: calc((100vw - var(--notion-max-width)) / 2 - 10px);
   }
 
   .notion-aside-table-of-contents {
