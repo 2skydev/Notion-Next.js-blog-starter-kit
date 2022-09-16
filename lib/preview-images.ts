@@ -65,7 +65,9 @@ async function createPreviewImage(
 
     return previewImage;
   } catch (err) {
-    console.warn('failed to create preview image', url, err.message);
+    if (!err.message.includes('unsupported image format')) {
+      console.warn('failed to create preview image', url, err.message);
+    }
     return null;
   }
 }
