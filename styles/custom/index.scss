@@ -109,10 +109,17 @@ body {
   }
 
   // 목차 스타일
+
+  .notion-table-of-contents {
+    width: calc((100vw - var(--notion-max-width)) / 2);
+  }
+
   .notion-aside-table-of-contents {
     background-color: transparent !important;
+    width: 100%;
 
     .notion-table-of-contents-item {
+      width: 90%;
       position: relative;
       overflow: visible;
       padding-left: 1rem;
@@ -131,7 +138,8 @@ body {
       }
 
       .notion-table-of-contents-item-body {
-        max-width: 16rem;
+        // max-width: 16rem;
+        max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         transition: 250ms opacity;
