@@ -386,7 +386,7 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
 
       case 'created_by':
         // CUSTOM: created_by 처리
-        content = components.propertyPersonValue(props, renderCreatedByValue);
+        content = components.propertyCreatedByValue(props, renderCreatedByValue);
         break;
 
       case 'last_edited_by':

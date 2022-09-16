@@ -10,9 +10,10 @@ import { navigationStyle, navigationLinks, isSearchEnabled } from 'lib/config';
 
 import styles from './styles.module.css';
 
-export const ToggleThemeButton = () => {
+const _ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
+  console.log('NotionPageHeader', 'isDarkMode', isDarkMode);
 
   React.useEffect(() => {
     setHasMounted(true);
@@ -31,6 +32,8 @@ export const ToggleThemeButton = () => {
     </div>
   );
 };
+
+export const ToggleThemeButton = React.memo(_ToggleThemeButton);
 
 export const NotionPageHeader: React.FC<{
   block: types.CollectionViewPageBlock | types.PageBlock;

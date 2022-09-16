@@ -1,35 +1,34 @@
-import * as React from 'react'
-import { PageBlock } from 'notion-types'
+import * as React from 'react';
+import { PageBlock } from 'notion-types';
 
-import { CollectionColumnTitle } from './collection-column-title'
-import { Property } from './property'
-import { useNotionContext } from '../context'
-import { cs } from '../utils'
+import { CollectionColumnTitle } from './collection-column-title';
+import { Property } from './property';
+import { useNotionContext } from '../context';
+import { cs } from '../utils';
 
 export const CollectionRow: React.FC<{
-  block: PageBlock
-  pageHeader?: boolean
-  className?: string
+  block: PageBlock;
+  pageHeader?: boolean;
+  className?: string;
 }> = ({ block, pageHeader = false, className }) => {
-  const { recordMap } = useNotionContext()
-  const collectionId = block.parent_id
-  const collection = recordMap.collection[collectionId]?.value
-  const schemas = collection?.schema
+  const { recordMap } = useNotionContext();
+  const collectionId = block.parent_id;
+  const collection = recordMap.collection[collectionId]?.value;
+  const schemas = collection?.schema;
 
   if (!collection || !schemas) {
-    return null
+    return null;
   }
 
-  let propertyIds = Object.keys(schemas).filter((id) => id !== 'title')
+  let propertyIds = Object.keys(schemas).filter(id => id !== 'title');
 
   // filter properties based on visibility
   if (collection.format?.property_visibility) {
     propertyIds = propertyIds.filter(
-      (id) =>
-        collection.format.property_visibility.find(
-          ({ property }) => property === id
-        )?.visibility !== 'hide'
-    )
+      id =>
+        collection.format.property_visibility.find(({ property }) => property === id)
+          ?.visibility !== 'hide',
+    );
   }
 
   // sort properties
@@ -38,28 +37,28 @@ export const CollectionRow: React.FC<{
     const idToIndex = collection.format?.collection_page_properties.reduce(
       (acc, p, i) => ({
         ...acc,
-        [p.property]: i
+        [p.property]: i,
       }),
-      {}
-    )
+      {},
+    );
 
-    propertyIds.sort((a, b) => idToIndex[a] - idToIndex[b])
+    propertyIds.sort((a, b) => idToIndex[a] - idToIndex[b]);
   } else {
     // default to sorting properties alphabetically based on name
-    propertyIds.sort((a, b) => schemas[a].name.localeCompare(schemas[b].name))
+    propertyIds.sort((a, b) => schemas[a].name.localeCompare(schemas[b].name));
   }
 
   return (
     <div className={cs('notion-collection-row', className)}>
-      <div className='notion-collection-row-body'>
-        {propertyIds.map((propertyId) => {
-          const schema = schemas[propertyId]
+      <div className="notion-collection-row-body">
+        {propertyIds.map(propertyId => {
+          const schema = schemas[propertyId];
 
           return (
-            <div className='notion-collection-row-property' key={propertyId}>
+            <div className="notion-collection-row-property" key={propertyId}>
               <CollectionColumnTitle schema={schema} />
 
-              <div className='notion-collection-row-value'>
+              <div className="notion-collection-row-value">
                 <Property
                   schema={schema}
                   data={block.properties?.[propertyId]}
@@ -70,9 +69,9 @@ export const CollectionRow: React.FC<{
                 />
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
