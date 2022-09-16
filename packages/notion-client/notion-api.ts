@@ -236,7 +236,11 @@ export class NotionAPI {
           block.type === 'page' ? block.format?.page_cover : block.properties?.source?.[0]?.[0];
 
         if (source) {
-          if (source.indexOf('youtube') >= 0 || source.indexOf('vimeo') >= 0) {
+          if (
+            source.indexOf('youtube') >= 0 ||
+            source.indexOf('vimeo') >= 0 ||
+            source.includes('splash')
+          ) {
             return [];
           }
 
