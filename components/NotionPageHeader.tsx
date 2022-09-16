@@ -10,7 +10,7 @@ import { navigationStyle, navigationLinks, isSearchEnabled } from 'lib/config';
 
 import styles from './styles.module.css';
 
-const ToggleThemeButton = () => {
+export const ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
