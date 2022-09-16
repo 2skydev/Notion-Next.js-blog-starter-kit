@@ -41,6 +41,10 @@
 .notion-callout {
   border-radius: 8px;
 
+  .notion-page-icon-inline {
+    align-self: center;
+  }
+
   &.warning {
     background-color: var(--notion-yellow_background);
     border-color: var(--notion-yellow);
