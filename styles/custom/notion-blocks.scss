@@ -144,3 +144,52 @@
     display: block;
   }
 }
+
+/**
+ * property styles
+ */
+.notion-collection-page-properties {
+  .notion-collection-row {
+    margin-bottom: 5rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    padding: 0;
+  }
+
+  .notion-collection-row-body {
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 0;
+  }
+
+  .notion-collection-row-property {
+    + .notion-collection-row-property {
+      &::before {
+        content: '';
+        width: 1px;
+        height: 10px;
+        background-color: var(--fg-color);
+        opacity: 0.35;
+        margin: 0 0.5rem;
+      }
+    }
+  }
+
+  .notion-collection-row-value {
+    min-height: auto;
+  }
+
+  .notion-property-select-item,
+  .notion-property-multi_select-item {
+    background-color: transparent !important;
+    padding: 0;
+  }
+
+  .notion-property-multi_select-item {
+    opacity: 0.7;
+
+    &::before {
+      content: '#';
+    }
+  }
+}

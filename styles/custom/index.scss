@@ -1,5 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 @import './vars.scss';
 @import './notion-blocks.scss';
+
+@media only screen and (max-width: 920px) {
+  :root {
+    --notion-page-left-right-padding: 5vw;
+    --notion-page-fullwith-left-right-padding: 5vw;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  :root {
+    --base-font-size: 0.95rem;
+  }
+}
 
 .dark-mode {
   background-color: var(--bg-color);
@@ -47,6 +61,16 @@ body {
     transition-property: background-color, color;
   }
 
+  .notion-page {
+    padding-left: var(--notion-page-left-right-padding);
+    padding-right: var(--notion-page-left-right-padding);
+  }
+
+  .notion-full-width {
+    padding-left: var(--notion-page-fullwith-left-right-padding);
+    padding-right: var(--notion-page-fullwith-left-right-padding);
+  }
+
   .notion-header {
     position: fixed;
     transition-duration: 250ms;
@@ -66,7 +90,7 @@ body {
 
   .notion-page-icon-hero {
     margin-left: 0 !important;
-    left: calc(min(16px, 8vw));
+    left: var(--notion-page-left-right-padding);
   }
 
   .notion-page-no-cover {
@@ -80,53 +104,7 @@ body {
     }
 
     .notion-page-icon-hero {
-      left: calc(min(96px, 8vw));
-    }
-  }
-
-  // notion property styles
-  .notion-collection-page-properties {
-    .notion-collection-row {
-      margin-bottom: 5rem;
-      border-bottom: none;
-      padding-bottom: 0;
-      padding: 0;
-    }
-
-    .notion-collection-row-body {
-      flex-direction: row;
-      gap: 0;
-    }
-
-    .notion-collection-row-property {
-      + .notion-collection-row-property {
-        &::before {
-          content: '';
-          width: 1px;
-          height: 10px;
-          background-color: var(--fg-color);
-          opacity: 0.35;
-          margin: 0 0.5rem;
-        }
-      }
-    }
-
-    .notion-collection-row-value {
-      min-height: auto;
-    }
-
-    .notion-property-select-item,
-    .notion-property-multi_select-item {
-      background-color: transparent !important;
-      padding: 0;
-    }
-
-    .notion-property-multi_select-item {
-      opacity: 0.7;
-
-      &::before {
-        content: '#';
-      }
+      left: var(--notion-fullwith-page-left-right-padding);
     }
   }
 
