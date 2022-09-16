@@ -61,6 +61,7 @@
   padding: 1rem 1rem 1rem 2rem;
   position: relative;
   background-color: var(--fg-color-lighten);
+  transition: 250ms background-color;
 }
 
 /**
