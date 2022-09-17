@@ -92,16 +92,22 @@ export const PageAside: React.FC<{
                   activeSection === id && 'active',
                 )}
               >
-                {activeSection === id && (
+                {activeSection === id ? (
+                  // TODO: 애니메이션 작동시에 scale이 변경되는데 이거 때문에 살짝 흐릿해져 보임
                   <motion.div
-                    initial={false}
                     className="activeLine"
                     key="activeLine"
                     layoutId="activeLine"
+                    transition={{ duration: 0.25 }}
                   />
-                )}
+                ) : null}
 
-                <motion.div initial={false} animate={{ x: activeSection === id ? -10 : 0 }}>
+                <motion.div
+                  className="text"
+                  initial={false}
+                  animate={{ x: activeSection === id ? -10 : 0 }}
+                  transition={{ duration: 0.25 }}
+                >
                   {tocItem.text}
                 </motion.div>
               </a>

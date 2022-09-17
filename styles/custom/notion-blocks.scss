@@ -197,26 +197,37 @@
 .notion-contentPosition {
   .item {
     display: block;
-    font-size: 0.9rem;
-    opacity: 0.5;
     text-align: right;
     position: relative;
-    transition-duration: 250ms;
-    transition-property: opacity, color;
-    line-height: 1;
     padding: 0.3rem 1.3rem 0.3rem 1rem;
 
+    .text {
+      opacity: 0.5;
+      font-size: 0.9rem;
+      line-height: 1;
+      transition: 250ms opacity;
+    }
+
     &.level1 {
-      opacity: 0.3;
+      padding-right: calc(1.3rem + 1rem);
+
+      .text {
+        font-size: 0.85rem;
+      }
     }
 
     &.level2 {
-      opacity: 0.2;
+      padding-right: calc(1.3rem + 2rem);
+
+      .text {
+        font-size: 0.8rem;
+      }
     }
 
     &.active {
-      opacity: 1;
-      color: var(--primary-color);
+      .text {
+        opacity: 1;
+      }
     }
 
     &::before {
@@ -239,17 +250,17 @@
       right: 0;
       z-index: 2;
 
-      &::before {
-        content: '';
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background-color: var(--primary-color);
-        right: 0.5rem;
-        top: 50%;
-        transform: translateY(-50%);
-      }
+      // &::before {
+      //   content: '';
+      //   position: absolute;
+      //   width: 5px;
+      //   height: 5px;
+      //   border-radius: 50%;
+      //   background-color: var(--primary-color);
+      //   right: 0.5rem;
+      //   top: 50%;
+      //   transform: translateY(-50%);
+      // }
     }
   }
 }
