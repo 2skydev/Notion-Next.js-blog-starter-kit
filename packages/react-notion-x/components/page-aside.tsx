@@ -76,45 +76,38 @@ export const PageAside: React.FC<{
 
   return (
     <aside className={cs('notion-aside', className)}>
+      {/* CUSTOM: 목차 전체적으로 커스텀 */}
       {hasToc && (
-        <div className="notion-aside-table-of-contents">
-          {/* <div className='notion-aside-table-of-contents-header'>
-            Table of Contents
-          </div> */}
+        <nav className="notion-contentPosition">
+          {toc.map(tocItem => {
+            const id = uuidToId(tocItem.id);
 
-          <nav className="notion-table-of-contents">
-            {toc.map(tocItem => {
-              const id = uuidToId(tocItem.id);
+            return (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={cs(
+                  'item',
+                  `level${tocItem.indentLevel}`,
+                  activeSection === id && 'active',
+                )}
+              >
+                {activeSection === id && (
+                  <motion.div
+                    initial={false}
+                    className="activeLine"
+                    key="activeLine"
+                    layoutId="activeLine"
+                  />
+                )}
 
-              return (
-                <a
-                  key={id}
-                  href={`#${id}`}
-                  className={cs(
-                    'notion-table-of-contents-item',
-                    `notion-table-of-contents-item-indent-level-${tocItem.indentLevel}`,
-                    activeSection === id && 'notion-table-of-contents-active-item',
-                  )}
-                >
-                  {/* CUSTOM: 좌측 선 애니메이션 */}
-                  {activeSection === id && (
-                    <motion.div initial={false} className="activeLine" layoutId="activeLine" />
-                  )}
-
-                  <span
-                    className="notion-table-of-contents-item-body"
-                    style={{
-                      display: 'inline-block',
-                      paddingLeft: tocItem.indentLevel * 16,
-                    }}
-                  >
-                    {tocItem.text}
-                  </span>
-                </a>
-              );
-            })}
-          </nav>
-        </div>
+                <motion.div initial={false} animate={{ x: activeSection === id ? -10 : 0 }}>
+                  {tocItem.text}
+                </motion.div>
+              </a>
+            );
+          })}
+        </nav>
       )}
 
       {pageAside}
