@@ -13,13 +13,13 @@ Please understand that the code was written mainly in Korean. 🥲
 `transitive-bullshit`분이 작성하신 `nextjs-notion-starter-kit`를 기반으로 커스텀해서 원하는데로 꾸미고 추가했습니다.<br/>
 기본적으로 지원하는 기능이 많았지만 아쉬운 부분이 많아 직접 커스텀을 진행했습니다.
 
-[GitHub - transitive-bullshit/nextjs-notion-starter-kit: Deploy your own Notion-powered website in minutes with Next.js and Vercel.](https://github.com/transitive-bullshit/nextjs-notion-starter-kit)
+[GitHub - transitive-bullshit/nextjs-notion-starter-kit](https://github.com/transitive-bullshit/nextjs-notion-starter-kit)
 
 ### 전지적 노션 시점
 노션의 내용을 기반으로 블로그가 생성되는 방식이니 실제로는 노션이 어떻게 구성되어있는지도 궁금하시죠?<br/>
 아래 링크를 통해 이 블로그의 노션 구성을 확인하실 수 있습니다!
 
-[https://2skydev.notion.site/2skydev-blog-d1e89e9e42eb4ebf9486ae0374039efc](https://www.notion.so/2skydev-blog-d1e89e9e42eb4ebf9486ae0374039efc)
+[2skydev의 노션 링크](https://www.notion.so/2skydev-blog-d1e89e9e42eb4ebf9486ae0374039efc)
 
 <br/>
 
@@ -36,7 +36,7 @@ Please understand that the code was written mainly in Korean. 🥲
 ### 2. 사용방법
 커스텀한 블로그 템플릿도 아래의 오픈소스 기반이므로 해당 깃허브 README.md에서 사용방법을 확인해주세요.
 
-[GitHub - transitive-bullshit/nextjs-notion-starter-kit: Deploy your own Notion-powered website in minutes with Next.js and Vercel.](https://github.com/transitive-bullshit/nextjs-notion-starter-kit#setup)
+[GitHub - transitive-bullshit/nextjs-notion-starter-kit - setup](https://github.com/transitive-bullshit/nextjs-notion-starter-kit#setup)
 
 <br/>
 
