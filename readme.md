@@ -23,7 +23,7 @@ Please understand that the code was written mainly in Korean. 🥲
 노션에서 글을 작성하면 next.js의 `ISR` 방식으로 정적 페이지가 생성됩니다.
 
 ### 사용한 오픈소스
-`transitive-bullshit`분이 작성하신 `nextjs-notion-starter-kit`를 기반으로 커스텀해서 원하는데로 꾸미고 추가했습니다.<br/>
+`transitive-bullshit/nextjs-notion-starter-kit`를 기반으로 커스텀해서 원하는데로 꾸미고 추가했습니다.<br/>
 기본적으로 지원하는 기능이 많았지만 아쉬운 부분이 많아 직접 커스텀을 진행했습니다.
 
 [GitHub - transitive-bullshit/nextjs-notion-starter-kit](https://github.com/transitive-bullshit/nextjs-notion-starter-kit)
