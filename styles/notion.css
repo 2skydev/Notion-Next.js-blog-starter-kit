@@ -91,9 +91,9 @@
   filter: none;
 }
 
-.notion-collection-card:hover .notion-collection-card-cover {
+/* .notion-collection-card:hover .notion-collection-card-cover {
   filter: brightness(120%);
-}
+} */
 
 .notion-collection-card-body {
   padding: 10px;

@@ -264,3 +264,31 @@
     }
   }
 }
+
+.notion-gallery-grid {
+  border-top: none;
+  grid-template-columns: repeat(auto-fill, 300px);
+
+  .notion-collection-card {
+    background-color: var(--notion-gallery-card-background-color);
+    height: 350px;
+    border-radius: 12px;
+    transition: 250ms transform;
+
+    &:hover {
+      transform: translateY(-8px);
+    }
+  }
+
+  .notion-collection-card-cover {
+    height: auto;
+    aspect-ratio: 1 / 0.5;
+    border-radius: 0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    img {
+      border-radius: 0;
+    }
+  }
+}
