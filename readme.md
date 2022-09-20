@@ -11,6 +11,13 @@ Please understand that the code was written mainly in Korean. 🥲
 
 <br />
 
+## 🔗 미리보기 및 링크
+아래 사진들은 운영중인 제 블로그에서 가져온 리소스입니다. [2skydev blog](https://blog.2skydev.com)
+
+<img width="1792" alt="image" src="https://user-images.githubusercontent.com/43225384/191196610-2e1164e4-4db9-4f7b-a2c7-401828370e5e.png">
+
+<br />
+
 ## 🤔 어떤걸로 만들었을까요?
 몇몇 분들은 눈치 채셨겠지만 노션을 활용해서 만들어진 블로그입니다.<br/>
 노션에서 글을 작성하면 next.js의 `ISR` 방식으로 정적 페이지가 생성됩니다.
