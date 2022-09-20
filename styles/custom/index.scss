@@ -107,70 +107,12 @@ body {
     }
   }
 
-  // 목차 스타일
-
-  .notion-table-of-contents {
-    width: calc((100vw - var(--notion-max-width)) / 2 - 10px);
-  }
-
-  .notion-aside-table-of-contents {
-    background-color: transparent !important;
-    width: 100%;
-
-    .notion-table-of-contents-item {
-      width: 90%;
-      position: relative;
-      overflow: visible;
-      padding-left: 1rem;
-      margin: 0;
-      opacity: 1;
-
-      &::before {
-        content: '';
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        border-left: 1px solid var(--fg-color);
-        z-index: 1;
-        opacity: 0.2;
-      }
-
-      .notion-table-of-contents-item-body {
-        // max-width: 16rem;
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        transition: 250ms opacity;
-        color: var(--fg-color) !important;
-        opacity: 0.7;
-      }
-
-      &:hover {
-        background-color: transparent;
-      }
-
-      .activeLine {
-        position: absolute;
-        background-color: var(--primary-color);
-        width: 1px;
-        height: 100%;
-        left: 0;
-        z-index: 2;
-      }
-    }
-
-    .notion-table-of-contents-active-item {
-      .notion-table-of-contents-item-body {
-        opacity: 1;
-      }
-    }
-  }
-
   // main page style
   .indexPage {
-    .notion-header {
-      display: none;
+    .notion-nav-header {
+      & > .breadcrumbs:first-child {
+        visibility: hidden;
+      }
     }
   }
 
@@ -187,27 +129,27 @@ body {
     }
   }
 
-  // main page - right top fixed button
-  .fixedDarkMode {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    z-index: 999;
+  // // main page - right top fixed button
+  // .fixedDarkMode {
+  //   position: fixed;
+  //   right: 20px;
+  //   top: 20px;
+  //   z-index: 999;
 
-    .button {
-      width: 40px;
-      height: 40px;
-      border-radius: 5px;
-      color: var(--fg-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: background 120ms;
+  //   .button {
+  //     width: 40px;
+  //     height: 40px;
+  //     border-radius: 5px;
+  //     color: var(--fg-color);
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     cursor: pointer;
+  //     transition: background 120ms;
 
-      &:hover {
-        background-color: var(--bg-color-0);
-      }
-    }
-  }
+  //     &:hover {
+  //       background-color: var(--bg-color-0);
+  //     }
+  //   }
+  // }
 }
