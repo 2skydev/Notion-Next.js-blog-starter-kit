@@ -28,9 +28,33 @@ import type { AppProps } from 'next/app';
 import { RecoilRoot, useRecoilState } from 'recoil';
 import { preferencesStore } from 'stores/settings';
 import { useEffect } from 'react';
+import posthog from 'posthog-js';
+import { posthogConfig, posthogId } from '~/lib/config';
+import { useRouter } from 'next/router';
 
 const Bootstrap = () => {
   const [preferences, setPreferences] = useRecoilState(preferencesStore);
+
+  const router = useRouter();
+
+  // posthog
+  useEffect(() => {
+    function onRouteChangeComplete() {
+      if (posthogId) {
+        posthog.capture('$pageview');
+      }
+    }
+
+    if (posthogId) {
+      posthog.init(posthogId, posthogConfig);
+    }
+
+    router.events.on('routeChangeComplete', onRouteChangeComplete);
+
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete);
+    };
+  }, [router.events]);
 
   // 기기의 다크모드 연동
   useEffect(() => {
