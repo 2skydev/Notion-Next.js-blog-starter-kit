@@ -6,7 +6,7 @@
  */
 
 import { parsePageId } from 'notion-utils';
-import posthog from 'posthog-js';
+import { PostHogConfig } from 'posthog-js';
 import { getEnv, getSiteConfig } from './get-config-value';
 import { NavigationLink } from './site-config';
 import { PageUrlOverridesInverseMap, PageUrlOverridesMap, NavigationStyle, Site } from './types';
@@ -120,7 +120,7 @@ export const fathomConfig = fathomId
   : undefined;
 
 export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID;
-export const posthogConfig: posthog.Config = {
+export const posthogConfig: Partial<PostHogConfig> = {
   api_host: 'https://app.posthog.com',
 };
 
