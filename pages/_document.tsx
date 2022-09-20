@@ -10,6 +10,11 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="128x128" href="favicon.png" />
 
           <link rel="manifest" href="/manifest.json" />
+
+          <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
 
         <body>
