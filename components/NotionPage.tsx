@@ -148,6 +148,11 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
       propertyLastEditedTimeValue,
       propertyTextValue,
       propertyDateValue,
+      PageLink: ({ children, href, ...rest }) => (
+        <Link href={href}>
+          <a {...rest}>{children}</a>
+        </Link>
+      ),
     }),
     [],
   );
