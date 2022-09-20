@@ -5,9 +5,11 @@ Please understand that the code was written mainly in Korean. 🥲
 
 <br />
 
-# 🚧🚧🚧 잠깐!!!
+# 🚧 공사중 🚧
 아직은 수정중이에요 :(<br/>
 디자인 및 기능 수정이 완료가 된다면 해당 내용을 지우고 릴리즈를 할 예정입니다!
+
+<br />
 
 ## 🤔 어떤걸로 만들었을까요?
 몇몇 분들은 눈치 채셨겠지만 노션을 활용해서 만들어진 블로그입니다.<br/>
