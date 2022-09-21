@@ -34,6 +34,7 @@ import { posthogConfig, posthogId } from '~/lib/config';
 import { useRouter } from 'next/router';
 import { SWRConfig, SWRConfiguration } from 'swr';
 import axios from 'axios';
+import { bootstrap } from '~/lib/bootstrap-client';
 
 const Bootstrap = () => {
   const [preferences, setPreferences] = useRecoilState(preferencesStore);
@@ -59,8 +60,10 @@ const Bootstrap = () => {
     };
   }, [router.events]);
 
-  // 기기의 다크모드 연동
   useEffect(() => {
+    bootstrap();
+
+    // 기기의 다크모드 연동
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
       setPreferences({ ...preferences, isDarkMode: event.matches });
     });
