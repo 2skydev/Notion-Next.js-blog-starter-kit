@@ -5,6 +5,7 @@ import { CollectionColumnTitle } from './collection-column-title';
 import { Property } from './property';
 import { useNotionContext } from '../context';
 import { cs } from '../utils';
+import { hiddenPostProperties } from '~/lib/config';
 
 export const CollectionRow: React.FC<{
   block: PageBlock;
@@ -48,12 +49,18 @@ export const CollectionRow: React.FC<{
     propertyIds.sort((a, b) => schemas[a].name.localeCompare(schemas[b].name));
   }
 
+  // CUSTOM: 속성 필터링
+  const properties = propertyIds
+    .map(id => ({
+      id,
+      schema: schemas[id],
+    }))
+    .filter(({ schema }) => !hiddenPostProperties.includes(schema.name));
+
   return (
     <div className={cs('notion-collection-row', className)}>
       <div className="notion-collection-row-body">
-        {propertyIds.map(propertyId => {
-          const schema = schemas[propertyId];
-
+        {properties.map(({ id: propertyId, schema }) => {
           return (
             <div className="notion-collection-row-property" key={propertyId}>
               <CollectionColumnTitle schema={schema} />

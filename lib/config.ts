@@ -174,3 +174,4 @@ function invertPageUrlOverrides(pageUrlOverrides: PageUrlOverridesMap): PageUrlO
 // ----------------------------------------------------------------------------
 
 export const dateformat: string = getSiteConfig('dateformat', 'yyyy.MM.dd');
+export const hiddenPostProperties: string[] = getSiteConfig('hiddenPostProperties', []);

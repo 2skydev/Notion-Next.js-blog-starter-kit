@@ -62,4 +62,7 @@ export default siteConfig({
 
   // date-fns format string
   dateformat: 'yyyy년 MM월 dd일',
+
+  // post page - hidden properties
+  hiddenPostProperties: ['설명'],
 });
