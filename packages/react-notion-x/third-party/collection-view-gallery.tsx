@@ -1,72 +1,52 @@
-import * as React from 'react'
-import { PageBlock } from 'notion-types'
+import * as React from 'react';
+import { PageBlock } from 'notion-types';
 
-import { CollectionViewProps } from '../types'
-import { cs } from '../utils'
-import { getCollectionGroups } from './collection-utils'
-import { useNotionContext } from '../context'
-import { CollectionCard } from './collection-card'
-import { CollectionGroup } from './collection-group'
+import { CollectionViewProps } from '../types';
+import { cs } from '../utils';
+import { getCollectionGroups } from './collection-utils';
+import { useNotionContext } from '../context';
+import { CollectionCard } from './collection-card';
+import { CollectionGroup } from './collection-group';
 
-const defaultBlockIds = []
+const defaultBlockIds = [];
 
 export const CollectionViewGallery: React.FC<CollectionViewProps> = ({
   collection,
   collectionView,
-  collectionData
+  collectionData,
 }) => {
-  const isGroupedCollection = collectionView?.format?.collection_group_by
+  const isGroupedCollection = collectionView?.format?.collection_group_by;
 
   if (isGroupedCollection) {
-    const collectionGroups = getCollectionGroups(
-      collection,
-      collectionView,
-      collectionData
-    )
+    const collectionGroups = getCollectionGroups(collection, collectionView, collectionData);
 
     return collectionGroups.map((group, index) => (
-      <CollectionGroup
-        key={index}
-        {...group}
-        collectionViewComponent={Gallery}
-      />
-    ))
+      <CollectionGroup key={index} {...group} collectionViewComponent={Gallery} />
+    ));
   }
 
   const blockIds =
-    (collectionData['collection_group_results']?.blockIds ??
-      collectionData.blockIds) ||
-    defaultBlockIds
+    (collectionData['collection_group_results']?.blockIds ?? collectionData.blockIds) ||
+    defaultBlockIds;
 
-  return (
-    <Gallery
-      collectionView={collectionView}
-      collection={collection}
-      blockIds={blockIds}
-    />
-  )
-}
+  return <Gallery collectionView={collectionView} collection={collection} blockIds={blockIds} />;
+};
 
 function Gallery({ blockIds, collectionView, collection }) {
-  const { recordMap } = useNotionContext()
+  const { recordMap } = useNotionContext();
   const {
     gallery_cover = { type: 'none' },
     gallery_cover_size = 'medium',
-    gallery_cover_aspect = 'cover'
-  } = collectionView.format || {}
+    gallery_cover_aspect = 'cover',
+  } = collectionView.format || {};
 
   return (
-    <div className='notion-gallery'>
-      <div className='notion-gallery-view'>
-        <div
-          className={cs(
-            'notion-gallery-grid',
-            `notion-gallery-grid-size-${gallery_cover_size}`
-          )}
-        >
-          {blockIds?.map((blockId) => {
-            const block = recordMap.block[blockId]?.value as PageBlock
-            if (!block) return null
+    <div className="">
+      <div className="postListWrap">
+        <div className={'postList'}>
+          {blockIds?.map(blockId => {
+            const block = recordMap.block[blockId]?.value as PageBlock;
+            if (!block) return null;
 
             return (
               <CollectionCard
@@ -78,10 +58,10 @@ function Gallery({ blockIds, collectionView, collection }) {
                 properties={collectionView.format?.gallery_properties}
                 key={blockId}
               />
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
+  );
 }
