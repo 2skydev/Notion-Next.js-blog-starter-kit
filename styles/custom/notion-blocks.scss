@@ -194,7 +194,15 @@
   }
 }
 
+.notion-aside {
+  width: 300px;
+  padding-left: 2rem;
+  flex: none;
+}
+
 .notion-contentPosition {
+  width: 100%;
+
   .item {
     display: block;
     text-align: right;
@@ -206,6 +214,9 @@
       font-size: 0.9rem;
       line-height: 1;
       transition: 250ms opacity;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &.level1 {

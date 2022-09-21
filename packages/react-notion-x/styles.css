@@ -142,7 +142,7 @@
   flex-direction: column;
 }
 
-@media (min-width: 1300px) and (min-height: 300px) {
+@media (min-width: 1400px) and (min-height: 300px) {
   .notion-page-content-has-aside {
     display: flex;
     flex-direction: row;
