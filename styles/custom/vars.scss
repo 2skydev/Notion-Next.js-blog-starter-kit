@@ -9,6 +9,8 @@
   --primary-color: #daaa52;
   --primary-gradient-end-color: #8763ff;
 
+  --line-color: rgba(55, 53, 47, 0.1);
+
   --fg-color: rgb(55, 53, 47);
   --fg-color-0: rgba(55, 53, 47, 0.09);
   --fg-color-1: rgba(55, 53, 47, 0.16);
@@ -81,6 +83,8 @@
 
 // dark-mode vars
 .dark-mode {
+  --line-color: rgba(255, 255, 255, 0.1);
+
   --fg-color: rgba(255, 255, 255, 0.9);
   --fg-color-0: var(--fg-color);
   --fg-color-1: var(--fg-color);
