@@ -333,23 +333,33 @@
   > a {
     background-color: var(--notion-card-background-color);
     box-shadow: 10px 20px 20px 0 rgb(92 95 112 / 8%);
-    width: calc(25%);
+    width: calc(25% - 30px * 3 / 4);
     margin-bottom: 30px;
 
     @media (min-width: 1431px) {
       &:not(:nth-child(4n)) {
-        // margin-right: calc(30px);
+        margin-right: calc(30px);
       }
     }
 
-    @media (max-width: 1430px) {
+    @media (max-width: 1430px) and (min-width: 1051px) {
       width: calc(33.33% - (30px * 2) / 3);
-
-      // margin-bottom: 30px;
 
       &:not(:nth-child(3n)) {
         margin-right: calc(30px);
       }
+    }
+
+    @media (max-width: 1050px) and (min-width: 761px) {
+      width: calc(50% - 30px / 2);
+
+      &:not(:nth-child(2n)) {
+        margin-right: calc(30px);
+      }
+    }
+
+    @media (max-width: 760px) {
+      width: 100%;
     }
 
     .notion-collection-card-body {
