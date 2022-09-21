@@ -20,6 +20,7 @@ import 'styles/notion.css';
 import 'styles/prism-theme.css';
 
 import 'styles/custom/index.scss';
+import '~/components/Comments/comments.scss';
 
 import * as React from 'react';
 
@@ -31,6 +32,8 @@ import { useEffect } from 'react';
 import posthog from 'posthog-js';
 import { posthogConfig, posthogId } from '~/lib/config';
 import { useRouter } from 'next/router';
+import { SWRConfig, SWRConfiguration } from 'swr';
+import axios from 'axios';
 
 const Bootstrap = () => {
   const [preferences, setPreferences] = useRecoilState(preferencesStore);
@@ -66,11 +69,21 @@ const Bootstrap = () => {
   return null;
 };
 
+const swrConfig: SWRConfiguration = {
+  errorRetryCount: 3,
+  errorRetryInterval: 500,
+  revalidateOnFocus: false,
+  revalidateIfStale: false,
+  fetcher: (url: string) => axios.get(url).then(res => res.data),
+};
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <Bootstrap />
-      <Component {...pageProps} />
+      <SWRConfig value={swrConfig}>
+        <Bootstrap />
+        <Component {...pageProps} />
+      </SWRConfig>
     </RecoilRoot>
   );
 }

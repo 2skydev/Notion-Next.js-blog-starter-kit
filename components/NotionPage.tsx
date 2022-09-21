@@ -31,6 +31,7 @@ import { PageAside } from './PageAside';
 import { NotionPageHeader, ToggleThemeButton } from './NotionPageHeader';
 
 import styles from './styles.module.css';
+import Comments from './Comments';
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -217,6 +218,8 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
   const socialDescription =
     getPageProperty<string>('Description', block, recordMap) || config.description;
 
+  const isIndexPage = pageId === site.rootNotionPageId;
+
   return (
     <>
       <PageHead
@@ -231,8 +234,8 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
       {isDarkMode && <BodyClassName className="dark-mode" />}
 
       <NotionRenderer
-        className={cs(pageId === site.rootNotionPageId ? 'indexPage' : 'childPage')}
-        bodyClassName={cs(styles.notion, pageId === site.rootNotionPageId && 'index-page')}
+        className={cs(isIndexPage ? 'indexPage' : 'childPage')}
+        bodyClassName={cs(styles.notion, isIndexPage && 'index-page')}
         darkMode={isDarkMode}
         components={components}
         recordMap={recordMap}
@@ -250,6 +253,7 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
+        pageFooter={isIndexPage ? null : <Comments pageId={pageId} recordMap={recordMap} />}
         footer={null}
       />
     </>
