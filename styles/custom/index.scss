@@ -1,10 +1,10 @@
 @import './vars.scss';
 @import './notion-blocks.scss';
 
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 1500px) {
   :root {
-    --notion-page-left-right-padding: 5vw;
-    --notion-page-fullwith-left-right-padding: 5vw;
+    --notion-page-left-right-padding: 8vw;
+    --notion-page-fullwith-left-right-padding: 8vw;
   }
 }
 
