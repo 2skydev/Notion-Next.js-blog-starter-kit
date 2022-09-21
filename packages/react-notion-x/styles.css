@@ -1465,7 +1465,7 @@ svg.notion-page-icon {
 .notion-collection-card-cover {
   position: relative;
   width: 100%;
-  height: 190px;
+  height: 160px;
   border-bottom: 1px solid var(--fg-color-0);
   overflow: hidden;
 }
