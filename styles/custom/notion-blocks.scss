@@ -265,30 +265,63 @@
   }
 }
 
-.notion-gallery-grid {
-  border-top: none;
-  grid-template-columns: repeat(auto-fill, 300px);
-
-  .notion-collection-card {
-    background-color: var(--notion-gallery-card-background-color);
-    height: 350px;
-    border-radius: 12px;
-    transition: 250ms transform;
-
-    &:hover {
-      transform: translateY(-8px);
-    }
+.notion-collection {
+  .notion-collection-header-title {
+    font-family: 'AppleSDGothicNeo';
   }
 
-  .notion-collection-card-cover {
-    height: auto;
-    aspect-ratio: 1 / 0.5;
-    border-radius: 0;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+  .notion-gallery-grid {
+    border-top: none;
+    grid-template-columns: repeat(auto-fill, 300px);
 
-    img {
+    .notion-collection-card {
+      box-shadow: 10px 20px 20px 0 rgb(92 95 112 / 8%);
+      background-color: var(--notion-card-background-color);
+      height: 350px;
+      border-radius: 12px;
+      transition: 250ms transform;
+
+      &:hover {
+        transform: translateY(-8px);
+      }
+
+      .notion-page-title-text {
+        font-family: 'AppleSDGothicNeo';
+        font-size: 1rem;
+        font-weight: 600;
+      }
+    }
+
+    .notion-collection-card-cover {
+      height: auto;
+      aspect-ratio: 1 / 0.5;
       border-radius: 0;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      box-shadow: none;
+
+      img {
+        border-radius: 0;
+      }
+    }
+
+    .notion-collection-card-body {
+      padding: 0.75rem 1rem;
+    }
+
+    .notion-collection-card-property {
+      padding: 0;
+    }
+
+    .notion-property-title {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .notion-property-select-item,
+    .notion-property-multi_select-item {
+      background-color: transparent;
+      padding: 0;
     }
   }
 }

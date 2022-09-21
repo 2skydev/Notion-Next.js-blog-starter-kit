@@ -54,6 +54,15 @@ body {
   transition-duration: 250ms;
   transition-property: background-color, color;
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'AppleSDGothicNeo';
+  }
+
   .notion {
     font-size: var(--base-font-size);
     transition-duration: 250ms;
