@@ -61,8 +61,10 @@ const Bootstrap = () => {
   }, [router.events]);
 
   useEffect(() => {
-    if (preferences.isDarkMode && !document.body.classList.contains('dark-mode')) {
-      document.body.classList.add('dark-mode');
+    if (preferences.isDarkMode) {
+      if (!document.body.classList.contains('dark-mode')) {
+        document.body.classList.add('dark-mode');
+      }
     } else {
       document.body.classList.remove('dark-mode');
     }
