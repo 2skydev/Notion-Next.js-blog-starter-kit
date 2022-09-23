@@ -20,7 +20,6 @@ import 'styles/notion.css';
 import 'styles/prism-theme.css';
 
 import 'styles/custom/index.scss';
-import '~/components/Comments/comments.scss';
 
 import * as React from 'react';
 
@@ -35,6 +34,8 @@ import { useRouter } from 'next/router';
 import { SWRConfig, SWRConfiguration } from 'swr';
 import axios from 'axios';
 import { bootstrap } from '~/lib/bootstrap-client';
+import { motion } from 'framer-motion';
+import PageLoading from '~/components/PageLoading';
 
 const Bootstrap = () => {
   const [preferences, setPreferences] = useRecoilState(preferencesStore);
@@ -90,12 +91,21 @@ const swrConfig: SWRConfiguration = {
   fetcher: (url: string) => axios.get(url).then(res => res.data),
 };
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <RecoilRoot>
       <SWRConfig value={swrConfig}>
         <Bootstrap />
-        <Component {...pageProps} />
+        <PageLoading />
+
+        <motion.div
+          key={router.pathname}
+          initial={{ x: 10, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Component {...pageProps} />
+        </motion.div>
       </SWRConfig>
     </RecoilRoot>
   );
