@@ -122,10 +122,6 @@ body {
 
   // main page style
   .indexPage {
-    &.light-mode {
-      --bg-color: #f2f3f7;
-    }
-
     .notion-nav-header {
       & > .breadcrumbs:first-child {
         visibility: hidden;
@@ -135,6 +131,11 @@ body {
     .notion-aside {
       display: none;
     }
+  }
+
+  // no darkmode index page background color
+  &:not(.dark-mode) .indexPage {
+    --bg-color: #f2f3f7;
   }
 
   // no main page style
