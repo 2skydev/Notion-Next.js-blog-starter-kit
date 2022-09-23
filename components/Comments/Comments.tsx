@@ -30,26 +30,30 @@ const Comments = ({ pageId, recordMap }: CommentsProps) => {
 
   return (
     <div className="notion-comments">
-      <hr className="notion-hr" />
-
-      <h1>Comments</h1>
+      <h2 className="notion-h notion-h1">Comments</h2>
 
       <div className="items">
         {comments.map(item => (
           <div key={item.id} className="item">
-            <div className="profile">
-              <img src={item.user.profile_photo} alt={item.user.name} />
-              <span className="name">{item.user.name}</span>
-              <span className="createdAt">{item.createdAt}전</span>
-            </div>
+            <img className="profileImage" src={item.user.profile_photo} alt={item.user.name} />
 
-            <div className="content">
-              {item.text.split('\n').map(text => (
-                <>
-                  {text}
-                  <br />
-                </>
-              ))}
+            <div className="right">
+              <div className="content">
+                <div className="bg" />
+                <div className="texts">
+                  {item.text.split('\n').map((text, i) => (
+                    <React.Fragment key={i}>
+                      {text}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+
+              <div className="profile">
+                <div className="name">{item.user.name}</div>
+                <div className="createdAt">{item.createdAt}전</div>
+              </div>
             </div>
           </div>
         ))}

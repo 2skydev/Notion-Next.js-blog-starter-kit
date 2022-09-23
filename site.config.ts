@@ -65,4 +65,7 @@ export default siteConfig({
 
   // post page - hidden properties
   hiddenPostProperties: ['설명'],
+
+  // enable comment
+  enableComment: true,
 });

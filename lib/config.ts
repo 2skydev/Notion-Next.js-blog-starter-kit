@@ -175,3 +175,4 @@ function invertPageUrlOverrides(pageUrlOverrides: PageUrlOverridesMap): PageUrlO
 
 export const dateformat: string = getSiteConfig('dateformat', 'yyyy.MM.dd');
 export const hiddenPostProperties: string[] = getSiteConfig('hiddenPostProperties', []);
+export const enableComment: boolean = getSiteConfig('enableComment', false);

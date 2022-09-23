@@ -282,6 +282,7 @@
   }
 }
 
+// post list style
 .postList {
   display: flex;
   flex-wrap: wrap;
@@ -403,6 +404,113 @@
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
           text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
+
+// comment style
+.notion-comments {
+  max-width: 400px;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  .items {
+    .item {
+      display: flex;
+      align-items: flex-end;
+
+      .profileImage {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+        margin-right: 1rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .right {
+        .content {
+          font-size: 0.95rem;
+          line-height: 1.25;
+          padding: 1rem 1.5rem;
+          position: relative;
+
+          .texts {
+            position: relative;
+            z-index: 2;
+          }
+
+          .bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--fg-color-lighten);
+            border-radius: 25px;
+            z-index: 1;
+            transition: 250ms background-color;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            z-index: 0;
+            background-color: var(--bg-color);
+            bottom: 8px;
+            left: -35px;
+            transition: 250ms background-color;
+            border-top-right-radius: 0;
+          }
+
+          &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            z-index: 0;
+            background-color: var(--fg-color-lighten);
+            bottom: 5px;
+            left: -20px;
+            transition: 250ms background-color;
+          }
+        }
+
+        .profile {
+          margin-top: 0.5rem;
+          margin-left: 1.5rem;
+          display: flex;
+          font-size: 0.9rem;
+          line-height: 1;
+          font-family: 'AppleSDGothicNeo';
+
+          & > div:not(:last-child) {
+            display: flex;
+            align-items: center;
+
+            &::after {
+              content: '';
+              display: block;
+              width: 1px;
+              height: 8px;
+              background-color: var(--fg-color);
+              margin: 0 0.5rem;
+              opacity: 0.5;
+            }
+          }
         }
       }
     }

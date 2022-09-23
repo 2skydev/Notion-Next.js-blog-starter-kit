@@ -36,6 +36,7 @@ export interface SiteConfig {
   // custom configs (2skydev)
   dateformat: string;
   hiddenPostProperties: string[];
+  enableComment: boolean;
 }
 
 export interface NavigationLink {
