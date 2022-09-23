@@ -231,7 +231,6 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
         url={canonicalPageUrl}
       />
       {isLiteMode && <BodyClassName className="notion-lite" />}
-      {isDarkMode && <BodyClassName className="dark-mode" />}
 
       <NotionRenderer
         className={cs(isIndexPage ? 'indexPage' : 'childPage')}

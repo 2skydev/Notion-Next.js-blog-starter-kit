@@ -139,15 +139,7 @@ export const Block: React.FC<BlockProps> = props => {
           const hasPageCover = pageCover || page_cover;
 
           return (
-            <div
-              className={cs(
-                'notion',
-                'notion-app',
-                darkMode ? 'dark-mode' : 'light-mode',
-                blockId,
-                className,
-              )}
-            >
+            <div className={cs('notion', 'notion-app', blockId, className)}>
               <div className="notion-viewport" />
 
               <div className="notion-frame">
