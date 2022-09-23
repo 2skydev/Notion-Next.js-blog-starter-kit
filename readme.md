@@ -16,9 +16,9 @@ Please understand that the code was written mainly in Korean. 🥲
 # 🛟 로드맵
 
 - [ ] 댓글 기능
-- [ ] 목차 디자인 변경
+- [x] 목차 디자인 변경
 - [x] 리스트 디자인 변경
-- [ ] 페이지 이동 애니메이션
+- [x] 페이지 이동 애니메이션
 - [ ] 페이지 로딩 애니메이션
 
 <br />
