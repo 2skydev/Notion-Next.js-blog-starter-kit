@@ -121,8 +121,10 @@ body {
   }
 
   // main page style
-  .indexPage:not(.dark-mode) {
-    --bg-color: #f2f3f7;
+  .indexPage {
+    &.light-mode {
+      --bg-color: #f2f3f7;
+    }
 
     .notion-nav-header {
       & > .breadcrumbs:first-child {
