@@ -25,14 +25,16 @@ const Comments = ({ pageId, recordMap }: CommentsProps) => {
       if (values.content.trim()) {
         setLoading(true);
 
-        await axios.post(`/api/comments/${pageId}`, {
-          content: values.content.trim(),
-        });
+        try {
+          await axios.post(`/api/comments/${pageId}`, {
+            content: values.content.trim(),
+          });
 
-        formik.resetForm();
-        await mutate();
-
-        setLoading(false);
+          formik.resetForm();
+          await mutate();
+        } finally {
+          setLoading(false);
+        }
       }
     },
   });
