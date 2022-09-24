@@ -515,6 +515,10 @@ export const Block: React.FC<BlockProps> = props => {
       } else {
         const status = {
           '⚠️': 'warning',
+          '🚧': 'warning',
+          '🔴': 'error',
+          '🛑': 'error',
+          '💡': 'info',
         };
 
         return (

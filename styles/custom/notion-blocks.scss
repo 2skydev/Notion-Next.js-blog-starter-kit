@@ -43,11 +43,26 @@
 
   .notion-page-icon-inline {
     align-self: center;
+    margin-right: 1rem;
+    transform: translateY(-2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &.warning {
     background-color: var(--notion-yellow_background);
     border-color: var(--notion-yellow);
+  }
+
+  &.error {
+    background-color: var(--notion-red_background);
+    border-color: var(--notion-red);
+  }
+
+  &.info {
+    background-color: var(--notion-teal_background);
+    border-color: var(--notion-teal);
   }
 }
 
