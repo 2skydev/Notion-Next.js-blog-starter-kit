@@ -91,6 +91,8 @@ Please understand that the code was written mainly in Korean. 🥲
 | hiddenPostProperties | []         | 글 상세 페이지에서 숨김 처리할 속성 이름들입니다.                                                                                                                                          |
 | enableComment        | false      | 글 상세 페이지에서 댓글 기능을 활성화 여부입니다. 노션 댓글 기능을 사용하며 해당 기능을 사용 시 `NOTION_API_KEY` 환경 변수 설정이 필수 입니다. 자세한 내용은 `댓글 기능`쪽을 확인해주세요. |
 
+<br />
+
 ## 댓글 기능
 
 설정 구성을 통해 댓글 기능을 활성화 시킬 수 있습니다.
