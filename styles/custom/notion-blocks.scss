@@ -527,11 +527,22 @@
   top: 0;
   left: 0;
   z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 1);
   backdrop-filter: blur(5px);
   opacity: 0;
   pointer-events: none;
   transition: 250ms opacity;
+
+  .icon {
+    width: 100%;
+    height: 100%;
+    background-image: url('/loading.gif');
+    background-size: 600px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    box-shadow: 0 0 0 50px black;
+  }
 
   &.visible {
     opacity: 1;
