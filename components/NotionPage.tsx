@@ -254,7 +254,7 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
         pageAside={pageAside}
         pageFooter={
           config.enableComment ? (
-            isIndexPage ? null : (
+            !isBlogPost ? null : (
               <Comments pageId={pageId} recordMap={recordMap} />
             )
           ) : null
