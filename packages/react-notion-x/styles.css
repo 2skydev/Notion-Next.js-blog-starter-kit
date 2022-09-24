@@ -2275,6 +2275,10 @@ svg.notion-page-icon {
   min-width: 0;
 }
 
+.notion-header .breadcrumbs:first-child {
+  flex: 1;
+}
+
 .notion-header .breadcrumb {
   display: inline-flex;
   flex-direction: row;
@@ -2292,6 +2296,16 @@ svg.notion-page-icon {
   user-select: none;
   background: transparent;
   cursor: pointer;
+}
+
+.notion-header .breadcrumb.active {
+  overflow-x: hidden;
+  justify-content: flex-start;
+}
+
+.notion-header .breadcrumb.active .title {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .notion-header .breadcrumb .notion-page-icon-inline {
