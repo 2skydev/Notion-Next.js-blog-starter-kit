@@ -99,7 +99,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
         <PageLoading />
 
         <motion.div
-          key={router.pathname}
+          key={router.pathname + router.query?.pageId || ''}
           initial={{ x: 10, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.3 }}
