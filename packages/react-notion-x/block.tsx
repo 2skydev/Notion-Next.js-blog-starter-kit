@@ -134,6 +134,8 @@ export const Block: React.FC<BlockProps> = props => {
 
           const toc = getPageTableOfContents(block as types.PageBlock, recordMap);
 
+          const isBlogPost = block?.type === 'page' && block?.parent_table === 'collection';
+
           const hasToc = showTableOfContents && toc.length >= minTableOfContentsItems;
           const hasAside = (hasToc || pageAside) && !page_full_width;
           const hasPageCover = pageCover || page_cover;
@@ -199,7 +201,7 @@ export const Block: React.FC<BlockProps> = props => {
                       >
                         <article className="notion-page-content-inner">{children}</article>
 
-                        {hasAside && (
+                        {isBlogPost && hasAside && (
                           <PageAside
                             toc={toc}
                             activeSection={activeSection}
