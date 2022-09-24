@@ -412,16 +412,64 @@
 
 // comment style
 .notion-comments {
-  max-width: 400px;
+  @media (min-width: 1400px) and (min-height: 300px) {
+    width: calc(100% - 300px);
+  }
+
+  width: 100%;
 
   h2 {
     margin-bottom: 2rem;
   }
 
   .items {
+    display: flex;
+    flex-direction: column;
+
     .item {
       display: flex;
       align-items: flex-end;
+
+      + .item {
+        margin-top: 1.5rem;
+      }
+
+      &.reverse {
+        align-self: flex-end;
+        flex-direction: row-reverse;
+
+        .profileImage {
+          margin-right: 0;
+          margin-left: 1rem;
+        }
+
+        .right {
+          .content {
+            align-self: flex-end;
+
+            &::after {
+              left: auto;
+              right: -35px;
+            }
+
+            &::before {
+              left: auto;
+              right: -20px;
+            }
+
+            .texts {
+              text-align: right;
+            }
+          }
+
+          .profile {
+            margin-left: 0;
+            margin-right: 1.5rem;
+            text-align: right;
+            justify-content: flex-end;
+          }
+        }
+      }
 
       .profileImage {
         width: 40px;
@@ -436,15 +484,21 @@
       }
 
       .right {
+        display: flex;
+        flex-direction: column;
+
         .content {
           font-size: 0.95rem;
           line-height: 1.25;
           padding: 1rem 1.5rem;
           position: relative;
+          display: inline-block;
+          align-self: start;
 
           .texts {
             position: relative;
             z-index: 2;
+            word-break: break-all;
           }
 
           .bg {
@@ -459,7 +513,7 @@
             transition: 250ms background-color;
           }
 
-          &:after {
+          &::after {
             content: '';
             position: absolute;
             display: block;
@@ -468,13 +522,14 @@
             border-radius: 50%;
             z-index: 0;
             background-color: var(--bg-color);
-            bottom: 8px;
+            bottom: 4px;
             left: -35px;
             transition: 250ms background-color;
             border-top-right-radius: 0;
+            border-top-left-radius: 0;
           }
 
-          &:before {
+          &::before {
             content: '';
             position: absolute;
             display: block;
@@ -483,7 +538,7 @@
             border-radius: 50%;
             z-index: 0;
             background-color: var(--fg-color-lighten);
-            bottom: 5px;
+            bottom: 1px;
             left: -20px;
             transition: 250ms background-color;
           }
@@ -493,9 +548,19 @@
           margin-top: 0.5rem;
           margin-left: 1.5rem;
           display: flex;
-          font-size: 0.9rem;
+          font-size: 0.85rem;
           line-height: 1;
           font-family: 'AppleSDGothicNeo';
+          align-items: center;
+
+          .name {
+            svg {
+              margin-right: 0.3rem;
+              fill: #9ccc65;
+              height: 0.9rem;
+              transform: translateY(-1px);
+            }
+          }
 
           & > div:not(:last-child) {
             display: flex;
