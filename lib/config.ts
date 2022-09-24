@@ -8,7 +8,7 @@
 import { parsePageId } from 'notion-utils';
 import { PostHogConfig } from 'posthog-js';
 import { getEnv, getSiteConfig } from './get-config-value';
-import { NavigationLink } from './site-config';
+import { NavigationLink, SiteConfig } from './site-config';
 import { PageUrlOverridesInverseMap, PageUrlOverridesMap, NavigationStyle, Site } from './types';
 
 export const rootNotionPageId: string = parsePageId(getSiteConfig('rootNotionPageId'), {
@@ -175,4 +175,5 @@ function invertPageUrlOverrides(pageUrlOverrides: PageUrlOverridesMap): PageUrlO
 
 export const dateformat: string = getSiteConfig('dateformat', 'yyyy.MM.dd');
 export const hiddenPostProperties: string[] = getSiteConfig('hiddenPostProperties', []);
+export const defaultTheme: SiteConfig['defaultTheme'] = getSiteConfig('defaultTheme', 'system');
 export const enableComment: boolean = getSiteConfig('enableComment', false);

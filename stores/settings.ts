@@ -1,13 +1,16 @@
-import { isServer } from 'lib/config';
+import { defaultTheme, isServer } from 'lib/config';
 import { atom, AtomEffect } from 'recoil';
 
 interface PreferencesStoreValues {
   isDarkMode: boolean;
 }
 
-const isCurrentUserDarkMode = isServer
-  ? false
-  : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+let isCurrentUserDarkMode = defaultTheme === 'light' ? false : true;
+
+if (defaultTheme === 'system' && !isServer) {
+  isCurrentUserDarkMode =
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
 
 const initialValues: PreferencesStoreValues = {
   isDarkMode: isCurrentUserDarkMode,

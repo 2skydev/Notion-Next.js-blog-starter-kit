@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { defaultTheme } from '~/lib/config';
 
 export default class MyDocument extends Document {
   render() {
@@ -24,7 +25,13 @@ export default class MyDocument extends Document {
             dangerouslySetInnerHTML={{
               __html: `
 ;(function () {
-  const isCurrentUserDarkMode =  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isCurrentUserDarkMode = ${
+    defaultTheme === 'light'
+      ? 'false'
+      : defaultTheme === 'dark'
+      ? 'true'
+      : `window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches`
+  };
   const isDarkMode = localStorage.getItem('preferences') ? JSON.parse(localStorage.getItem('preferences')).isDarkMode : isCurrentUserDarkMode;
 
   if (isDarkMode) {
