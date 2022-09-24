@@ -133,6 +133,14 @@ body {
     }
   }
 
+  &:not(.dark-mode) {
+    .notion-comments {
+      .profileImage.guest {
+        filter: invert(0.6);
+      }
+    }
+  }
+
   // no darkmode index page background color
   &:not(.dark-mode) .indexPage {
     --bg-color: #f2f3f7;

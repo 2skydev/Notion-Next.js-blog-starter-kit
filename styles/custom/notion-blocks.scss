@@ -412,11 +412,11 @@
 
 // comment style
 .notion-comments {
+  width: 100%;
+
   @media (min-width: 1400px) and (min-height: 300px) {
     width: calc(100% - 300px);
   }
-
-  width: 100%;
 
   h2 {
     margin-bottom: 2rem;
@@ -425,157 +425,223 @@
   .items {
     display: flex;
     flex-direction: column;
+  }
 
-    .item {
-      display: flex;
-      align-items: flex-end;
+  .item {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
 
-      + .item {
-        margin-top: 1.5rem;
-      }
+    + .item {
+      margin-top: 1.5rem;
+    }
 
-      &.reverse {
-        align-self: flex-end;
-        flex-direction: row-reverse;
-
-        .profileImage {
-          margin-right: 0;
-          margin-left: 1rem;
-        }
-
-        .right {
-          .content {
-            align-self: flex-end;
-
-            &::after {
-              left: auto;
-              right: -35px;
-            }
-
-            &::before {
-              left: auto;
-              right: -20px;
-            }
-
-            .texts {
-              text-align: right;
-            }
-          }
-
-          .profile {
-            margin-left: 0;
-            margin-right: 1.5rem;
-            text-align: right;
-            justify-content: flex-end;
-          }
-        }
-      }
+    &.reverse {
+      align-self: flex-end;
+      flex-direction: row-reverse;
 
       .profileImage {
-        width: 40px;
-        height: 40px;
+        margin-right: 0;
+        margin-left: 1rem;
         border-radius: 50%;
-        display: block;
-        object-fit: cover;
-        object-position: center;
-        margin-right: 1rem;
-        position: relative;
-        z-index: 1;
       }
 
       .right {
-        display: flex;
-        flex-direction: column;
-
         .content {
-          font-size: 0.95rem;
-          line-height: 1.25;
-          padding: 1rem 1.5rem;
-          position: relative;
-          display: inline-block;
-          align-self: start;
-
-          .texts {
-            position: relative;
-            z-index: 2;
-            word-break: break-all;
-          }
-
-          .bg {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--fg-color-lighten);
-            border-radius: 25px;
-            z-index: 1;
-            transition: 250ms background-color;
-          }
+          align-self: flex-end;
 
           &::after {
-            content: '';
-            position: absolute;
-            display: block;
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            z-index: 0;
-            background-color: var(--bg-color);
-            bottom: 4px;
-            left: -35px;
-            transition: 250ms background-color;
-            border-top-right-radius: 0;
-            border-top-left-radius: 0;
+            left: auto;
+            right: -35px;
           }
 
           &::before {
-            content: '';
-            position: absolute;
-            display: block;
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            z-index: 0;
-            background-color: var(--fg-color-lighten);
-            bottom: 1px;
-            left: -20px;
-            transition: 250ms background-color;
+            left: auto;
+            right: -20px;
+          }
+
+          .texts {
+            text-align: right;
           }
         }
 
         .profile {
-          margin-top: 0.5rem;
-          margin-left: 1.5rem;
+          margin-left: 0;
+          margin-right: 1.5rem;
+          text-align: right;
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    .profileImage {
+      width: 40px;
+      height: 40px;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+      margin-right: 1rem;
+      position: relative;
+      z-index: 1;
+      transition: 250ms filter;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .content {
+        font-size: 0.95rem;
+        line-height: 1.25;
+        padding: 1rem 1.5rem;
+        position: relative;
+        display: inline-block;
+        align-self: start;
+        max-width: 80%;
+
+        .texts {
+          position: relative;
+          z-index: 2;
+          word-break: break-all;
+        }
+
+        .bg {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: var(--fg-color-lighten);
+          border-radius: 25px;
+          z-index: 1;
+          transition: 250ms background-color;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          display: block;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          z-index: 0;
+          background-color: var(--bg-color);
+          bottom: 4px;
+          left: -35px;
+          transition: 250ms background-color;
+          border-top-right-radius: 0;
+          border-top-left-radius: 0;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          display: block;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          z-index: 0;
+          background-color: var(--fg-color-lighten);
+          bottom: 1px;
+          left: -20px;
+          transition: 250ms background-color;
+        }
+      }
+
+      .profile {
+        margin-top: 0.5rem;
+        margin-left: 1.5rem;
+        display: flex;
+        font-size: 0.85rem;
+        line-height: 1;
+        font-family: 'AppleSDGothicNeo';
+        align-items: center;
+
+        .name {
+          svg {
+            margin-right: 0.3rem;
+            fill: #9ccc65;
+            height: 0.9rem;
+            transform: translateY(-1px);
+          }
+        }
+
+        & > div:not(:last-child) {
           display: flex;
-          font-size: 0.85rem;
-          line-height: 1;
-          font-family: 'AppleSDGothicNeo';
           align-items: center;
 
-          .name {
-            svg {
-              margin-right: 0.3rem;
-              fill: #9ccc65;
-              height: 0.9rem;
-              transform: translateY(-1px);
-            }
+          &::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 8px;
+            background-color: var(--fg-color);
+            margin: 0 0.5rem;
+            opacity: 0.5;
           }
+        }
+      }
+    }
+  }
 
-          & > div:not(:last-child) {
-            display: flex;
-            align-items: center;
+  form {
+    width: 100%;
+    margin-bottom: 3rem;
 
-            &::after {
-              content: '';
-              display: block;
-              width: 1px;
-              height: 8px;
-              background-color: var(--fg-color);
-              margin: 0 0.5rem;
-              opacity: 0.5;
-            }
-          }
+    &.loading {
+      textarea,
+      button {
+        opacity: 0.5;
+      }
+    }
+
+    .right {
+      width: 100%;
+    }
+
+    .content {
+      margin-bottom: 1.5rem;
+      width: 100%;
+      display: flex !important;
+      flex-direction: column;
+      align-items: flex-end;
+
+      textarea {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        resize: none;
+        color: var(--fg-color);
+        font-family: 'Noto Sans KR';
+        transition: 250ms opacity;
+      }
+
+      button {
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        background-color: var(--fg-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 250ms box-shadow, 250ms opacity;
+
+        &:hover {
+          box-shadow: 0 0 5px var(--fg-color);
+        }
+
+        svg {
+          fill: var(--bg-color);
+          width: 20px;
         }
       }
     }

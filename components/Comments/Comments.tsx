@@ -4,6 +4,9 @@ import * as React from 'react';
 import useSWR from 'swr';
 import { ExtendedRecordMap } from '~/packages/notion-types';
 import cs from 'classnames';
+import { useFormik } from 'formik';
+import axios from 'axios';
+import { useState } from 'react';
 
 interface CommentsProps {
   pageId: string;
@@ -11,7 +14,28 @@ interface CommentsProps {
 }
 
 const Comments = ({ pageId, recordMap }: CommentsProps) => {
-  const { data } = useSWR(`/api/comments/${pageId}`);
+  const [loading, setLoading] = useState(false);
+  const { data, mutate } = useSWR(`/api/comments/${pageId}`);
+
+  const formik = useFormik({
+    initialValues: {
+      content: '',
+    },
+    onSubmit: async values => {
+      if (values.content.trim()) {
+        setLoading(true);
+
+        await axios.post(`/api/comments/${pageId}`, {
+          content: values.content.trim(),
+        });
+
+        formik.resetForm();
+        await mutate();
+
+        setLoading(false);
+      }
+    },
+  });
 
   const comments = (data?.results || []).map(item => {
     const user = recordMap.notion_user[item.created_by.id]?.value || {
@@ -35,10 +59,39 @@ const Comments = ({ pageId, recordMap }: CommentsProps) => {
     <div className="notion-comments">
       <h2 className="notion-h notion-h1">댓글</h2>
 
+      <form className={cs('item', loading && 'loading')} onSubmit={formik.handleSubmit}>
+        <img className="profileImage guest" src="/comment.png" alt="guest" />
+
+        <div className="right">
+          <div className="content">
+            <div className="bg" />
+            <textarea
+              name="content"
+              placeholder={`안녕하세요 👋\n이곳에 댓글 내용을 작성해주세요.`}
+              rows={6}
+              value={formik.values.content}
+              onChange={formik.handleChange}
+            />
+
+            <button type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M16 2H8C4.691 2 2 4.691 2 8v12a1 1 0 0 0 1 1h13c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm4 13c0 2.206-1.794 4-4 4H4V8c0-2.206 1.794-4 4-4h8c2.206 0 4 1.794 4 4v7z"></path>
+                <circle cx="9.5" cy="11.5" r="1.5"></circle>
+                <circle cx="14.5" cy="11.5" r="1.5"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </form>
+
       <div className="items">
         {comments.map(item => (
           <div key={item.id} className={cs('item', item.isOwner && 'reverse')}>
-            <img className="profileImage" src={item.user.profile_photo} alt={item.user.name} />
+            <img
+              className={cs('profileImage', item.user.id === 'guest' && 'guest')}
+              src={item.user.profile_photo}
+              alt={item.user.name}
+            />
 
             <div className="right">
               <div className="content">
@@ -61,6 +114,7 @@ const Comments = ({ pageId, recordMap }: CommentsProps) => {
                       <path d="m11 12.586-2.293-2.293-1.414 1.414L11 15.414l5.707-5.707-1.414-1.414z"></path>
                     </svg>
                   )}
+
                   {item.user.name}
                 </div>
 
