@@ -89,7 +89,8 @@
   },
   "resolutions": {
     "next-api-og-image/chrome-aws-lambda": "6.0.0",
-    "next-api-og-image/puppeteer-core": "6.0.0"
+    "next-api-og-image/puppeteer-core": "6.0.0",
+    "lqip-modern/sharp": "0.30.5"
   },
   "overrides": {
     "next-api-og-image": {
