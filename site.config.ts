@@ -10,11 +10,11 @@ export default siteConfig({
 
   // basic site info (required)
   name: '2skydev blog',
-  domain: 'localhost:3000',
+  domain: 'blog.2skydev.com',
   author: '2skydev',
 
   // open graph metadata (optional)
-  description: '2skydev blog - full stack developer',
+  description: '2skydev blog - developer blog',
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
