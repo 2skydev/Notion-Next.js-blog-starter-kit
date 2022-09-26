@@ -2,10 +2,12 @@
   font-family: 'AppleSDGothicNeo';
   src: url('./AppleSDGothicNeoR.woff2');
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'AppleSDGothicNeo';
   src: url('./AppleSDGothicNeoB.woff2');
   font-weight: 600;
+  font-display: swap;
 }
