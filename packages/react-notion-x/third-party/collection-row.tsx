@@ -62,7 +62,13 @@ export const CollectionRow: React.FC<{
       <div className="notion-collection-row-body">
         {properties.map(({ id: propertyId, schema }) => {
           return (
-            <div className="notion-collection-row-property" key={propertyId}>
+            <div
+              className={cs(
+                'notion-collection-row-property',
+                `notion-collection-property-type-${schema.type}`,
+              )}
+              key={propertyId}
+            >
               <CollectionColumnTitle schema={schema} />
 
               <div className="notion-collection-row-value">

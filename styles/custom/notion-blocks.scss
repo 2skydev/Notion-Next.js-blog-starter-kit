@@ -178,6 +178,8 @@
   }
 
   .notion-collection-row-property {
+    margin-bottom: 0.5rem;
+
     + .notion-collection-row-property {
       &::before {
         content: '';
@@ -186,6 +188,20 @@
         background-color: var(--fg-color);
         opacity: 0.35;
         margin: 0 0.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .notion-collection-property-type-multi_select {
+      width: 100%;
+
+      &::before {
+        display: none;
+      }
+
+      .notion-property {
+        justify-content: flex-start;
       }
     }
   }
