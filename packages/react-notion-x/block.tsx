@@ -702,9 +702,11 @@ export const Block: React.FC<BlockProps> = props => {
 
     case 'table':
       return (
-        <table className={cs('notion-simple-table', blockId)}>
-          <tbody>{children}</tbody>
-        </table>
+        <div className="notion-simple-table-wrap">
+          <table className={cs('notion-simple-table', blockId)}>
+            <tbody>{children}</tbody>
+          </table>
+        </div>
       );
 
     case 'table_row': {
