@@ -569,6 +569,10 @@ export class NotionAPI {
     return got
       .post(url, {
         ...gotOptions,
+        retry: {
+          limit: 2,
+          methods: ['POST'],
+        },
         json: body,
         headers,
       })
