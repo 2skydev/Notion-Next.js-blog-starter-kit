@@ -21,7 +21,7 @@ export default class MyDocument extends Document {
 
         <body>
           {/* 로딩 전 다크모드 적용 */}
-          <script
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `
 ;(function () {
@@ -40,7 +40,7 @@ export default class MyDocument extends Document {
 })();
 `,
             }}
-          />
+          /> */}
           <Main />
 
           <NextScript />
