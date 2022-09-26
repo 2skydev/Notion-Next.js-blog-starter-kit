@@ -18,7 +18,7 @@
   "repository": "2skydev/blog",
   "license": "MIT",
   "engines": {
-    "node": ">=14.17"
+    "node": ">=14.17 <15.0.0"
   },
   "scripts": {
     "dev": "next dev",
