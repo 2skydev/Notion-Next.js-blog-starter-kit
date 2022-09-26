@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { useEffect } from 'react';
 import cs from 'classnames';
 
 const PageLoading = () => {
+  const { isFallback } = useRouter();
   const [loading, setLoading] = React.useState(false);
 
   useEffect(() => {
@@ -27,12 +28,8 @@ const PageLoading = () => {
   }, []);
 
   return (
-    <div className={cs('PageLoading', loading && 'visible')}>
+    <div className={cs('PageLoading', (isFallback || loading) && 'visible')}>
       <div className="icon"></div>
-      {/* <img
-        src="https://steamuserimages-a.akamaihd.net/ugc/937207931810703613/95D27D6FD35BED1E307193EECC14B11D682E0615/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
-        alt=""
-      /> */}
     </div>
   );
 };
