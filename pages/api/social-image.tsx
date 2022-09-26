@@ -85,6 +85,12 @@ export default withOGImage<'query', 'id'>({
       return (
         <html>
           <head>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+              rel="stylesheet"
+            />
             <style dangerouslySetInnerHTML={{ __html: style }} />
           </head>
 
@@ -147,7 +153,7 @@ const style = `
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -221,7 +227,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.5em;
+  gap: 0.3em;
 }
 
 .detail {
