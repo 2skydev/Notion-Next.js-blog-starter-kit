@@ -34,7 +34,7 @@ Please understand that the code was written mainly in Korean. 🥲
 
 <br/>
 
-## 🔍 자세한 동작 방식을 알고 싶어요
+## 🔎 자세한 동작 방식을 알고 싶어요
 
 기본적인 동작은 next.js의 `ISR` 방식으로 페이지가 생성됩니다.
 
