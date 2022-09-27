@@ -1532,7 +1532,7 @@ expand-template@^2.0.3:
 
 expiry-map@^2.0.0:
   version "2.0.0"
-  resolved "https://registry.npmjs.org/expiry-map/-/expiry-map-2.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/expiry-map/-/expiry-map-2.0.0.tgz#b441ee8e8865291ad9a542783076d33bae0f3582"
   integrity sha512-K1I5wJe2fiqjyUZf/xhxwTpaopw3F+19DsO7Oggl20+3SVTXDIevVRJav0aBMfposQdkl2E4+gnuOKd3j2X0sA==
   dependencies:
     map-age-cleaner "^0.2.0"
