@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as types from 'notion-types';
 import formatNumber from 'format-number';
-import format from 'date-fns/format/index.js';
 
 import { cs } from '../utils';
 import { useNotionContext } from '../context';
@@ -11,6 +10,7 @@ import { PageTitle } from '../components/page-title';
 import { GracefulImage } from '../components/graceful-image';
 import { evalFormula } from './eval-formula';
 import { dateformat } from '~/lib/config';
+import { utcToZonedTime, format } from 'date-fns-tz';
 
 export interface IPropertyProps {
   propertyId?: string;
@@ -84,7 +84,7 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
 
           if (content instanceof Date) {
             // CUSTOM: 날짜 포맷
-            content = format(content, dateformat);
+            content = format(utcToZonedTime(content, 'Asia/Seoul'), dateformat);
           }
         } catch (err) {
           // console.log('error evaluating formula', schema.formula, err)
@@ -266,7 +266,7 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
     () =>
       function CreatedTimeProperty() {
         // CUSTOM: 날짜 포맷
-        return format(new Date(block?.created_time), dateformat);
+        return format(utcToZonedTime(block.created_time, 'Asia/Seoul'), dateformat);
       },
     [block?.created_time],
   );
@@ -275,7 +275,7 @@ export const PropertyImpl: React.FC<IPropertyProps> = props => {
     () =>
       function LastEditedTimeProperty() {
         // CUSTOM: 날짜 포맷
-        return format(new Date(block?.last_edited_time), dateformat);
+        return format(utcToZonedTime(block?.last_edited_time, 'Asia/Seoul'), dateformat);
       },
     [block?.last_edited_time],
   );
