@@ -79,7 +79,7 @@ Please understand that the code and explanation are mainly written in Korean. �
 
 ### 2. 사용방법
 
-커스텀한 블로그 템플릿도 아래의 오픈소스 기반이므로 해당 깃허브 README.md에서 사용방법을 확인해주세요.
+커스텀한 블로그 템플릿은 아래의 오픈소스 기반이므로 해당 깃허브 README.md에서 기본적인 사용방법을 확인해주세요.
 
 [GitHub - transitive-bullshit/nextjs-notion-starter-kit - setup](https://github.com/transitive-bullshit/nextjs-notion-starter-kit#setup)
 
