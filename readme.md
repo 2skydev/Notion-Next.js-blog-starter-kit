@@ -3,7 +3,7 @@
 # Notion + Next.js blog starter kit
 
 This repository is a startup kit that allows you to create a blog using `notion` and `next.js`.<br/>
-Please understand that the code was written mainly in Korean. 🥲
+Please understand that the code and explanation are mainly written in Korean. 🥲
 
 <br />
 
