@@ -105,6 +105,13 @@ Please understand that the code and explanation are mainly written in Korean. �
 - 다크모드 부분적으로 스타일 오류가 있는 부분 수정
 - 노션의 블럭들 스타일 수정
 - 콜아웃 특정 아이콘일때 배경 색상 변경 처리 (⚠️, 🚧, 🔴, 🛑, 💡)
+- 댓글 기능 추가
+- GA 구성 추가
+- 반응형 처리가 미흡한 부분 수정
+- a 링크 방식 -> Next.js Link 컴포넌트 사용
+- 로딩 효과 추가
+- 페이지 이동간 애니메이션
+- 여러 오류들 수정 (404, 등등)
 
 ### 스타일 커스텀
 
