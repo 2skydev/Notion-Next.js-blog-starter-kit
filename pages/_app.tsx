@@ -36,6 +36,7 @@ import axios from 'axios';
 import { bootstrap } from '~/lib/bootstrap-client';
 import { motion } from 'framer-motion';
 import PageLoading from '~/components/PageLoading';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 const Bootstrap = () => {
   const [preferences, setPreferences] = useRecoilState(preferencesStore);
@@ -96,6 +97,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
     <RecoilRoot>
       <SWRConfig value={swrConfig}>
         <Bootstrap />
+        <GoogleAnalytics trackPageViews />
         <PageLoading />
 
         <motion.div
