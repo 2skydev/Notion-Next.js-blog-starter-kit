@@ -7,6 +7,6 @@
   "useTabs": false,
   "printWidth": 100,
   "semi": true,
-  "importOrder": ["electron", "react", "^[^.~]+", "^~.+$", "^\\..+$"],
+  "importOrder": ["react", "next", "^[^.~]+", "^~.+$", "^\\..+$", "^~\\.(css|scss)$"],
   "importOrderSeparation": true
 }
