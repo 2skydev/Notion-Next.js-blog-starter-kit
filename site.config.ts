@@ -67,7 +67,7 @@ export default siteConfig({
   hiddenPostProperties: ['설명'],
 
   // default theme color
-  defaultTheme: 'dark',
+  defaultTheme: 'system',
 
   // enable comment
   enableComment: true,

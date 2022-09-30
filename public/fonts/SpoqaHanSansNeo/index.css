@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'SpoqaHanSansNeo';
+  src: url('./SpoqaHanSansNeo-Light.woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpoqaHanSansNeo';
+  src: url('./SpoqaHanSansNeo-Regular.woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpoqaHanSansNeo';
+  src: url('./SpoqaHanSansNeo-Bold.woff2');
+  font-weight: 700;
+  font-display: swap;
+}

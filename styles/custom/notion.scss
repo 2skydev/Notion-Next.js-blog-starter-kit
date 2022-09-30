@@ -1,0 +1,649 @@
+// 스크롤 스타일 제거
+::-webkit-scrollbar {
+  display: none;
+}
+
+// 반응형 처리
+@media only screen and (max-width: 1500px) {
+  :root {
+    --notion-page-left-right-padding: 8vw;
+    --notion-page-fullwith-left-right-padding: 8vw;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  :root {
+    --base-font-size: 0.95rem;
+  }
+}
+
+/**
+ * ================ 전체적인 레이아웃 구성 관련 ================
+ */
+body {
+  font-size: 16px;
+  transition-duration: 250ms;
+  transition-property: background-color, color;
+  -webkit-font-smoothing: antialiased;
+
+  .notion {
+    font-size: var(--base-font-size);
+    transition-duration: 250ms;
+    transition-property: background-color, color;
+  }
+
+  .notion-page {
+    padding-left: var(--notion-page-left-right-padding);
+    padding-right: var(--notion-page-left-right-padding);
+  }
+
+  .notion-full-width {
+    padding-left: var(--notion-page-fullwith-left-right-padding);
+    padding-right: var(--notion-page-fullwith-left-right-padding);
+
+    .notion-title {
+      text-align: left;
+    }
+
+    .notion-page-icon-hero {
+      left: var(--notion-fullwith-page-left-right-padding);
+    }
+  }
+
+  // 헤더
+  .notion-header {
+    position: fixed;
+    transition-duration: 250ms;
+    transition-property: background-color, color;
+  }
+
+  // 다크 모드가 아닐 때
+  &:not(.dark-mode) {
+    .indexPage {
+      --bg-color: #f2f3f7;
+    }
+  }
+}
+
+/**
+ * ================ notion 페이지 관련 스타일 ================
+ */
+.notion {
+  // 페이지
+  .notion-page {
+    line-height: 1.6;
+  }
+
+  // 페이지 제목
+  .notion-title {
+    text-align: left;
+    font-size: 2em;
+  }
+
+  // 페이지 메인 이미지 (커버 이미지)
+  .notion-page-cover-wrapper,
+  .notion-page-cover-wrapper span,
+  .notion-page-cover-wrapper img {
+    max-width: 100% !important;
+    border-radius: 0;
+    height: calc(30vh + var(--notion-header-height)) !important;
+    min-height: calc(30vh + var(--notion-header-height)) !important;
+    max-height: calc(30vh + var(--notion-header-height)) !important;
+  }
+
+  // 페이지 메인 이미지 (커버 이미지) 없을 때
+  .notion-page-no-cover {
+    margin-top: 130px !important;
+  }
+
+  // 페이지 아이콘
+  .notion-page-icon-hero {
+    margin-left: 0 !important;
+    left: var(--notion-page-left-right-padding);
+  }
+
+  // 페이지 속성들
+  .notion-collection-page-properties {
+    .notion-collection-row {
+      margin-bottom: 5rem;
+      border-bottom: none;
+      padding-bottom: 0;
+      padding: 0;
+    }
+
+    .notion-collection-row-body {
+      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 0;
+    }
+
+    .notion-collection-row-property {
+      margin-bottom: 0.5rem;
+
+      + .notion-collection-row-property {
+        &::before {
+          content: '';
+          width: 1px;
+          height: 10px;
+          background-color: var(--fg-color);
+          opacity: 0.35;
+          margin: 0 0.5rem;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      .notion-collection-property-type-multi_select {
+        width: 100%;
+
+        &::before {
+          display: none;
+        }
+
+        .notion-property {
+          justify-content: flex-start;
+        }
+      }
+    }
+
+    .notion-collection-row-value {
+      min-height: auto;
+    }
+
+    .notion-property-select-item,
+    .notion-property-multi_select-item {
+      background-color: transparent !important;
+      padding: 0;
+    }
+
+    .notion-property-multi_select-item {
+      opacity: 0.7;
+
+      &::before {
+        content: '#';
+      }
+    }
+  }
+
+  // 페이지 우측 사이드
+  .notion-aside {
+    width: 300px;
+    padding-left: 2rem;
+    flex: none;
+
+    // 우측 사이드 목차
+    .notion-contentPosition {
+      width: 100%;
+
+      .item {
+        display: block;
+        text-align: right;
+        position: relative;
+        padding: 0.3rem 1.3rem 0.3rem 1rem;
+
+        .text {
+          opacity: 0.5;
+          font-size: 0.9rem;
+          line-height: 1;
+          transition: 250ms opacity;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        &.level1 {
+          padding-right: calc(1.3rem + 1rem);
+
+          .text {
+            font-size: 0.85rem;
+          }
+        }
+
+        &.level2 {
+          padding-right: calc(1.3rem + 2rem);
+
+          .text {
+            font-size: 0.8rem;
+          }
+        }
+
+        &.active {
+          .text {
+            opacity: 1;
+          }
+        }
+
+        &::before {
+          content: '';
+          height: 100%;
+          position: absolute;
+          right: 0;
+          top: 0;
+          border-right: 1px solid var(--fg-color);
+          z-index: 1;
+          opacity: 0.2;
+        }
+
+        .activeLine {
+          position: absolute;
+          background-color: var(--primary-color);
+          width: 1px;
+          height: 100%;
+          top: 0;
+          right: 0;
+          z-index: 2;
+
+          // &::before {
+          //   content: '';
+          //   position: absolute;
+          //   width: 5px;
+          //   height: 5px;
+          //   border-radius: 50%;
+          //   background-color: var(--primary-color);
+          //   right: 0.5rem;
+          //   top: 50%;
+          //   transform: translateY(-50%);
+          // }
+        }
+      }
+    }
+  }
+
+  // 메인 페이지인 경우
+  &.indexPage {
+    .notion-nav-header {
+      & > .breadcrumbs:first-child {
+        visibility: hidden;
+      }
+    }
+
+    .notion-aside {
+      display: none;
+    }
+  }
+
+  // 메인페이지가 아닌 모든 페이지
+  &.childPage {
+    .notion-page-icon-hero.notion-page-icon-image span,
+    .notion-page-icon-hero.notion-page-icon-image img {
+      border-radius: 0;
+    }
+
+    .notion-page-icon-hero.notion-page-icon-image {
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+}
+
+/**
+ * ================ notion 페이지 - 기본 블럭 스타일 (본문 내용) ================
+ */
+.notion {
+  // 제목1 ~ 제목3
+  .notion {
+    &-h1 {
+      font-size: 1.7rem;
+
+      &::after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 4rem;
+        background-color: var(--fg-color);
+        margin-top: 0.5rem;
+        border-radius: 5px;
+      }
+    }
+
+    &-h2 {
+      font-size: 1.4rem;
+      margin-top: 2rem;
+    }
+
+    &-h3 {
+      font-size: 1.2rem;
+    }
+  }
+
+  // 일반 본문
+  .notion-text {
+    padding: 0.2em 2px;
+    // font-weight: 300;
+    // letter-spacing: -0.2px;
+    // opacity: 0.8;
+  }
+
+  // 리스트
+  .notion-list {
+    // font-weight: 300;
+    // letter-spacing: -0.2px;
+    // opacity: 0.8;
+
+    li {
+      padding: 3.5px 0;
+      padding-left: 0.2rem;
+
+      &::marker {
+        font-weight: 400;
+      }
+    }
+  }
+
+  // 인라인코드
+  .notion-inline-code {
+    font-weight: 400;
+    font-family: var(--notion-font);
+    letter-spacing: 0;
+    background-color: var(--fg-color-lighten) !important;
+    transition: 250ms background-color;
+  }
+
+  // 구분선
+  .notion-hr {
+    margin: 6px 0;
+  }
+
+  // 콜아웃
+  .notion-callout {
+    border-radius: 8px;
+
+    .notion-page-icon-inline {
+      align-self: center;
+      margin-right: 1rem;
+      transform: translateY(-1px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &.warning {
+      background-color: var(--notion-yellow_background);
+      border-color: var(--notion-yellow);
+    }
+
+    &.error {
+      background-color: var(--notion-red_background);
+      border-color: var(--notion-red);
+    }
+
+    &.info {
+      background-color: var(--notion-teal_background);
+      border-color: var(--notion-teal);
+    }
+  }
+
+  // 인용
+  .notion-quote {
+    font-style: normal;
+    font-size: var(--base-font-size);
+    border-color: var(--primary-color);
+    padding: 1rem 1rem 1rem 2rem;
+    position: relative;
+    background-color: var(--fg-color-lighten);
+    transition: 250ms background-color;
+  }
+
+  // 체크박스 (할일)
+  .notion-property-checkbox {
+    &-unchecked {
+      border-radius: 2px;
+    }
+
+    &-checked {
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 10px;
+        height: 10px;
+        top: initial;
+        left: initial;
+      }
+    }
+  }
+
+  // 파일 첨부 - 아이콘
+  .notion-file-icon {
+    fill: var(--fg-color);
+  }
+
+  // 페이지 링크 스타일
+  .notion-page-title-text {
+    border-bottom: none;
+  }
+
+  // 링크
+  .notion-link:focus,
+  .notion-link:hover {
+    border-bottom-color: transparent;
+
+    background-image: linear-gradient(
+      90.68deg,
+      var(--primary-color) 0.26%,
+      var(--primary-gradient-end-color) 102.37%
+    );
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 0.1rem;
+
+    // transition-property: background-position, background-size;
+    // transition-duration: 300ms;
+  }
+
+  // 북마크
+  .notion-bookmark {
+    transition: 250ms border-color;
+
+    &:hover {
+      border-color: var(--primary-color);
+    }
+
+    .notion-bookmark-link-icon img {
+      display: block;
+    }
+  }
+
+  // 아이콘 (페이지 아이콘, 콜아웃 아이콘)
+  .notion-page-icon {
+    font-family: 'Tossface';
+  }
+
+  // 테이블
+  .notion-simple-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+
+    td {
+      border-color: var(--fg-color-lighten);
+    }
+
+    tr:first-child td {
+      background-color: var(--fg-color-lighten);
+    }
+  }
+}
+
+/**
+ * ================ notion 페이지 - 커스텀 블럭 스타일 ================
+ */
+.notion {
+  // 유저 프로필
+  .notion-user-container {
+    display: flex;
+    align-items: center;
+
+    .notion-user {
+      margin-right: 0.3rem;
+    }
+  }
+
+  // 데이터베이스 - 갤러리뷰
+  .postList {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+
+    > a {
+      background-color: var(--notion-card-background-color);
+      box-shadow: 10px 20px 20px 0 rgb(92 95 112 / 8%);
+      width: calc(25% - 30px * 3 / 4);
+      margin-bottom: 30px;
+      transition: 250ms transform, 250ms background-color;
+
+      &:hover {
+        transform: translateY(-8px);
+      }
+
+      @media (min-width: 1431px) {
+        &:not(:nth-child(4n)) {
+          margin-right: calc(30px);
+        }
+      }
+
+      @media (max-width: 1430px) and (min-width: 1051px) {
+        width: calc(33.33% - (30px * 2) / 3);
+
+        &:not(:nth-child(3n)) {
+          margin-right: calc(30px);
+        }
+      }
+
+      @media (max-width: 1050px) and (min-width: 761px) {
+        width: calc(50% - 30px / 2);
+
+        &:not(:nth-child(2n)) {
+          margin-right: calc(30px);
+        }
+      }
+
+      @media (max-width: 760px) {
+        width: 100%;
+      }
+
+      .notion-collection-card-cover {
+        border-radius: 0;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        box-shadow: none;
+
+        img {
+          border-radius: 0;
+        }
+      }
+
+      .notion-collection-card-property {
+        padding: 0;
+      }
+
+      .notion-property-select-item {
+        margin-bottom: 0.3rem;
+      }
+
+      .notion-property-multi_select-item {
+        &::before {
+          content: '#';
+        }
+      }
+
+      .notion-collection-card-body {
+        display: block;
+        padding: 1rem 1.3rem 1rem;
+
+        .notion-page-icon-image {
+          display: none;
+        }
+
+        .notion-page-title-text {
+          font-size: 1rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+
+        .notion-property-title {
+          width: 100%;
+          display: block;
+        }
+
+        .notion-property-select {
+          margin-right: 6px;
+        }
+
+        .notion-collection-card-property:last-child {
+          overflow: initial;
+
+          .notion-property-created_time {
+            display: block;
+            width: calc(100% + 1.3rem * 2);
+            margin-left: -1.3rem;
+            padding-left: 1.3rem;
+            padding-top: 1rem;
+            margin-top: 0.9rem;
+            border-top: 1px solid var(--line-color);
+            display: block;
+            opacity: 0.7;
+            line-height: 1;
+          }
+        }
+
+        .notion-collection-card-property:nth-child(2) {
+          height: 85px;
+
+          .notion-property-text {
+            width: 100%;
+            white-space: initial;
+            color: #7a7c85;
+            font-size: 13px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * ================ 다크모드 처리 ================
+ */
+.dark-mode {
+  background-color: var(--bg-color);
+
+  // 헤더
+  .notion-header {
+    .breadcrumb {
+      text-shadow: 0 0 3px black;
+    }
+  }
+
+  // 검색
+  .notion-search {
+    color: var(--fg-color);
+    caret-color: var(--fg-color);
+    background-color: var(--bg-color-1);
+
+    input {
+      color: var(--fg-color);
+      caret-color: var(--fg-color);
+      background-color: transparent;
+
+      &::placeholder {
+        color: var(--fg-color-5);
+      }
+    }
+
+    .noResults {
+      color: var(--fg-color-5);
+    }
+
+    .noResultsDetail {
+      color: var(--fg-color-5);
+      opacity: 0.6;
+    }
+  }
+}

@@ -1,6 +1,8 @@
 import * as React from 'react';
+
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { defaultTheme } from '~/lib/config';
+
+// import { defaultTheme } from '~/lib/config';
 
 export default class MyDocument extends Document {
   render() {
@@ -12,10 +14,14 @@ export default class MyDocument extends Document {
 
           <link rel="manifest" href="/manifest.json" />
 
-          <link href="/fonts/AppleSDGothicNeo/index.css" rel="stylesheet" />
+          <link href="/fonts/SpoqaHanSansNeo/index.css" rel="stylesheet" />
+
+          <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+          <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+            href="https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css"
             rel="stylesheet"
+            type="text/css"
           />
         </Head>
 
