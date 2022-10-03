@@ -1,9 +1,12 @@
 import * as React from 'react';
+
+import { motion } from 'framer-motion';
 import throttle from 'lodash.throttle';
 import { TableOfContentsEntry, uuidToId } from 'notion-utils';
 
+import { contentPositionTextAlign } from '~/lib/config';
+
 import { cs } from '../utils';
-import { motion } from 'framer-motion';
 
 export const PageAside: React.FC<{
   toc: Array<TableOfContentsEntry>;
@@ -78,7 +81,12 @@ export const PageAside: React.FC<{
     <aside className={cs('notion-aside', className)}>
       {/* CUSTOM: 목차 전체적으로 커스텀 */}
       {hasToc && (
-        <nav className="notion-contentPosition">
+        <nav
+          className={cs(
+            'notion-contentPosition',
+            contentPositionTextAlign === 'right' && 'alignRight',
+          )}
+        >
           {toc.map(tocItem => {
             const id = uuidToId(tocItem.id);
 
@@ -105,7 +113,12 @@ export const PageAside: React.FC<{
                 <motion.div
                   className="text"
                   initial={false}
-                  animate={{ x: activeSection === id ? -10 : 0 }}
+                  animate={{
+                    x:
+                      activeSection === id
+                        ? 10 * (contentPositionTextAlign === 'right' ? -1 : 1)
+                        : 0,
+                  }}
                   transition={{ duration: 0.25 }}
                 >
                   {tocItem.text}

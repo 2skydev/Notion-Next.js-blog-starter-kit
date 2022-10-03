@@ -168,7 +168,7 @@ body {
   // 페이지 우측 사이드
   .notion-aside {
     width: 300px;
-    padding-left: 2rem;
+    margin-left: 5rem;
     flex: none;
 
     // 우측 사이드 목차
@@ -177,7 +177,6 @@ body {
 
       .item {
         display: block;
-        text-align: right;
         position: relative;
         padding: 0.3rem 1.3rem 0.3rem 1rem;
 
@@ -192,7 +191,7 @@ body {
         }
 
         &.level1 {
-          padding-right: calc(1.3rem + 1rem);
+          padding-left: calc(1.3rem + 1rem);
 
           .text {
             font-size: 0.85rem;
@@ -200,7 +199,7 @@ body {
         }
 
         &.level2 {
-          padding-right: calc(1.3rem + 2rem);
+          padding-left: calc(1.3rem + 2rem);
 
           .text {
             font-size: 0.8rem;
@@ -217,7 +216,7 @@ body {
           content: '';
           height: 100%;
           position: absolute;
-          right: 0;
+          left: 0;
           top: 0;
           border-right: 1px solid var(--fg-color);
           z-index: 1;
@@ -230,20 +229,52 @@ body {
           width: 1px;
           height: 100%;
           top: 0;
-          right: 0;
+          left: 0;
           z-index: 2;
 
-          // &::before {
-          //   content: '';
-          //   position: absolute;
-          //   width: 5px;
-          //   height: 5px;
-          //   border-radius: 50%;
-          //   background-color: var(--primary-color);
-          //   right: 0.5rem;
-          //   top: 50%;
-          //   transform: translateY(-50%);
-          // }
+          &::before {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+
+      &.alignRight {
+        .item {
+          text-align: right;
+          padding: 0.3rem 1rem 0.3rem 1.3rem;
+
+          &.level1 {
+            padding-left: 0;
+            padding-right: calc(1.3rem + 1rem);
+          }
+
+          &.level2 {
+            padding-left: 0;
+            padding-right: calc(1.3rem + 2rem);
+          }
+
+          &::before {
+            right: 0;
+            left: auto;
+          }
+
+          .activeLine {
+            right: 0;
+            left: auto;
+
+            &::before {
+              left: auto;
+              right: 0.5rem;
+            }
+          }
         }
       }
     }
@@ -309,16 +340,12 @@ body {
   // 일반 본문
   .notion-text {
     padding: 0.2em 2px;
-    // font-weight: 300;
-    // letter-spacing: -0.2px;
-    // opacity: 0.8;
+    font-weight: 300;
   }
 
   // 리스트
   .notion-list {
-    // font-weight: 300;
-    // letter-spacing: -0.2px;
-    // opacity: 0.8;
+    font-weight: 300;
 
     li {
       padding: 3.5px 0;

@@ -38,6 +38,7 @@ export interface SiteConfig {
   hiddenPostProperties: string[];
   defaultTheme: 'light' | 'dark' | 'system';
   enableComment: boolean;
+  contentPositionTextAlign: 'left' | 'right';
 }
 
 export interface NavigationLink {

@@ -66,6 +66,9 @@ export default siteConfig({
   // post page - hidden properties
   hiddenPostProperties: ['설명'],
 
+  // contentPosition (table of contents) text align
+  contentPositionTextAlign: 'left',
+
   // default theme color
   defaultTheme: 'system',
 

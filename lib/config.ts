@@ -4,9 +4,9 @@
  * This file pulls from the root "site.config.ts" as well as environment variables
  * for optional depenencies.
  */
-
 import { parsePageId } from 'notion-utils';
 import { PostHogConfig } from 'posthog-js';
+
 import { getEnv, getSiteConfig } from './get-config-value';
 import { NavigationLink, SiteConfig } from './site-config';
 import { PageUrlOverridesInverseMap, PageUrlOverridesMap, NavigationStyle, Site } from './types';
@@ -176,4 +176,8 @@ function invertPageUrlOverrides(pageUrlOverrides: PageUrlOverridesMap): PageUrlO
 export const dateformat: string = getSiteConfig('dateformat', 'yyyy.MM.dd');
 export const hiddenPostProperties: string[] = getSiteConfig('hiddenPostProperties', []);
 export const defaultTheme: SiteConfig['defaultTheme'] = getSiteConfig('defaultTheme', 'system');
+export const contentPositionTextAlign: SiteConfig['contentPositionTextAlign'] = getSiteConfig(
+  'contentPositionTextAlign',
+  'left',
+);
 export const enableComment: boolean = getSiteConfig('enableComment', false);
