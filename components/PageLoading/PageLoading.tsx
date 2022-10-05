@@ -9,25 +9,25 @@ const PageLoading = () => {
   const { isFallback } = useRouter();
   const [loading, setLoading] = React.useState(false);
 
-  // useEffect(() => {
-  //   const start = () => {
-  //     setLoading(true);
-  //   };
+  useEffect(() => {
+    const start = () => {
+      setLoading(true);
+    };
 
-  //   const end = () => {
-  //     setLoading(false);
-  //   };
+    const end = () => {
+      setLoading(false);
+    };
 
-  //   Router.events.on('routeChangeStart', start);
-  //   Router.events.on('routeChangeComplete', end);
-  //   Router.events.on('routeChangeError', end);
+    Router.events.on('routeChangeStart', start);
+    Router.events.on('routeChangeComplete', end);
+    Router.events.on('routeChangeError', end);
 
-  //   return () => {
-  //     Router.events.off('routeChangeStart', start);
-  //     Router.events.off('routeChangeComplete', end);
-  //     Router.events.off('routeChangeError', end);
-  //   };
-  // }, []);
+    return () => {
+      Router.events.off('routeChangeStart', start);
+      Router.events.off('routeChangeComplete', end);
+      Router.events.off('routeChangeError', end);
+    };
+  }, []);
 
   return (
     <div className={cs('PageLoading', (isFallback || loading) && 'visible')}>
