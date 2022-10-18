@@ -1,4 +1,4 @@
-import { ID, Color, Decoration, Role } from './core'
+import { ID, Color, Decoration, Role } from './core';
 
 export type BlockType =
   | 'page'
@@ -44,7 +44,7 @@ export type BlockType =
   | 'breadcrumb'
   | 'miro'
   // fallback for unknown blocks
-  | string
+  | string;
 
 /** The different block values a block can have. */
 export type Block =
@@ -88,375 +88,378 @@ export type Block =
   | TableBlock
   | TableRowBlock
   | ExternalObjectInstance
-  | BreadcrumbInstance
+  | BreadcrumbInstance;
 
 /**
  * Base properties shared by all blocks.
  */
 export interface BaseBlock {
-  id: ID
-  type: BlockType
-  properties?: any
-  format?: any
-  content?: ID[]
+  id: ID;
+  type: BlockType;
+  properties?: any;
+  format?: any;
+  content?: ID[];
 
-  space_id?: ID
-  parent_id: ID
-  parent_table: string | 'space' | 'block' | 'table'
+  space_id?: ID;
+  parent_id: ID;
+  parent_table: string | 'space' | 'block' | 'table';
 
-  version: number
-  created_time: number
-  last_edited_time: number
-  alive: boolean
-  created_by_table: string
-  created_by_id: ID
-  last_edited_by_table: string
-  last_edited_by_id: ID
+  version: number;
+  created_time: number;
+  last_edited_time: number;
+  alive: boolean;
+  created_by_table: string;
+  created_by_id: ID;
+  last_edited_by_table: string;
+  last_edited_by_id: ID;
 }
 
 export interface BaseTextBlock extends BaseBlock {
   // some text blocks occasionally have children
-  content?: ID[]
+  content?: ID[];
   properties?: {
-    title: Decoration[]
-  }
+    title: Decoration[];
+  };
   format?: {
-    block_color: Color
-  }
+    block_color: Color;
+  };
 }
 
 export interface BaseContentBlock extends BaseBlock {
   properties: {
-    source: string[][]
-    caption?: Decoration[]
-  }
+    source: string[][];
+    caption?: Decoration[];
+  };
   format?: {
-    block_width: number
-    block_height: number
-    display_source: string
-    block_full_width: boolean
-    block_page_width: boolean
-    block_aspect_ratio: number
-    block_preserve_scale: boolean
-  }
-  file_ids?: string[]
+    block_width: number;
+    block_height: number;
+    display_source: string;
+    block_full_width: boolean;
+    block_page_width: boolean;
+    block_aspect_ratio: number;
+    block_preserve_scale: boolean;
+    // CUSTOM: 에셋 정렬 기능 추가
+    block_alignment: 'left' | 'center' | 'right';
+  };
+  file_ids?: string[];
 }
 
 export interface BasePageBlock extends BaseBlock {
   properties?: {
-    title: Decoration[]
-  }
+    title: Decoration[];
+  };
   format: {
-    page_full_width?: boolean
-    page_small_text?: boolean
-    page_cover_position?: number
-    block_locked?: boolean
-    block_locked_by?: string
-    page_cover?: string
-    page_icon?: string
-    block_color?: Color
-  }
-  permissions: { role: Role; type: string }[]
-  file_ids?: string[]
+    page_full_width?: boolean;
+    page_small_text?: boolean;
+    page_cover_position?: number;
+    block_locked?: boolean;
+    block_locked_by?: string;
+    page_cover?: string;
+    page_icon?: string;
+    block_color?: Color;
+  };
+  permissions: { role: Role; type: string }[];
+  file_ids?: string[];
 }
 
 export interface PageBlock extends BasePageBlock {
-  type: 'page'
+  type: 'page';
 }
 
 export interface BookmarkBlock extends BaseBlock {
-  type: 'bookmark'
+  type: 'bookmark';
   properties: {
-    link: Decoration[]
-    title: Decoration[]
-    description: Decoration[]
-  }
+    link: Decoration[];
+    title: Decoration[];
+    description: Decoration[];
+  };
   format: {
-    block_color?: string
-    bookmark_icon: string
-    bookmark_cover: string
-  }
+    block_color?: string;
+    bookmark_icon: string;
+    bookmark_cover: string;
+  };
 }
 
 export interface TextBlock extends BaseTextBlock {
-  type: 'text'
+  type: 'text';
 }
 
 export interface BulletedListBlock extends BaseTextBlock {
-  type: 'bulleted_list'
+  type: 'bulleted_list';
 }
 
 export interface NumberedListBlock extends BaseTextBlock {
-  type: 'numbered_list'
+  type: 'numbered_list';
 }
 
 export interface HeaderBlock extends BaseTextBlock {
-  type: 'header'
+  type: 'header';
   format?: {
-    block_color: Color
-    toggleable?: boolean
-  }
+    block_color: Color;
+    toggleable?: boolean;
+  };
 }
 
 export interface SubHeaderBlock extends BaseTextBlock {
-  type: 'sub_header'
+  type: 'sub_header';
   format?: {
-    block_color: Color
-    toggleable?: boolean
-  }
+    block_color: Color;
+    toggleable?: boolean;
+  };
 }
 
 export interface SubSubHeaderBlock extends BaseTextBlock {
-  type: 'sub_sub_header'
+  type: 'sub_sub_header';
   format?: {
-    block_color: Color
-    toggleable?: boolean
-  }
+    block_color: Color;
+    toggleable?: boolean;
+  };
 }
 
 export interface QuoteBlock extends BaseTextBlock {
-  type: 'quote'
+  type: 'quote';
 }
 
 export interface EquationBlock extends BaseTextBlock {
-  type: 'equation'
+  type: 'equation';
 }
 
 // TODO
 export interface TodoBlock extends BaseTextBlock {
-  type: 'to_do'
+  type: 'to_do';
   properties: {
-    title: Decoration[]
-    checked: (['Yes'] | ['No'])[]
-  }
+    title: Decoration[];
+    checked: (['Yes'] | ['No'])[];
+  };
 }
 
 export interface TableOfContentsBlock extends BaseBlock {
-  type: 'table_of_contents'
+  type: 'table_of_contents';
   format?: {
-    block_color: Color
-  }
+    block_color: Color;
+  };
 }
 
 export interface DividerBlock extends BaseBlock {
-  type: 'divider'
+  type: 'divider';
 }
 
 export interface ColumnListBlock extends BaseBlock {
-  type: 'column_list'
+  type: 'column_list';
 }
 
 export interface ColumnBlock extends BaseBlock {
-  type: 'column'
+  type: 'column';
   format: {
-    column_ratio: number
-  }
+    column_ratio: number;
+  };
 }
 
 export interface CalloutBlock extends BaseBlock {
-  type: 'callout'
+  type: 'callout';
   format: {
-    page_icon: string
-    block_color: Color
-  }
+    page_icon: string;
+    block_color: Color;
+  };
   properties: {
-    title: Decoration[]
-  }
+    title: Decoration[];
+  };
 }
 
 export interface ToggleBlock extends BaseBlock {
-  type: 'toggle'
+  type: 'toggle';
   properties: {
-    title: Decoration[]
-  }
+    title: Decoration[];
+  };
 }
 
 export interface ImageBlock extends BaseContentBlock {
-  type: 'image'
+  type: 'image';
 }
 
 export interface EmbedBlock extends BaseContentBlock {
-  type: 'embed'
+  type: 'embed';
 }
 
 export interface GistBlock extends BaseContentBlock {
-  type: 'gist'
+  type: 'gist';
 }
 
 export interface VideoBlock extends BaseContentBlock {
-  type: 'video'
+  type: 'video';
 }
 
 export interface FigmaBlock extends BaseContentBlock {
-  type: 'figma'
+  type: 'figma';
 }
 
 export interface TypeformBlock extends BaseContentBlock {
-  type: 'typeform'
+  type: 'typeform';
 }
 
 export interface CodepenBlock extends BaseContentBlock {
-  type: 'codepen'
+  type: 'codepen';
 }
 
 export interface ExcalidrawBlock extends BaseContentBlock {
-  type: 'excalidraw'
+  type: 'excalidraw';
 }
 
 export interface TweetBlock extends BaseContentBlock {
-  type: 'tweet'
+  type: 'tweet';
 }
 
 export interface MapsBlock extends BaseContentBlock {
-  type: 'maps'
+  type: 'maps';
 }
 
 export interface PdfBlock extends BaseContentBlock {
-  type: 'pdf'
+  type: 'pdf';
 }
 
 export interface AudioBlock extends BaseContentBlock {
-  type: 'audio'
+  type: 'audio';
 }
 
 export interface MiroBlock extends BaseContentBlock {
-  type: 'miro'
+  type: 'miro';
 }
 
 export interface FileBlock extends BaseBlock {
-  type: 'file'
+  type: 'file';
   properties: {
-    title: Decoration[]
-    size: Decoration[]
-    source: string[][]
-  }
-  file_ids?: string[]
+    title: Decoration[];
+    size: Decoration[];
+    source: string[][];
+  };
+  file_ids?: string[];
 }
 
 export interface GoogleDriveBlock extends BaseContentBlock {
-  type: 'drive'
+  type: 'drive';
   format: {
     drive_status: {
-      authed: boolean
-      last_fetched: number
-    }
+      authed: boolean;
+      last_fetched: number;
+    };
     drive_properties: {
-      url: string
-      icon: string
-      title: string
-      file_id: string
-      trashed: boolean
-      version: string
-      thumbnail: string
-      user_name: string
-      modified_time: number
-    }
-    block_width: number
-    block_height: number
-    display_source: string
-    block_full_width: boolean
-    block_page_width: boolean
-    block_aspect_ratio: number
-    block_preserve_scale: boolean
-  }
-  file_ids?: string[]
+      url: string;
+      icon: string;
+      title: string;
+      file_id: string;
+      trashed: boolean;
+      version: string;
+      thumbnail: string;
+      user_name: string;
+      modified_time: number;
+    };
+    block_width: number;
+    block_height: number;
+    display_source: string;
+    block_full_width: boolean;
+    block_page_width: boolean;
+    block_aspect_ratio: number;
+    block_preserve_scale: boolean;
+    block_alignment: 'left' | 'center' | 'right';
+  };
+  file_ids?: string[];
 }
 
 export interface CodeBlock extends BaseBlock {
-  type: 'code'
+  type: 'code';
   properties: {
-    title: Decoration[]
-    language: Decoration[]
-    caption: Decoration[]
-  }
+    title: Decoration[];
+    language: Decoration[];
+    caption: Decoration[];
+  };
 }
 
 export interface CollectionViewBlock extends BaseContentBlock {
-  type: 'collection_view'
-  collection_id?: ID
-  view_ids: ID[]
+  type: 'collection_view';
+  collection_id?: ID;
+  view_ids: ID[];
   format?: BaseContentBlock['format'] & {
     collection_pointer?: {
-      id: ID
-      spaceId: ID
-      table: string
-    }
-  }
+      id: ID;
+      spaceId: ID;
+      table: string;
+    };
+  };
 }
 
 export interface CollectionViewPageBlock extends BasePageBlock {
-  type: 'collection_view_page'
-  collection_id?: ID
-  view_ids: ID[]
+  type: 'collection_view_page';
+  collection_id?: ID;
+  view_ids: ID[];
   format: BasePageBlock['format'] & {
     collection_pointer?: {
-      id: ID
-      spaceId: ID
-      table: string
-    }
-  }
+      id: ID;
+      spaceId: ID;
+      table: string;
+    };
+  };
 }
 
 export interface SyncBlock extends BaseBlock {
-  type: 'transclusion_container'
+  type: 'transclusion_container';
 }
 
 export interface SyncPointerBlock extends BaseBlock {
-  type: 'transclusion_reference'
+  type: 'transclusion_reference';
   format: {
     copied_from_pointer: {
-      id: string
-      spaceid: string
-    }
+      id: string;
+      spaceid: string;
+    };
     transclusion_reference_pointer: {
-      id: string
-      spaceId: string
-    }
-  }
+      id: string;
+      spaceId: string;
+    };
+  };
 }
 
 export interface PageLink extends BaseBlock {
-  type: 'alias'
+  type: 'alias';
   format: {
     alias_pointer: {
-      id: string
-    }
-  }
+      id: string;
+    };
+  };
 }
 
 export interface TableBlock extends BaseBlock {
-  type: 'table'
-  collection_id: ID
+  type: 'table';
+  collection_id: ID;
   format: {
     collection_pointer: {
-      id: ID
-      table: string
-      spaceId: ID
-    }
+      id: ID;
+      table: string;
+      spaceId: ID;
+    };
     table_block_column_format?: {
-      [column: string]: { width?: number; color?: Color }
-    }
-    table_block_column_header: boolean
-    table_block_column_order: string[]
-  }
-  view_ids: ID[]
+      [column: string]: { width?: number; color?: Color };
+    };
+    table_block_column_header: boolean;
+    table_block_column_order: string[];
+  };
+  view_ids: ID[];
 }
 
 export interface TableRowBlock extends BaseBlock {
-  type: 'table_row'
+  type: 'table_row';
   properties: {
-    [column: string]: Decoration[]
-  }
+    [column: string]: Decoration[];
+  };
 }
 
 export interface ExternalObjectInstance extends BaseBlock {
-  type: 'external_object_instance'
+  type: 'external_object_instance';
   format: {
-    domain: string
-    original_url: string
-  }
+    domain: string;
+    original_url: string;
+  };
 }
 
 export interface BreadcrumbInstance extends BaseBlock {
-  type: 'breadcrumb'
+  type: 'breadcrumb';
 }
