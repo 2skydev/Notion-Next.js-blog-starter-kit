@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from 'next';
+
 import { host } from 'lib/config';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -23,6 +24,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 Allow: /
 Disallow: /api/get-tweet-ast/*
 Disallow: /api/search-notion
+Disallow: /draftview
 
 Sitemap: ${host}/sitemap.xml
 `);

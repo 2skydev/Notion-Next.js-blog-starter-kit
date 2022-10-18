@@ -4,11 +4,11 @@ import { NotionPage } from 'components';
 import { domain } from 'lib/config';
 import { resolveNotionPage } from 'lib/resolve-notion-page';
 
-export const getStaticProps = async a => {
+export const getServerSideProps = async () => {
   try {
-    const props = await resolveNotionPage(domain);
+    const props = await resolveNotionPage(domain, null, { draftView: true });
 
-    return { props, revalidate: 10 };
+    return { props };
   } catch (err) {
     console.error('page error', domain, err);
 

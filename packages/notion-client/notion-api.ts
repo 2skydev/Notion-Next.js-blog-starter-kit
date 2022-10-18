@@ -1,9 +1,8 @@
 // import { promises as fs } from 'fs'
 import got, { OptionsOfJSONResponseBody } from 'got';
-import pMap from 'p-map';
-
-import { parsePageId, getPageContentBlockIds, uuidToId, getBlockCollectionId } from 'notion-utils';
 import * as notion from 'notion-types';
+import { parsePageId, getPageContentBlockIds, uuidToId, getBlockCollectionId } from 'notion-utils';
+import pMap from 'p-map';
 
 import * as types from './types';
 
@@ -44,6 +43,7 @@ export class NotionAPI {
       chunkLimit = 100,
       chunkNumber = 0,
       gotOptions,
+      draftView = false,
     }: {
       concurrency?: number;
       fetchMissingBlocks?: boolean;
@@ -52,6 +52,7 @@ export class NotionAPI {
       chunkLimit?: number;
       chunkNumber?: number;
       gotOptions?: OptionsOfJSONResponseBody;
+      draftView?: boolean;
     } = {},
   ): Promise<notion.ExtendedRecordMap> {
     const page = await this.getPageRaw(pageId, {
@@ -149,6 +150,7 @@ export class NotionAPI {
               collectionView,
               {
                 gotOptions,
+                draftView,
               },
             );
 
@@ -317,6 +319,7 @@ export class NotionAPI {
       searchQuery = '',
       userTimeZone = this._userTimeZone,
       loadContentCover = true,
+      draftView = false,
       gotOptions,
     }: {
       type?: notion.CollectionViewType;
@@ -325,6 +328,7 @@ export class NotionAPI {
       userTimeZone?: string;
       userLocale?: string;
       loadContentCover?: boolean;
+      draftView?: boolean;
       gotOptions?: OptionsOfJSONResponseBody;
     } = {},
   ) {
@@ -352,7 +356,9 @@ export class NotionAPI {
     if (collectionView?.format?.property_filters?.length) {
       loader.filter = {
         operator: 'and',
-        filters: collectionView.format.property_filters.map(filter => filter.filter),
+        filters: collectionView.format.property_filters
+          .map(filter => filter.filter)
+          .filter(draftView ? filter => filter.filter.operator !== 'status_is' : () => true),
       };
     }
 
