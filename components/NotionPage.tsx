@@ -1,37 +1,35 @@
 import * as React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import dynamic from 'next/dynamic';
-import cs from 'classnames';
-import { useRouter } from 'next/router';
-import { useSearchParam } from 'react-use';
 import BodyClassName from 'react-body-classname';
-import { PageBlock } from 'notion-types';
-
-import TweetEmbed from 'react-tweet-embed';
-
 // core notion renderer
 import { NotionRenderer } from 'react-notion-x';
+import TweetEmbed from 'react-tweet-embed';
+import { useSearchParam } from 'react-use';
 
+import dynamic from 'next/dynamic';
+import Image from 'next/future/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import cs from 'classnames';
+import * as config from 'lib/config';
+import { mapImageUrl } from 'lib/map-image-url';
+import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url';
+import { searchNotion } from 'lib/search-notion';
+import * as types from 'lib/types';
+import { useDarkMode } from 'lib/use-dark-mode';
+import { PageBlock } from 'notion-types';
 // utils
 import { getBlockTitle, getPageProperty, formatDate } from 'notion-utils';
-import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url';
-import { mapImageUrl } from 'lib/map-image-url';
-import { searchNotion } from 'lib/search-notion';
-import { useDarkMode } from 'lib/use-dark-mode';
-import * as types from 'lib/types';
-import * as config from 'lib/config';
 
+import Comments from './Comments';
 // components
 import { Loading } from './Loading';
-import { Page404 } from './Page404';
-import { PageHead } from './PageHead';
-import { PageAside } from './PageAside';
 // import { Footer } from './Footer';
 import { NotionPageHeader, ToggleThemeButton } from './NotionPageHeader';
-
+import { Page404 } from './Page404';
+import { PageAside } from './PageAside';
+import { PageHead } from './PageHead';
 import styles from './styles.module.css';
-import Comments from './Comments';
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components

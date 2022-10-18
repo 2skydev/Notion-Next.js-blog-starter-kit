@@ -1474,7 +1474,7 @@ svg.notion-page-icon {
   width: 100%;
   height: 100%;
   border-radius: 1px 1px 0 0;
-  /* object-fit: cover; */
+  object-fit: cover;
 }
 
 .notion-collection-card-cover .notion-collection-card-cover-empty {
