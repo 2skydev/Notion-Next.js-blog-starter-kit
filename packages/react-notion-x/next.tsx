@@ -28,6 +28,7 @@ export const wrapNextImage = (NextImage: any): React.FC<any> => {
         width={layout === 'intrinsic' && width}
         height={layout === 'intrinsic' && height}
         // CUSTOM: 이미지 next/image에서 next/future/image로 변경
+        style={style}
         // objectFit={style?.objectFit}
         // objectPosition={style?.objectPosition}
         // layout={layout}
