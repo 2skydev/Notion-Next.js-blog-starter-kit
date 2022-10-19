@@ -20,5 +20,5 @@ export const getServerSideProps = async () => {
 
 export default function NotionDomainPage(props) {
   // console.log(props);
-  return <NotionPage {...props} />;
+  return <NotionPage draftView {...props} />;
 }

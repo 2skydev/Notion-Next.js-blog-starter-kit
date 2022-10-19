@@ -129,7 +129,13 @@ const propertyTextValue = ({ schema, pageHeader }, defaultFn: () => React.ReactN
   return defaultFn();
 };
 
-export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, pageId }) => {
+export const NotionPage: React.FC<types.PageProps> = ({
+  site,
+  recordMap,
+  error,
+  pageId,
+  draftView,
+}) => {
   const router = useRouter();
   const lite = useSearchParam('lite');
 
@@ -166,8 +172,8 @@ export const NotionPage: React.FC<types.PageProps> = ({ site, recordMap, error, 
     if (lite) params.lite = lite;
 
     const searchParams = new URLSearchParams(params);
-    return mapPageUrl(site, recordMap, searchParams);
-  }, [site, recordMap, lite]);
+    return mapPageUrl(site, recordMap, searchParams, draftView);
+  }, [site, recordMap, lite, draftView]);
 
   const keys = Object.keys(recordMap?.block || {});
   const block = recordMap?.block?.[keys[0]]?.value;
