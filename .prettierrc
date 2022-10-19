@@ -6,7 +6,5 @@
   "tabWidth": 2,
   "useTabs": false,
   "printWidth": 100,
-  "semi": true,
-  "importOrder": ["react", "next", "^[^.~]+", "^~.+$", "^\\..+$", "^~\\.(css|scss)$"],
-  "importOrderSeparation": true
+  "semi": true
 }
