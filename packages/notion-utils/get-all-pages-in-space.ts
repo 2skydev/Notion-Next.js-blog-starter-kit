@@ -77,6 +77,10 @@ export async function getAllPagesInSpace(
 
           // CUSTOM: 데이터베이스의 보기는 첫번째것만 표시되므로 사이트맵 추출도 첫번째것만 추출 (필터링된 글은 추출이 안되도록 처리)
           Object.values(page.block).forEach(({ value: block }) => {
+            if (!block || !block?.type) {
+              return;
+            }
+
             if (block.type === 'collection_view') {
               const defaultViewId = block.view_ids[0];
 
