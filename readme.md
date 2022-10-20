@@ -35,10 +35,6 @@ Please understand that the code and explanation are mainly written in Korean. �
 
 [2skydev blog 노션 링크](https://www.notion.so/2skydev-blog-d1e89e9e42eb4ebf9486ae0374039efc)
 
-**빠른 시작을 위한 블로그 템플릿 노션 페이지 (템플릿 복제 허용 O)**
-
-[blog template 노션 링크](https://www.notion.so/blog-template-96f5aeafbd9d4c4fa1c4c2c86071c567)
-
 <br/>
 
 ## 🔎 자세한 동작 방식을 알고 싶어요
