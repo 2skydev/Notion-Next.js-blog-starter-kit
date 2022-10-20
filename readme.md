@@ -72,6 +72,9 @@ Please understand that the code and explanation are mainly written in Korean. �
 레포 클론 후 `site.config.ts` 만 수정하시면 바로 이용하실 수 있습니다.<br/>
 아래 단계들을 따라와주세요 :)
 
+> ❗️ 노션의 `복제` 기능을 사용시 이상하게 불러와지는 현상이 있습니다.<br/>
+> 블로그로 사용하는 노션 페이지는 `복제`된 페이지가 아닌 직접 페이지를 만들어야합니다.
+
 ### 1. 커스텀한 소스 클론하기
 
 커스텀된 소스는 아래 링크를 확인해주세요.<br/>
