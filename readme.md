@@ -83,7 +83,7 @@ Please understand that the code and explanation are mainly written in Korean. �
 
 [GitHub - transitive-bullshit/nextjs-notion-starter-kit - setup](https://github.com/transitive-bullshit/nextjs-notion-starter-kit#setup)
 
-더 자세한 문서는 아래 링크를 확인해주세요.
+더 자세한 문서는 아래 링크를 확인해주세요. 이 문서에서 `시작하기` 부분을 확인해주세요 :)
 
 [Github Wiki - 2skydev/blog](https://github.com/2skydev/blog/wiki)
 
