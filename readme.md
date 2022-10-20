@@ -31,7 +31,13 @@ Please understand that the code and explanation are mainly written in Korean. �
 노션의 내용을 기반으로 블로그가 생성되는 방식이니 실제로는 노션이 어떻게 구성되어있는지 궁금하신가요?<br/>
 아래 링크를 통해 이 블로그의 노션 구성을 확인하실 수 있습니다!
 
-[2skydev의 노션 링크](https://www.notion.so/2skydev-blog-d1e89e9e42eb4ebf9486ae0374039efc)
+**현재 운영중인 블로그 노션 페이지 (템플릿 복제 허용 X)**
+
+[2skydev blog 노션 링크](https://www.notion.so/2skydev-blog-d1e89e9e42eb4ebf9486ae0374039efc)
+
+**빠른 시작을 위한 블로그 템플릿 노션 페이지 (템플릿 복제 허용 O)**
+
+[blog template 노션 링크](https://www.notion.so/blog-template-96f5aeafbd9d4c4fa1c4c2c86071c567)
 
 <br/>
 
