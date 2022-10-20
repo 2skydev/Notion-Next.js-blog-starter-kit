@@ -83,7 +83,7 @@ Please understand that the code and explanation are mainly written in Korean. �
 
 [GitHub - transitive-bullshit/nextjs-notion-starter-kit - setup](https://github.com/transitive-bullshit/nextjs-notion-starter-kit#setup)
 
-추가 커스텀에 관련된 문서는 아래 링크를 확인해주세요.
+더 자세한 문서는 아래 링크를 확인해주세요.
 
 [Github Wiki - 2skydev/blog](https://github.com/2skydev/blog/wiki)
 
@@ -111,6 +111,7 @@ Please understand that the code and explanation are mainly written in Korean. �
 - a 링크 방식 -> Next.js Link 컴포넌트 사용
 - 로딩 효과 추가
 - 페이지 이동간 애니메이션
+- 초안 기능추가 (draft, published)
 - 여러 오류들 수정 (새로 생성된 페이지 404, 서버와 클라이언트의 timezone 차이로 hydration 에러, 등등)
 
 ### 스타일 커스텀
