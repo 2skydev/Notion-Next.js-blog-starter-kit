@@ -377,6 +377,17 @@ body {
     }
   }
 
+  // 코드
+  .notion-code {
+    .notion-code-copy {
+      top: 0.7rem;
+
+      .notion-code-copy-button {
+        display: block;
+      }
+    }
+  }
+
   // 구분선
   .notion-hr {
     margin: 6px 0;
