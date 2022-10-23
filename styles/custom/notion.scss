@@ -178,12 +178,11 @@ body {
       .item {
         display: block;
         position: relative;
-        padding: 0.3rem 1.3rem 0.3rem 1rem;
+        padding: 0.1rem 1.3rem 0.1rem 1rem;
 
         .text {
           opacity: 0.5;
           font-size: 0.9rem;
-          line-height: 1;
           transition: 250ms opacity;
           white-space: nowrap;
           overflow: hidden;
