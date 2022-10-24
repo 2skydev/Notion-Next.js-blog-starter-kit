@@ -2,8 +2,8 @@
   margin-top: 3rem;
   width: 100%;
 
-  @media (min-width: 1400px) and (min-height: 300px) {
-    width: calc(100% - 300px);
+  @media (min-width: 1400px) {
+    width: calc(100% - 300px - 5rem);
   }
 
   h2 {
