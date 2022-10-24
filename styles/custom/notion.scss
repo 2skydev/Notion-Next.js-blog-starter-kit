@@ -496,6 +496,10 @@ body {
     .notion-bookmark-link-icon img {
       display: block;
     }
+
+    .notion-bookmark-link-text {
+      max-width: 30rem;
+    }
   }
 
   // 아이콘 (페이지 아이콘, 콜아웃 아이콘)
