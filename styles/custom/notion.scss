@@ -55,6 +55,10 @@ body {
     position: fixed;
     transition-duration: 250ms;
     transition-property: background-color, color;
+
+    .notion-nav-header {
+      max-width: var(--notion-max-width);
+    }
   }
 
   // 다크 모드가 아닐 때
