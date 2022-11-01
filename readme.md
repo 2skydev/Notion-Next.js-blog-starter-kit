@@ -73,7 +73,7 @@ Please understand that the code and explanation are mainly written in Korean. �
 
 ## 🚀 저도 이 구성을 사용할래요
 
-레포 클론 후 `site.config.ts` 만 수정하시면 바로 이용하실 수 있습니다.<br/>
+레포 클론 후 [`Notion API 키 발급`](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/Notion-API-%ED%82%A4-%EB%B0%9C%EA%B8%89-&-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98-%EC%84%A4%EC%A0%95)과 [`site.config.ts`](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/site.config.ts) 만 수정하시면 바로 이용하실 수 있습니다.<br/>
 아래 단계들을 따라와주세요 :)
 
 > ❗️ 노션의 `복제` 기능을 사용시 이상하게 불러와지는 현상이 있습니다.<br/>
