@@ -155,8 +155,8 @@
   }
 
   .notion-page-content-has-aside .notion-page-content-inner {
-    width: var(--notion-max-width);
-    max-width: var(--notion-max-width);
+    width: var(--notion-page-content-inner-width);
+    max-width: var(--notion-page-content-inner-width);
   }
 }
 

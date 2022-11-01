@@ -77,6 +77,13 @@
 
   --notion-page-left-right-padding: calc(min(16px, 8vw));
   --notion-page-fullwith-left-right-padding: calc(min(96px, 8vw));
+
+  --notion-aside-width: 300px;
+  --notion-aside-space-width: 5rem;
+
+  --notion-page-content-inner-width: calc(
+    var(--notion-max-width) - var(--notion-aside-width) - var(--notion-aside-space-width)
+  );
 }
 
 // dark-mode vars

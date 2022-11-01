@@ -171,8 +171,8 @@ body {
 
   // 페이지 우측 사이드
   .notion-aside {
-    width: 300px;
-    margin-left: 5rem;
+    width: var(--notion-aside-width);
+    margin-left: var(--notion-aside-space-width);
     flex: none;
 
     // 우측 사이드 목차
