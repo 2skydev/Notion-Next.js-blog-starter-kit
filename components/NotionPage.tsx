@@ -6,7 +6,7 @@ import TweetEmbed from 'react-tweet-embed';
 import { useSearchParam } from 'react-use';
 
 import dynamic from 'next/dynamic';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -154,8 +154,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
       propertyTextValue,
       propertyDateValue,
       PageLink: ({ children, href, ...rest }) => (
-        <Link href={href}>
-          <a {...rest}>{children}</a>
+        <Link href={href} {...rest}>
+          {children}
         </Link>
       ),
     }),
