@@ -94,6 +94,8 @@ Please understand that the code and explanation are mainly written in Korean. �
 
 더 자세한 문서는 아래 링크를 확인해주세요. 이 문서에서 `시작하기` 부분을 확인해주세요 :)
 
+> ❗ 사용법을 모른다면 아래 문서는 꼭 읽어주세요
+
 [Github Wiki - 2skydev/blog](https://github.com/2skydev/blog/wiki)
 
 <br/>
