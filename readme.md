@@ -73,7 +73,7 @@ Please understand that the code and explanation are mainly written in Korean. �
 
 ## 🚀 저도 이 구성을 사용할래요
 
-레포 클론 후 `site.config.ts` 만 수정하시면 바로 이용하실 수 있습니다.<br/>
+레포 클론 후 [`Notion API 키 발급`](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/Notion-API-%ED%82%A4-%EB%B0%9C%EA%B8%89-&-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98-%EC%84%A4%EC%A0%95)과 [`site.config.ts`](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/site.config.ts) 만 수정하시면 바로 이용하실 수 있습니다.<br/>
 아래 단계들을 따라와주세요 :)
 
 > ❗️ 노션의 `복제` 기능을 사용시 이상하게 불러와지는 현상이 있습니다.<br/>
@@ -93,6 +93,8 @@ Please understand that the code and explanation are mainly written in Korean. �
 [GitHub - transitive-bullshit/nextjs-notion-starter-kit - setup](https://github.com/transitive-bullshit/nextjs-notion-starter-kit#setup)
 
 더 자세한 문서는 아래 링크를 확인해주세요. 이 문서에서 `시작하기` 부분을 확인해주세요 :)
+
+> ❗ 사용법을 모른다면 아래 문서는 꼭 읽어주세요
 
 [Github Wiki - 2skydev/blog](https://github.com/2skydev/blog/wiki)
 
@@ -121,6 +123,7 @@ Please understand that the code and explanation are mainly written in Korean. �
 - 로딩 효과 추가
 - 페이지 이동간 애니메이션
 - 초안 기능추가 (draft, published)
+- OG Image (social-image) 작동방식 커스텀
 - 여러 오류들 수정 (새로 생성된 페이지 404, 서버와 클라이언트의 timezone 차이로 hydration 에러, 등등)
 
 ### 스타일 커스텀
@@ -140,31 +143,6 @@ Please understand that the code and explanation are mainly written in Korean. �
 | dateformat           | yyyy.MM.dd | 날짜 포맷을 설정합니다. 유효한 값은 date-fns 포맷 문자열입니다.                                                                                                                            |
 | defaultTheme         | system     | 기본 테마를 설정합니다. 유효한 값은 `light`, `dark`, `system` 입니다                                                                                                                       |
 | hiddenPostProperties | []         | 글 상세 페이지에서 숨김 처리할 속성 이름들입니다.                                                                                                                                          |
-| enableComment        | false      | 글 상세 페이지에서 댓글 기능을 활성화 여부입니다. 노션 댓글 기능을 사용하며 해당 기능을 사용 시 `NOTION_API_KEY` 환경 변수 설정이 필수 입니다. 자세한 내용은 `댓글 기능`쪽을 확인해주세요. |
+| enableComment        | false      | 글 상세 페이지에서 댓글 기능을 활성화 여부입니다. 노션 댓글 기능을 사용하며 해당 기능을 사용 시 `NOTION_API_KEY` 환경 변수 설정이 필수 입니다.|
 | contentPositionTextAlign        | left      | 글 상세 페이지에서 우측에 표시되는 목차의 글자 정렬을 설정합니다. 유효한 값은 `left`, `right` 입니다 |
 
-<br />
-
-## 💬 댓글 기능
-
-설정 구성을 통해 댓글 기능을 활성화 시킬 수 있습니다.
-
-댓글은 노션의 댓글 기능을 사용하며 노션 API를 생성해야 사용이 가능합니다.
-
-### 1. API 생성하기
-
-[Notion Developers](https://www.notion.so/my-integrations)이 페이지에서 새로운 API 통합을 눌러서 기능 권한 목록중 댓글 기능만 모두 활성화 후 생성합니다.
-
-### 2. API 토큰 환경 변수 설정하기
-
-생성되면 `프라이빗 API 통합 토큰`을 복사하신 후 `.env` 파일을 만들어 `NOTION_API_KEY` 환경 변수로 설정해주세요.
-
-### 3. site.config.ts 파일 수정
-
-`enableComment`의 값을 `true`로 설정해주세요.
-
-### 4. 블로그 노션 페이지에서 API 연결 추가하기
-
-노션에서 사용하고 있는 블로그 페이지로 이동 후 우측 상단의 ···을 누른 후 하단의 연결 추가에서 생성한 API를 눌러서 연결해주세요.
-
-해당 단계까지 따라왔다면 지금 바로 댓글 기능을 사용하실 수 있습니다 :)
