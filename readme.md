@@ -141,31 +141,6 @@ Please understand that the code and explanation are mainly written in Korean. �
 | dateformat           | yyyy.MM.dd | 날짜 포맷을 설정합니다. 유효한 값은 date-fns 포맷 문자열입니다.                                                                                                                            |
 | defaultTheme         | system     | 기본 테마를 설정합니다. 유효한 값은 `light`, `dark`, `system` 입니다                                                                                                                       |
 | hiddenPostProperties | []         | 글 상세 페이지에서 숨김 처리할 속성 이름들입니다.                                                                                                                                          |
-| enableComment        | false      | 글 상세 페이지에서 댓글 기능을 활성화 여부입니다. 노션 댓글 기능을 사용하며 해당 기능을 사용 시 `NOTION_API_KEY` 환경 변수 설정이 필수 입니다. 자세한 내용은 `댓글 기능`쪽을 확인해주세요. |
+| enableComment        | false      | 글 상세 페이지에서 댓글 기능을 활성화 여부입니다. 노션 댓글 기능을 사용하며 해당 기능을 사용 시 `NOTION_API_KEY` 환경 변수 설정이 필수 입니다.|
 | contentPositionTextAlign        | left      | 글 상세 페이지에서 우측에 표시되는 목차의 글자 정렬을 설정합니다. 유효한 값은 `left`, `right` 입니다 |
 
-<br />
-
-## 💬 댓글 기능
-
-설정 구성을 통해 댓글 기능을 활성화 시킬 수 있습니다.
-
-댓글은 노션의 댓글 기능을 사용하며 노션 API를 생성해야 사용이 가능합니다.
-
-### 1. API 생성하기
-
-[Notion Developers](https://www.notion.so/my-integrations)이 페이지에서 새로운 API 통합을 눌러서 기능 권한 목록중 댓글 기능만 모두 활성화 후 생성합니다.
-
-### 2. API 토큰 환경 변수 설정하기
-
-생성되면 `프라이빗 API 통합 토큰`을 복사하신 후 `.env` 파일을 만들어 `NOTION_API_KEY` 환경 변수로 설정해주세요.
-
-### 3. site.config.ts 파일 수정
-
-`enableComment`의 값을 `true`로 설정해주세요.
-
-### 4. 블로그 노션 페이지에서 API 연결 추가하기
-
-노션에서 사용하고 있는 블로그 페이지로 이동 후 우측 상단의 ···을 누른 후 하단의 연결 추가에서 생성한 API를 눌러서 연결해주세요.
-
-해당 단계까지 따라왔다면 지금 바로 댓글 기능을 사용하실 수 있습니다 :)
