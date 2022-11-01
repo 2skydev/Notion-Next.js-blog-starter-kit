@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Client } from '@notionhq/client';
 
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
@@ -9,29 +8,34 @@ export const config = {
   runtime: 'experimental-edge',
 };
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
-
 export default async function handler(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const { id } = Object.fromEntries(searchParams);
 
-    const { properties, cover }: any = await notion.pages.retrieve({
-      page_id: id,
+    const result = await fetch(`https://api.notion.com/v1/pages/${id}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NOTION_API_KEY}`,
+        'Notion-Version': '2022-06-28',
+      },
     });
 
-    const image = cover.external.url;
-    const title = properties['이름'].title[0].plain_text;
-    const description = properties['설명'].rich_text[0].plain_text;
-    const tags = properties['태그'].multi_select.map((tag: any) => tag.name);
+    const { properties, cover } = await result.json();
+
+    const image = cover?.external?.url || cover?.file?.url || siteConfig.defaultPageCover;
+    const title = properties?.['이름']?.title?.[0]?.plain_text || siteConfig.name;
+    const description = properties['설명'].rich_text?.[0]?.plain_text || siteConfig.description;
+    const tags = (properties?.['태그']?.multi_select || []).map((tag: any) => tag.name);
     const author = siteConfig.author;
     const authorImage = siteConfig.defaultPageIcon;
-    const publishedAt = properties['작성일'].created_time;
-    const publishedAtString = new Date(publishedAt).toLocaleDateString('ko-KR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
+    const publishedAt = properties?.['작성일']?.created_time;
+    const publishedAtString = publishedAt
+      ? new Date(publishedAt).toLocaleDateString('ko-KR', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })
+      : siteConfig.domain;
 
     return new ImageResponse(
       (
