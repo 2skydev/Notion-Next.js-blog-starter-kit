@@ -60,6 +60,14 @@ body {
       max-width: var(--notion-max-width);
     }
   }
+
+  // 다크모드 아닐때
+  &:not(.dark-mode) {
+    // 글 목록을 가지고 있는 페이지라면 배경 색 변경
+    .hasCollectionView {
+      --bg-color: #f2f3f7;
+    }
+  }
 }
 
 /**
@@ -274,10 +282,6 @@ body {
         }
       }
     }
-  }
-
-  &.hasCollectionView {
-    --bg-color: #f2f3f7;
   }
 
   // 메인 페이지인 경우
