@@ -60,13 +60,6 @@ body {
       max-width: var(--notion-max-width);
     }
   }
-
-  // 다크 모드가 아닐 때
-  &:not(.dark-mode) {
-    .indexPage {
-      --bg-color: #f2f3f7;
-    }
-  }
 }
 
 /**
@@ -281,6 +274,10 @@ body {
         }
       }
     }
+  }
+
+  &.hasCollectionView {
+    --bg-color: #f2f3f7;
   }
 
   // 메인 페이지인 경우

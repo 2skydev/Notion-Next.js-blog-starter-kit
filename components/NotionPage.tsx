@@ -223,6 +223,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const isIndexPage = pageId === site.rootNotionPageId;
 
+  const hasCollectionView = Object.keys(recordMap.collection_query).length;
+
   return (
     <>
       <PageHead
@@ -236,7 +238,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       {isLiteMode && <BodyClassName className="notion-lite" />}
 
       <NotionRenderer
-        className={cs(isIndexPage ? 'indexPage' : 'childPage')}
+        className={cs(isIndexPage ? 'indexPage' : 'childPage', { hasCollectionView })}
         bodyClassName={cs(styles.notion, isIndexPage && 'index-page')}
         darkMode={isDarkMode}
         components={components}
