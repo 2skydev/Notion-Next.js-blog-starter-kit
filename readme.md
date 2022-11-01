@@ -89,10 +89,14 @@ Please understand that the code and explanation are mainly written in Korean. �
 
 [GitHub - transitive-bullshit/nextjs-notion-starter-kit - setup](https://github.com/transitive-bullshit/nextjs-notion-starter-kit#setup)
 
+<br/>
+
 더 자세한 문서는 아래 링크를 확인해주세요. 이 문서에서 `시작하기` 부분을 확인해주세요 :)
 
-> 💡 사용법을 모른다면 아래 문서는 꼭 읽어주세요 💡<br/>
-> [Github Wiki - 2skydev/blog](https://github.com/2skydev/blog/wiki)
+[Github Wiki - 2skydev/blog](https://github.com/2skydev/blog/wiki)
+
+> 💡 위 링크의 문서는 시작하기 와 주의점, Draft & Published 기능 등 여러가지를 설명합니다.<br/>
+> 사용하기 전 꼭 한번 읽어주세요
 
 <br/>
 
