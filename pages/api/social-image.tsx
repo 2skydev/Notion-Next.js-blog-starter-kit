@@ -24,7 +24,7 @@ export default async function handler(req: NextRequest) {
 
     const image = cover?.external?.url || cover?.file?.url || siteConfig.defaultPageCover;
     const title = properties?.['이름']?.title?.[0]?.plain_text || siteConfig.name;
-    const description = properties['설명'].rich_text?.[0]?.plain_text || siteConfig.description;
+    const description = properties?.['설명']?.rich_text?.[0]?.plain_text || siteConfig.description;
     const tags = (properties?.['태그']?.multi_select || []).map((tag: any) => tag.name);
     const author = siteConfig.author;
     const authorImage = siteConfig.defaultPageIcon;
