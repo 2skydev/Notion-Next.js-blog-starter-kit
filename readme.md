@@ -121,6 +121,7 @@ Please understand that the code and explanation are mainly written in Korean. �
 - 로딩 효과 추가
 - 페이지 이동간 애니메이션
 - 초안 기능추가 (draft, published)
+- OG Image (social-image) 작동방식 커스텀
 - 여러 오류들 수정 (새로 생성된 페이지 404, 서버와 클라이언트의 timezone 차이로 hydration 에러, 등등)
 
 ### 스타일 커스텀
