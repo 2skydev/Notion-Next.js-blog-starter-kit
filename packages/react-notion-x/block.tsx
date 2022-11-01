@@ -195,8 +195,8 @@ export const Block: React.FC<BlockProps> = props => {
                       <div
                         className={cs(
                           'notion-page-content',
-                          hasAside && 'notion-page-content-has-aside',
-                          hasToc && 'notion-page-content-has-toc',
+                          isBlogPost && hasAside && 'notion-page-content-has-aside',
+                          isBlogPost && hasToc && 'notion-page-content-has-toc',
                         )}
                       >
                         <article className="notion-page-content-inner">{children}</article>
