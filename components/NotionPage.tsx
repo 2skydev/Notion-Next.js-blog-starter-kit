@@ -219,8 +219,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     block,
   );
 
-  const socialDescription =
-    getPageProperty<string>('Description', block, recordMap) || config.description;
+  const socialDescription = getPageProperty<string>('설명', block, recordMap) || config.description;
 
   const isIndexPage = pageId === site.rootNotionPageId;
 
