@@ -365,20 +365,8 @@ body {
     background-color: transparent !important;
     position: relative;
     z-index: 0;
-
-    &::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: -1;
-      left: 0;
-      top: 0;
-      background-color: var(--fg-color-lighten);
-      border-radius: 3px;
-      transition: 250ms background-color;
-    }
+    background-color: var(--fg-color-lighten) !important;
+    transition: 250ms background-color;
   }
 
   // 코드
@@ -409,8 +397,8 @@ body {
       justify-content: center;
     }
 
-    .notion-inline-code::before {
-      background-color: var(--fg-color-1);
+    .notion-inline-code {
+      background-color: var(--fg-color-1) !important;
     }
 
     &.warning {
