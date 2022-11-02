@@ -64,7 +64,7 @@ export default siteConfig({
   dateformat: 'yyyy년 MM월 dd일',
 
   // post page - hidden properties
-  hiddenPostProperties: ['설명', '상태'],
+  hiddenPostProperties: ['설명', '상태', '최하위 정렬'],
 
   // contentPosition (table of contents) text align
   contentPositionTextAlign: 'left',
