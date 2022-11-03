@@ -76,9 +76,8 @@ Please understand that the code and explanation are mainly written in Korean. �
 레포 클론 후 [`Notion API 키 발급`](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/Notion-API-%ED%82%A4-%EB%B0%9C%EA%B8%89-&-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98-%EC%84%A4%EC%A0%95)과 [`site.config.ts`](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/site.config.ts) 만 수정하시면 바로 이용하실 수 있습니다.<br/>
 아래 단계들을 따라와주세요 :)
 
-### 1. 커스텀한 소스 다운로드 받기
+### 1. 커스텀한 블로그 템플릿 받기
 
-커스텀된 소스는 아래 링크를 확인해주세요.<br/>
 `Fork` 또는 `Use this template`를 사용하여 레포를 받으신 후 아래 모든 단계를 진행하시면 문제 없이 사용하실 수 있습니다.
 
 [GitHub - 2skydev/blog](https://github.com/2skydev/blog)
@@ -115,6 +114,13 @@ OG Image (social-image)와 댓글 기능은 Notion API를 사용합니다. 아�
 
 [2skydev wiki - Notion API 키 발급 & 환경 변수 설정](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/Notion-API-%ED%82%A4-%EB%B0%9C%EA%B8%89-&-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98-%EC%84%A4%EC%A0%95)
 
+### 6. 문서 읽기 [선택사항]
+더 자세한 문서는 아래 링크를 확인해주세요.
+
+[2skydev/blog - Wiki](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki)
+
+> 💡 위 링크의 문서는 시작하기 와 주의점, Draft & Published 기능 등 여러가지를 설명합니다.<br/>
+> 사용하기 전 꼭 한번 읽어주세요.
 
 <br/>
 
