@@ -3,10 +3,12 @@ import { Block, Decoration, ExternalObjectInstance } from 'notion-types';
 import { parsePageId } from 'notion-utils';
 
 import { useNotionContext } from '../context';
-import { formatDate, getHashFragmentValue } from '../utils';
+import { getHashFragmentValue } from '../utils';
 import { PageTitle } from './page-title';
 import { GracefulImage } from './graceful-image';
 import { EOI } from './eoi';
+import { format } from 'date-fns-tz';
+import { dateformat } from '~/lib/config';
 
 /**
  * Renders a single piece of Notion text, including basic rich text formatting.
@@ -170,13 +172,19 @@ export const Text: React.FC<{
                 // Example: Jul 31, 2010
                 const startDate = v.start_date;
 
-                return formatDate(startDate);
+                // CUSTOM: 날짜 포맷 변경
+                return format(new Date(startDate), dateformat);
+                // return formatDate(startDate);
               } else if (type === 'daterange') {
                 // Example: Jul 31, 2010 → Jul 31, 2020
                 const startDate = v.start_date;
                 const endDate = v.end_date;
 
-                return `${formatDate(startDate)} → ${formatDate(endDate)}`;
+                // CUSTOM: 날짜 포맷 변경
+                return `${format(new Date(startDate), dateformat)} → ${format(
+                  new Date(endDate),
+                  dateformat,
+                )}`;
               } else {
                 return element;
               }
