@@ -100,8 +100,6 @@ export const NotionPageHeader: React.FC<{
                     )}
                   >
                     <svg
-                      stroke="#37352f"
-                      fill="#37352f"
                       strokeWidth="0"
                       width="14px"
                       height="14px"

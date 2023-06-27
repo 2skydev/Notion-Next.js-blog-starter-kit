@@ -59,6 +59,10 @@ body {
     .notion-nav-header {
       max-width: var(--notion-max-width);
     }
+
+    .breadcrumb.notion-nav-header-mobile svg {
+      fill: var(--fg-color);
+    }
   }
 
   // 다크모드 아닐때
