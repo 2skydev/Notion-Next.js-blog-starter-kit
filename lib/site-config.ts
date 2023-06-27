@@ -45,6 +45,7 @@ export interface NavigationLink {
   title: string;
   pageId?: string;
   url?: string;
+  menuPage?: boolean;
 }
 
 export const siteConfig = (config: SiteConfig): SiteConfig => {
