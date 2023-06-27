@@ -49,7 +49,7 @@ export const NotionPageHeader: React.FC<{
         <div className="notion-nav-header-rhs breadcrumbs">
           {navigationLinks
             ?.map((link, index) => {
-              if (!link.pageId && !link.url) {
+              if ((!link.pageId && !link.url) || link.menuPage) {
                 return null;
               }
 
@@ -58,17 +58,17 @@ export const NotionPageHeader: React.FC<{
                   <components.PageLink
                     href={mapPageUrl(link.pageId)}
                     key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
+                    className={cs(styles.navLink, 'breadcrumb', 'button', 'notion-nav-header-wide')}
                   >
                     {link.title}
                   </components.PageLink>
                 );
-              } else {
+              } else if (link.url) {
                 return (
                   <components.Link
                     href={link.url}
                     key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
+                    className={cs(styles.navLink, 'breadcrumb', 'button', 'notion-nav-header-wide')}
                   >
                     {link.title}
                   </components.Link>
@@ -80,6 +80,42 @@ export const NotionPageHeader: React.FC<{
           <ToggleThemeButton />
 
           {isSearchEnabled && <Search block={block} title={null} />}
+
+          {navigationLinks
+            ?.map((link, index) => {
+              if (!link.pageId && !link.url) {
+                return null;
+              }
+
+              if (link.menuPage == true) {
+                return (
+                  <components.PageLink
+                    href={mapPageUrl(link.pageId)}
+                    key={index}
+                    className={cs(
+                      styles.navLink,
+                      'breadcrumb',
+                      'button',
+                      'notion-nav-header-mobile',
+                    )}
+                  >
+                    <svg
+                      stroke="#37352f"
+                      fill="#37352f"
+                      strokeWidth="0"
+                      width="14px"
+                      height="14px"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                    </svg>
+                  </components.PageLink>
+                );
+              }
+            })
+            .filter(Boolean)}
         </div>
       </div>
     </header>
