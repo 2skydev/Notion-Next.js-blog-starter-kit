@@ -39,8 +39,23 @@
   margin: 0 auto;
 }
 
-.notion-nav-header-rhs {
+.notion-nav-header-wide {
+  display: inline-flex;
   gap: 0.5rem;
+}
+
+.notion-nav-header-mobile {
+  display: none !important;
+}
+
+@media (max-width: 1023px) {
+  .notion-nav-header-wide {
+    display: none !important;
+  }
+
+  .notion-nav-header-mobile {
+    display: inline-flex !important;
+  }
 }
 
 .notion-gallery-grid {

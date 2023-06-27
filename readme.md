@@ -12,9 +12,11 @@ Please understand that the code and explanation are mainly written in Korean. �
 아래 사진들은 운영중인 제 블로그에서 가져온 리소스입니다. [2skydev blog](https://blog.2skydev.com)
 
 ### 라이트모드
+<img width="1792" alt="image" src="https://user-images.githubusercontent.com/43225384/202594029-e17f0231-88e3-4b22-8496-c75213337f6d.png">
 <img width="1747" alt="image" src="https://user-images.githubusercontent.com/43225384/197439019-14e34e5e-a918-4ee9-ba23-ed9e65ed5812.png">
 
 ### 다크모드
+<img width="1792" alt="image" src="https://user-images.githubusercontent.com/43225384/202594126-d66efacb-8105-465c-a67d-86c3c522748d.png">
 <img width="1743" alt="image" src="https://user-images.githubusercontent.com/43225384/197439046-488f763b-af4e-4376-8dee-87b2b53a7606.png">
 
 <br />
@@ -76,27 +78,51 @@ Please understand that the code and explanation are mainly written in Korean. �
 레포 클론 후 [`Notion API 키 발급`](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/Notion-API-%ED%82%A4-%EB%B0%9C%EA%B8%89-&-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98-%EC%84%A4%EC%A0%95)과 [`site.config.ts`](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/site.config.ts) 만 수정하시면 바로 이용하실 수 있습니다.<br/>
 아래 단계들을 따라와주세요 :)
 
-### 1. 커스텀한 소스 클론하기
+### 1. 커스텀한 블로그 템플릿 받기
 
-커스텀된 소스는 아래 링크를 확인해주세요.<br/>
-클론 받으신 후 설정파일을 수정하면 바로 이용하실 수 있습니다.
+`Fork` 또는 `Use this template`를 사용하여 레포를 받으신 후 아래 모든 단계를 진행하시면 문제 없이 사용하실 수 있습니다.
 
 [GitHub - 2skydev/blog](https://github.com/2skydev/blog)
 
-### 2. 사용방법
+### 2. 기본적인 사용방법
 
-커스텀한 블로그 템플릿은 아래의 오픈소스 기반이므로 해당 깃허브 README.md에서 기본적인 사용방법을 확인해주세요.
+커스텀한 블로그 템플릿은 아래의 오픈소스 기반이므로 해당 깃허브 README.md에서 사용방법을 확인해주세요.
 
 [GitHub - transitive-bullshit/nextjs-notion-starter-kit - setup](https://github.com/transitive-bullshit/nextjs-notion-starter-kit#setup)
 
-<br/>
+### 3. 노션 데이터베이스 보기 형태 일치시키기
 
-더 자세한 문서는 아래 링크를 확인해주세요. 이 문서에서 `시작하기` 부분을 확인해주세요 :)
+글 목록이 디자인에 맞게 나오려면 데이터베이스의 보기 형태가 저와 같은 형태 및 속성 순서가 맞아야합니다.<br/>
+되도록 아래 링크에서 보이는것과 같이 형태와 속성의 순서가 일치하게 만들어주세요.
 
-[Github Wiki - 2skydev/blog](https://github.com/2skydev/blog/wiki)
+[Notion - blog template](https://2skydev.notion.site/2skydev-blog-d1e89e9e42eb4ebf9486ae0374039efc)
+
+> ❗️ 노션의 `복제` 기능을 사용시 이상하게 불러와지는 현상이 있습니다.<br/>
+> 블로그로 사용하는 노션 페이지는 `복제`된 페이지가 아닌 직접 페이지를 만들어야합니다.
+
+### 4. 기본으로 구성되어 있는 파일들 교체 및 제거
+
+다운받으신 코드는 이미 제가 사용중인 블로그 소스이므로 필요없는 파일 및 교체해야 되는 이미지 파일들이 있습니다.
+항목은 아래와 같습니다.
+
+1. naver-site-verification 파일 제거: `/public/naverXXXXXXXXXXX.html`
+2. 프로필 사진 변경: `public/favicon-128x128.png`, `public/favicon-192x192.png`, `public/favicon.ico`, `public/favicon.png`
+3. 로딩 효과 변경: `public/loading.gif`, `components/PageLoading.tsx`
+4. site.config.ts 변경: `rootNotionPageId`, `name`, `domain`, `author`, `description`, `defaultPageIcon`, `navigationLinks`, `enableComment`
+
+### 5. Notion API 키 발급 & 환경 변수 설정
+
+OG Image (social-image)와 댓글 기능은 Notion API를 사용합니다. 아래 문서 링크로 이동해 키 발급을 진행해주세요.
+
+[2skydev wiki - Notion API 키 발급 & 환경 변수 설정](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/Notion-API-%ED%82%A4-%EB%B0%9C%EA%B8%89-&-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98-%EC%84%A4%EC%A0%95)
+
+### 6. 문서 읽기 [선택사항]
+더 자세한 문서는 아래 링크를 확인해주세요.
+
+[2skydev/blog - Wiki](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki)
 
 > 💡 위 링크의 문서는 시작하기 와 주의점, Draft & Published 기능 등 여러가지를 설명합니다.<br/>
-> 사용하기 전 꼭 한번 읽어주세요
+> 사용하기 전 꼭 한번 읽어주세요.
 
 <br/>
 
