@@ -1,4 +1,5 @@
 import PQueue from 'p-queue';
+import pRetry from 'p-retry';
 
 import { ExtendedRecordMap, PageMap } from 'notion-types';
 import { parsePageId } from './parse-page-id';
@@ -49,113 +50,125 @@ export async function getAllPagesInSpace(
 
       queue.add(async () => {
         try {
-          if (targetPageId && pendingPageIds.has(targetPageId) && pageId !== targetPageId) {
-            return;
-          }
+          await pRetry(
+            async () => {
+              if (targetPageId && pendingPageIds.has(targetPageId) && pageId !== targetPageId) {
+                return;
+              }
 
-          const page = await getPage(pageId);
+              const page = await getPage(pageId);
 
-          // console.log(
-          //   `\n---------- ${pageId} / "${
-          //     page.block[pageId].value.properties['title'] || '???'
-          //   }" ----------\n`,
-          // );
-
-          if (!page) {
-            return;
-          }
-
-          const spaceId = page.block[pageId]?.value?.space_id;
-
-          if (spaceId) {
-            if (!rootSpaceId) {
-              rootSpaceId = spaceId;
-            } else if (rootSpaceId !== spaceId) {
-              return;
-            }
-          }
-
-          // CUSTOM: 데이터베이스의 보기는 첫번째것만 표시되므로 사이트맵 추출도 첫번째것만 추출 (필터링된 글은 추출이 안되도록 처리)
-          Object.values(page.block).forEach(({ value: block }) => {
-            if (!block || !block?.type) {
-              return;
-            }
-
-            if (block.type === 'collection_view') {
-              const defaultViewId = block.view_ids[0];
-
-              const collectionId =
-                block.collection_id ||
-                page?.collection_view?.[defaultViewId]?.value?.format?.collection_pointer?.id;
-
-              const collectionChildPageIds =
-                page.collection_query?.[collectionId]?.[defaultViewId]?.collection_group_results
-                  ?.blockIds || [];
-
-              // console.log('--');
-              // console.log('block:', block);
-              // console.log('collectionId: ', collectionId);
-              // console.log('block.view_ids: ', block.view_ids);
-              // console.log('page.collection_query: ', page.collection_query);
               // console.log(
-              //   'page.collection_query.find: ',
-              //   page.collection_query?.[collectionId]?.[defaultViewId]?.collection_group_results,
+              //   `\n---------- ${pageId} / "${
+              //     page.block[pageId].value.properties['title'] || '???'
+              //   }" ----------\n`,
               // );
-              // console.log('collectionView', page.collection_view[defaultViewId].value);
-              // console.log('collectionChildPageIds', collectionChildPageIds);
 
-              collectionChildPageIds.forEach(blockId => {
-                allowCollectionItemIds.add(blockId);
-              });
-            }
-          });
-
-          Object.keys(page.block)
-            .filter(key => {
-              const block = page.block[key]?.value;
-
-              if (!block) return false;
-
-              if (block.type !== 'page' && block.type !== 'collection_view_page') {
-                return false;
+              if (!page) {
+                return;
               }
 
-              // the space id check is important to limit traversal because pages
-              // can reference pages in other spaces
-              if (rootSpaceId && block.space_id && block.space_id !== rootSpaceId) {
-                return false;
-              }
+              const spaceId = page.block[pageId]?.value?.space_id;
 
-              // CUSTOM: 데이터베이스의 보기는 첫번째것만 표시되므로 사이트맵 추출도 첫번째것만 추출 (필터링된 글은 추출이 안되도록 처리)
-              if (block.parent_table === 'collection') {
-                if (!allowCollectionItemIds.has(block.id)) {
-                  return false;
+              if (spaceId) {
+                if (!rootSpaceId) {
+                  rootSpaceId = spaceId;
+                } else if (rootSpaceId !== spaceId) {
+                  return;
                 }
               }
 
-              // console.log(block.id, block.properties.title);
+              // CUSTOM: 데이터베이스의 보기는 첫번째것만 표시되므로 사이트맵 추출도 첫번째것만 추출 (필터링된 글은 추출이 안되도록 처리)
+              Object.values(page.block).forEach(({ value: block }) => {
+                if (!block || !block?.type) {
+                  return;
+                }
 
-              return true;
-            })
-            .forEach(subPageId => processPage(subPageId));
+                if (block.type === 'collection_view') {
+                  const defaultViewId = block.view_ids[0];
 
-          // CUSTOM: 위 커스텀 코드로 인해 이 코드 필요가 없어짐
-          // traverse collection item pages as they may contain subpages as well
-          // if (traverseCollections) {
-          //   for (const collectionViews of Object.values(page.collection_query)) {
-          //     for (const collectionData of Object.values(collectionViews)) {
-          //       const { blockIds } = collectionData;
+                  const collectionId =
+                    block.collection_id ||
+                    page?.collection_view?.[defaultViewId]?.value?.format?.collection_pointer?.id;
 
-          //       if (blockIds) {
-          //         for (const collectionItemId of blockIds) {
-          //           processPage(collectionItemId);
-          //         }
-          //       }
-          //     }
-          //   }
-          // }
+                  const collectionChildPageIds =
+                    page.collection_query?.[collectionId]?.[defaultViewId]?.collection_group_results
+                      ?.blockIds || [];
 
-          pages[pageId] = page;
+                  // console.log('--');
+                  // console.log('block:', block);
+                  // console.log('collectionId: ', collectionId);
+                  // console.log('block.view_ids: ', block.view_ids);
+                  // console.log('page.collection_query: ', page.collection_query);
+                  // console.log(
+                  //   'page.collection_query.find: ',
+                  //   page.collection_query?.[collectionId]?.[defaultViewId]?.collection_group_results,
+                  // );
+                  // console.log('collectionView', page.collection_view[defaultViewId].value);
+                  // console.log('collectionChildPageIds', collectionChildPageIds);
+
+                  collectionChildPageIds.forEach(blockId => {
+                    allowCollectionItemIds.add(blockId);
+                  });
+                }
+              });
+
+              Object.keys(page.block)
+                .filter(key => {
+                  const block = page.block[key]?.value;
+
+                  if (!block) return false;
+
+                  if (block.type !== 'page' && block.type !== 'collection_view_page') {
+                    return false;
+                  }
+
+                  // the space id check is important to limit traversal because pages
+                  // can reference pages in other spaces
+                  if (rootSpaceId && block.space_id && block.space_id !== rootSpaceId) {
+                    return false;
+                  }
+
+                  // CUSTOM: 데이터베이스의 보기는 첫번째것만 표시되므로 사이트맵 추출도 첫번째것만 추출 (필터링된 글은 추출이 안되도록 처리)
+                  if (block.parent_table === 'collection') {
+                    if (!allowCollectionItemIds.has(block.id)) {
+                      return false;
+                    }
+                  }
+
+                  // console.log(block.id, block.properties.title);
+
+                  return true;
+                })
+                .forEach(subPageId => processPage(subPageId));
+
+              // CUSTOM: 위 커스텀 코드로 인해 이 코드 필요가 없어짐
+              // traverse collection item pages as they may contain subpages as well
+              // if (traverseCollections) {
+              //   for (const collectionViews of Object.values(page.collection_query)) {
+              //     for (const collectionData of Object.values(collectionViews)) {
+              //       const { blockIds } = collectionData;
+
+              //       if (blockIds) {
+              //         for (const collectionItemId of blockIds) {
+              //           processPage(collectionItemId);
+              //         }
+              //       }
+              //     }
+              //   }
+              // }
+
+              pages[pageId] = page;
+            },
+            {
+              onFailedAttempt: error => {
+                console.log(
+                  `Attempt ${error.attemptNumber} failed. There are ${error.retriesLeft} retries left.`,
+                );
+              },
+              retries: 3,
+            },
+          );
 
           // console.log('\n----------------------------------------------\n\n');
         } catch (err) {
