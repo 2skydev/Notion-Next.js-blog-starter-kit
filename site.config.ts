@@ -2,23 +2,23 @@ import { siteConfig } from './lib/site-config';
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: 'd1e89e9e42eb4ebf9486ae0374039efc',
+  rootNotionPageId: '4a72dd6198604b7e916d176dc119c2cd',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: '2skydev blog',
-  domain: 'blog.2skydev.com',
-  author: '2skydev',
+  name: '이동혁 개발 홈페이지',
+  domain: 'hyuk.dev',
+  author: '이동혁',
 
   // open graph metadata (optional)
-  description: '2skydev blog - developer blog',
+  description: '백엔드 관련 정보 수록',
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
-  github: '2skydev',
+  github: 'hyuk-dev',
   // linkedin: 'fisch2',
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
@@ -50,7 +50,7 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
-  navigationStyle: 'custom',
+  /*navigationStyle: 'custom',
   navigationLinks: [
     {
       title: '카테고리',
@@ -62,7 +62,7 @@ export default siteConfig({
       menuPage: true,
     },
   ],
-
+*/
   // -------- custom configs (2skydev) -------------
 
   // date-fns format string
