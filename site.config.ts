@@ -2,23 +2,23 @@ import { siteConfig } from './lib/site-config';
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '81445ebae8a14441b75ff27eaa5d29f9',
+  rootNotionPageId: '4a72dd6198604b7e916d176dc119c2cd',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: '2skydev blog',
-  domain: 'blog.2skydev.com',
-  author: '2skydev',
+  name: '이동혁 기술 블로그',
+  domain: 'hyuk.dev',
+  author: 'hyuk',
 
   // open graph metadata (optional)
-  description: '2skydev blog - developer blog',
+  description: 'hyuk's blog - developer blog',
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
-  github: '2skydev',
+  github: 'hyuk-dev',
   // linkedin: 'fisch2',
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
@@ -54,11 +54,11 @@ export default siteConfig({
   navigationLinks: [
     {
       title: '카테고리',
-      pageId: '36400db511474331b5c1de6918212469',
+      pageId: '4a72dd6198604b7e916d176dc119c2cd',
     },
     {
       title: '카테고리',
-      pageId: '36400db511474331b5c1de6918212469',
+      pageId: '4a72dd6198604b7e916d176dc119c2cd',
       menuPage: true,
     },
   ],
