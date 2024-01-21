@@ -50,19 +50,15 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
-  /*navigationStyle: 'custom',
+  navigationStyle: 'custom',
   navigationLinks: [
     {
-      title: '카테고리',
-      pageId: '36400db511474331b5c1de6918212469',
+      title: '홈',
+      pageId: '4a72dd6198604b7e916d176dc119c2cd',
     },
-    {
-      title: '카테고리',
-      pageId: '36400db511474331b5c1de6918212469',
-      menuPage: true,
-    },
+    
   ],
-*/
+
   // -------- custom configs (2skydev) -------------
 
   // date-fns format string
