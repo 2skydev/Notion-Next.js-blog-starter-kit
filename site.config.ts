@@ -14,7 +14,7 @@ export default siteConfig({
   author: '이동혁',
 
   // open graph metadata (optional)
-  description: '백엔드 관련 정보',
+  //description: '백엔드 관련 정보',
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
