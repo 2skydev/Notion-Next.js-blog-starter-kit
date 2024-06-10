@@ -519,23 +519,31 @@ export class NotionAPI {
   public async search(params: notion.SearchParams, gotOptions?: OptionsOfJSONResponseBody) {
     const body = {
       type: 'BlocksInAncestor',
-      source: 'quick_find_public',
-      ancestorId: parsePageId(params.ancestorId),
-      sort: 'Relevance',
-      limit: params.limit || 20,
       query: params.query,
+      ancestorId: parsePageId(params.ancestorId),
       filters: {
         isDeletedOnly: false,
-        isNavigableOnly: false,
-        excludeTemplates: true,
+        excludeTemplates: false,
+        navigableBlockContentOnly: false,
         requireEditPermissions: false,
+        includePublicPagesWithoutExplicitAccess: false,
         ancestors: [],
         createdBy: [],
         editedBy: [],
         lastEditedTime: {},
         createdTime: {},
+        inTeams: [],
         ...params.filters,
       },
+      sort: {
+        field: 'relevance',
+      },
+      limit: params.limit || 20,
+      source: 'quick_find_input_change',
+      searchExperimentOverrides: {},
+      searchSessionId: params.searchSessionId,
+      searchSessionFlowNumber: 1,
+      excludedBlockIds: [],
     };
 
     return this.fetch<notion.SearchResults>({
